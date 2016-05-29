@@ -27,7 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
         window.hidesOnDeactivate = true
         window.canHide = true
-        Keychain.createKeychain()
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: #selector(AppDelegate.closePopover(_:)), name: NSWorkspaceActiveSpaceDidChangeNotification, object: nil)
         if let button = statusItem.button {
             button.image = NSImage(named: "later-menu")

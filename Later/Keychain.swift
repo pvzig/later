@@ -11,10 +11,7 @@ import Security
 
 public struct Keychain {
  
-    static let keychainPath = "Later.keychain"
-    
-    static func createKeychain() {
-        // Create access
+    static func saveItem(item: String, account: String, service: String) {
         let path = NSBundle.mainBundle().builtInPlugInsPath! + "/Read It Later.appex"
         var appExtension: SecTrustedApplication?
         var app: SecTrustedApplication?
@@ -22,14 +19,23 @@ public struct Keychain {
         SecTrustedApplicationCreateFromPath(path, &appExtension)
         SecTrustedApplicationCreateFromPath(nil, &app)
         SecAccessCreate("Read It Later Extension", NSArray(objects: app!, appExtension!), &access)
-        // Create keychain
-        var keychain: SecKeychain?
-        SecKeychainCreate(keychainPath, 0, "", false, access, &keychain)
-        SecKeychainOpen(keychainPath, &keychain)
-    }
-
-    static func saveItem(item: String, account: String, service: String) {
-        
+        let s = UnsafeMutablePointer<Int8>((service as NSString).UTF8String)
+        let i = UnsafeMutablePointer<Int8>((item as NSString).UTF8String)
+        let a = UnsafeMutablePointer<Int8>((account as NSString).UTF8String)
+        let attrs = [
+            SecKeychainAttribute(tag: SecItemAttr.ServiceItemAttr.rawValue, length: UInt32(strlen(service)), data: s),
+            SecKeychainAttribute(tag: SecItemAttr.DescriptionItemAttr.rawValue, length: UInt32(strlen(item)), data: i),
+            SecKeychainAttribute(tag: SecItemAttr.AccountItemAttr.rawValue, length: UInt32(strlen(account)), data: a)
+        ]
+        var attributes = SecKeychainAttributeList(count: UInt32(attrs.count), attr: UnsafeMutablePointer<SecKeychainAttribute>(attrs))
+        var ref: SecKeychainItemRef? = nil
+        SecKeychainItemCreateFromContent(.GenericPasswordItemClass,
+                                         &attributes,
+                                         UInt32(strlen(item)),
+                                         item,
+                                         nil,
+                                         access,
+                                         &ref)
     }
     
     static func fetchItem(service: String, account: String) -> String {
