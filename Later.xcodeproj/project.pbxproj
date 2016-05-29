@@ -44,13 +44,13 @@
 		268B24391BD6AF06009D6E0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24331BD6AF06009D6E0C /* ViewController.swift */; };
 		268B24571BD70DD6009D6E0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24561BD70DD6009D6E0C /* User.swift */; };
 		2693F96B1CC881F1009FD89D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2641E76E1BDD745800B634B2 /* Security.framework */; };
-		2693F9761CC917D8009FD89D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693F9751CC917D8009FD89D /* Keychain.swift */; };
-		2693F9771CC937BA009FD89D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693F9751CC917D8009FD89D /* Keychain.swift */; };
 		26ACE84E1C829AE300093A11 /* InstapaperKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26ACE8501C829AF000093A11 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 261801D31BFACDC7003AD9B4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26C9B7CB1C41F0FD00237113 /* PopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C9B7CA1C41F0FD00237113 /* PopoverView.xib */; };
 		26DC5C3F1C7D331F00F77EF2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */; };
 		26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */; };
+		26DE1DC41CFB825C003AE363 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1DC31CFB825C003AE363 /* Keychain.swift */; };
+		26DE1DC51CFB825C003AE363 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1DC31CFB825C003AE363 /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,10 +177,10 @@
 		268B24311BD6AF06009D6E0C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268B24331BD6AF06009D6E0C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		268B24561BD70DD6009D6E0C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		2693F9751CC917D8009FD89D /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		26C9B7CA1C41F0FD00237113 /* PopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverView.xib; sourceTree = "<group>"; };
 		26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		26DE1DC31CFB825C003AE363 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,7 +292,6 @@
 			children = (
 				267BC23F1BF7C4730004DD91 /* ShareViewController.swift */,
 				262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */,
-				267BC2441BF7C4730004DD91 /* Info.plist */,
 				267BC23B1BF7C4730004DD91 /* Supporting Files */,
 			);
 			path = "Read It Later";
@@ -301,6 +300,7 @@
 		267BC23B1BF7C4730004DD91 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				267BC2441BF7C4730004DD91 /* Info.plist */,
 				267BC23C1BF7C4730004DD91 /* icon.icns */,
 				267BC23E1BF7C4730004DD91 /* Read_It_Later.entitlements */,
 			);
@@ -310,7 +310,6 @@
 		268B242C1BD6AF06009D6E0C /* Later */ = {
 			isa = PBXGroup;
 			children = (
-				267BC25E1BF7DDF10004DD91 /* Later.entitlements */,
 				2641E76D1BDD711900B634B2 /* BridgingHeader.h */,
 				268B242D1BD6AF06009D6E0C /* AppDelegate.swift */,
 				2613636E1BE8175A0011F39E /* EventMonitor.swift */,
@@ -319,7 +318,7 @@
 				26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */,
 				268B24561BD70DD6009D6E0C /* User.swift */,
 				2604B38E1BFE5B5A0035015E /* OAuth.swift */,
-				2693F9751CC917D8009FD89D /* Keychain.swift */,
+				26DE1DC31CFB825C003AE363 /* Keychain.swift */,
 				2604B38D1BFE5B370035015E /* Extensions */,
 				268B24581BD70DE8009D6E0C /* Resources */,
 			);
@@ -335,6 +334,7 @@
 				262DC87F1BE5508E0052404A /* MainMenu.xib */,
 				261363701BE8344C0011F39E /* LoginView.xib */,
 				268B24311BD6AF06009D6E0C /* Info.plist */,
+				267BC25E1BF7DDF10004DD91 /* Later.entitlements */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -412,7 +412,7 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -534,7 +534,7 @@
 				2604B38F1BFE5B5A0035015E /* OAuth.swift in Sources */,
 				261363731BE835D00011F39E /* LoginViewController.swift in Sources */,
 				264552421C02313C00DC82B1 /* PocketAPIOperation.m in Sources */,
-				2693F9761CC917D8009FD89D /* Keychain.swift in Sources */,
+				26DE1DC41CFB825C003AE363 /* Keychain.swift in Sources */,
 				2645523A1C02313C00DC82B1 /* PocketAPI.m in Sources */,
 				2604B38B1BFE5ADA0035015E /* NSURL+Swifter.swift in Sources */,
 				26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */,
@@ -557,7 +557,7 @@
 				267BC25D1BF7DDC60004DD91 /* User.swift in Sources */,
 				2645523F1C02313C00DC82B1 /* PocketAPIKeychainUtils.m in Sources */,
 				2604B3891BFE5A950035015E /* String+Swifter.swift in Sources */,
-				2693F9771CC937BA009FD89D /* Keychain.swift in Sources */,
+				26DE1DC51CFB825C003AE363 /* Keychain.swift in Sources */,
 				2604B3901BFE5B5A0035015E /* OAuth.swift in Sources */,
 				264552411C02313C00DC82B1 /* PocketAPILogin.m in Sources */,
 				267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */,
@@ -679,7 +679,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.launchsoft.later;
 				PRODUCT_NAME = Later;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0097b92a-51e6-479c-9aaa-73b3459ec08e";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
 			};
 			name = Debug;
@@ -689,8 +689,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
@@ -699,7 +699,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.launchsoft.later;
 				PRODUCT_NAME = Later;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "39ed515b-ba03-4592-8a0e-48bf529d2441";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
 			};
 			name = Release;
@@ -715,7 +715,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f47721e6-189d-4257-97f2-e48f602e943c";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
 			};
@@ -725,14 +725,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Read It Later/Read_It_Later.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a589dcb7-6ade-4c69-9ad7-3c70f8d1e89a";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
 			};
