@@ -31,18 +31,18 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     }
     
     func saveURL(url: NSURL) {
-        if (User.sharedInstance.instapaperAccount == true) {
+        if (User.instapaperAccount == true) {
             addToInstapaper(url)
         }
-        if (User.sharedInstance.readabilityAccount == true) {
+        if (User.readabilityAccount == true) {
             addToReadability(url)
         }
-        if (User.sharedInstance.pocketAccount == true) {
+        if (User.pocketAccount == true) {
             addToPocket(url)
         }
-        if User.sharedInstance.instapaperAccount == false &&
-            User.sharedInstance.readabilityAccount == false &&
-            User.sharedInstance.pocketAccount == false {
+        if User.instapaperAccount == false &&
+            User.readabilityAccount == false &&
+            User.pocketAccount == false {
                 completionHandler()
         }
     }
@@ -93,13 +93,13 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     
     func completionHandler() {
         var successCount = 0
-        if (User.sharedInstance.instapaperAccount == true) {
+        if (User.instapaperAccount == true) {
             successCount += 1
         }
-        if (User.sharedInstance.readabilityAccount == true) {
+        if (User.readabilityAccount == true) {
             successCount += 1
         }
-        if (User.sharedInstance.pocketAccount == true) {
+        if (User.pocketAccount == true) {
             successCount += 1
         }
         var successes = 0

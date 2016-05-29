@@ -20,11 +20,11 @@ public struct Keychain {
         SecTrustedApplicationCreateFromPath(nil, &app)
         SecAccessCreate("Read It Later Extension", NSArray(objects: app!, appExtension!), &access)
         let s = UnsafeMutablePointer<Int8>((service as NSString).UTF8String)
-        let i = UnsafeMutablePointer<Int8>((item as NSString).UTF8String)
         let a = UnsafeMutablePointer<Int8>((account as NSString).UTF8String)
+        let kind = UnsafeMutablePointer<Int8>(("application password" as NSString).UTF8String)
         let attrs = [
             SecKeychainAttribute(tag: SecItemAttr.ServiceItemAttr.rawValue, length: UInt32(strlen(service)), data: s),
-            SecKeychainAttribute(tag: SecItemAttr.DescriptionItemAttr.rawValue, length: UInt32(strlen(item)), data: i),
+            SecKeychainAttribute(tag: SecItemAttr.DescriptionItemAttr.rawValue, length: UInt32(strlen("application password")), data: kind),
             SecKeychainAttribute(tag: SecItemAttr.AccountItemAttr.rawValue, length: UInt32(strlen(account)), data: a)
         ]
         var attributes = SecKeychainAttributeList(count: UInt32(attrs.count), attr: UnsafeMutablePointer<SecKeychainAttribute>(attrs))
@@ -53,5 +53,23 @@ public struct Keychain {
         let item = NSString(bytes: UnsafePointer(data), length: Int(length), encoding: NSUTF8StringEncoding)!
         SecKeychainItemFreeContent(nil, data)
         return item as String
+    }
+    
+    static func removeItem(service: String, account: String) {
+        var length:UInt32 = 0
+        var data:UnsafeMutablePointer<Void> = nil
+        var ref: SecKeychainItemRef? = nil
+        SecKeychainFindGenericPassword(nil,
+                                       UInt32(service.characters.count),
+                                       service,
+                                       UInt32(account.characters.count),
+                                       account,
+                                       &length,
+                                       &data,
+                                       &ref)
+        guard let item = ref else {
+            return
+        }
+        SecKeychainItemDelete(item)
     }
 }

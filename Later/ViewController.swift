@@ -29,19 +29,19 @@ class ViewController: NSViewController {
     }
     
     func setButtonTitles() {
-        if (User.sharedInstance.instapaperAccount == true) {
+        if (User.instapaperAccount == true) {
             connectToInstapaper.title = "Disconnect"
         } else {
             connectToInstapaper.title = "Connect"
         }
         
-        if (User.sharedInstance.pocketAccount == true) {
+        if (User.pocketAccount == true) {
             connectToPocket.title = "Disconnect"
         } else {
             connectToPocket.title = "Connect"
         }
         
-        if (User.sharedInstance.readabilityAccount == true) {
+        if (User.readabilityAccount == true) {
             connectToReadability.title = "Disconnect"
         } else {
             connectToReadability.title = "Connect"
@@ -49,7 +49,7 @@ class ViewController: NSViewController {
     }
     
     func setLabelText() {
-        if User.sharedInstance.instapaperAccount != true || User.sharedInstance.pocketAccount != true || User.sharedInstance.readabilityAccount != true {
+        if User.instapaperAccount != true || User.pocketAccount != true || User.readabilityAccount != true {
             footerLabel.stringValue = "Connect your favorite read later service!"
         } else {
             footerLabel.stringValue = "Thanks for using Later!"
@@ -57,51 +57,53 @@ class ViewController: NSViewController {
     }
     
     @IBAction func instapaperAction(sender: NSButton) {
-        if (User.sharedInstance.instapaperAccount == false) {
+        if (User.instapaperAccount == false) {
             let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
             vc.loginType = AccountType.Instapaper
             presentViewControllerAsSheet(vc)
         } else {
-            //let keychain = Keychain(service: "Read It Later Extension", accessGroup: "com.launchsoft.later")
-            //keychain["instapaper-secret-token"] = ""
-            //keychain["instapaper-oauth-token"] = ""
-            NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(false, forKey: "instapaper")
-            User.sharedInstance.save()
+            if let account = User.instapaperAccountName {
+                Keychain.removeItem("later-instapaper-oauth-token", account: account)
+                Keychain.removeItem("later-instapaper-secret-token", account: account)
+            }
+            Later.defaults.setBool(false, forKey: "instapaper")
+            User.save()
             setButtonTitles()
         }
     }
     
     @IBAction func pocketAction(sender: NSButton) {
-        if (User.sharedInstance.pocketAccount == false) {
+        if (User.pocketAccount == false) {
             PocketAPI.sharedAPI().loginWithHandler({(API: PocketAPI!, error: NSError!) -> Void in
                 if (error != nil) {
                     
                 } else {
                     PocketAPI.sharedAPI().enableKeychainSharingWithKeychainAccessGroup("com.launchsoft.later")
                     NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(true, forKey: "pocket")
-                    User.sharedInstance.save()
+                    User.save()
                     self.setButtonTitles()
                 }
             })
         } else {
             PocketAPI.sharedAPI().logout()
             NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(false, forKey: "pocket")
-            User.sharedInstance.save()
+            User.save()
             setButtonTitles()
         }
     }
     
     @IBAction func readabilityAction(sender: NSButton) {
-        if (User.sharedInstance.readabilityAccount == false) {
+        if (User.readabilityAccount == false) {
             let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
             vc.loginType = AccountType.Readability
             presentViewControllerAsSheet(vc)
         } else {
-            //let keychain = Keychain(service: "Read It Later Extension", accessGroup: "com.launchsoft.later")
-            //keychain["readability-secret-token"] = ""
-            //keychain["readability-oauth-token"] = ""
-            NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(false, forKey: "readability")
-            User.sharedInstance.save()
+            if let account = User.readabilityAccountName {
+                Keychain.removeItem("later-readability-oauth-token", account: account)
+                Keychain.removeItem("later-readability-secret-token", account: account)
+            }
+            Later.defaults.setBool(false, forKey: "readability")
+            User.save()
             setButtonTitles()
         }
     }

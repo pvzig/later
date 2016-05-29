@@ -12,8 +12,11 @@ class OAuth: NSObject {
     
     static func authorizationHeaderForMethod(method: String, url: NSURL, parameters: Dictionary<String, Any>, isMediaUpload: Bool) -> String {
         
-        let oauth = Keychain.fetchItem("later-readability-oauth-token", account: User.sharedInstance.readabilityAccountName!)
-        let secret = Keychain.fetchItem("later-readability-secret-token", account: User.sharedInstance.readabilityAccountName!)
+        guard let account = User.readabilityAccountName else {
+            return ""
+        }
+        let oauth = Keychain.fetchItem("later-readability-oauth-token", account: account)
+        let secret = Keychain.fetchItem("later-readability-secret-token", account: account)
         
         var authorizationParameters = Dictionary<String, Any>()
         authorizationParameters["oauth_version"] = "1.0"

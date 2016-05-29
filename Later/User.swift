@@ -8,42 +8,49 @@
 
 import Foundation
 
+struct Later {
+    static var defaults: NSUserDefaults {
+        return NSUserDefaults(suiteName: "com.launchsoft.later")!
+    }
+}
+
 class User: NSObject {
     
-    static let sharedInstance = User()
-    
-    var instapaperAccount: Bool {
+    // MARK: - Instapaper
+    static var instapaperAccount: Bool {
         get {
-            let defaults = NSUserDefaults(suiteName: "com.launchsoft.later")!
-            return defaults.boolForKey("instapaper")
-        }
-    }
-    var pocketAccount: Bool {
-        get {
-            let defaults = NSUserDefaults(suiteName: "com.launchsoft.later")!
-            return defaults.boolForKey("pocket")
+            return Later.defaults.boolForKey("instapaper")
         }
     }
     
-    // MARK: Readability
-    var readabilityAccount: Bool {
+    static var instapaperAccountName: String? {
         get {
-            let defaults = NSUserDefaults(suiteName: "com.launchsoft.later")!
-            return defaults.boolForKey("readability")
+            return Later.defaults.stringForKey("instapaperAccountName")
         }
     }
     
-    var readabilityAccountName: String? {
+    static var pocketAccount: Bool {
         get {
-            let defaults = NSUserDefaults(suiteName: "com.launchsoft.later")!
-            return defaults.stringForKey("readabilityAccountName")
+            return Later.defaults.boolForKey("pocket")
+        }
+    }
+    
+    // MARK: - Readability
+    static var readabilityAccount: Bool {
+        get {
+            return Later.defaults.boolForKey("readability")
+        }
+    }
+    
+    static var readabilityAccountName: String? {
+        get {
+            return Later.defaults.stringForKey("readabilityAccountName")
         }
     }
     
     // MARK: Utilities
-    func save() {
-        let defaults = NSUserDefaults(suiteName: "com.launchsoft.later")!
-        defaults.synchronize()
+    static func save() {
+        Later.defaults.synchronize()
     }
 
 }
