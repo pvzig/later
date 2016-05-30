@@ -3,7 +3,7 @@
 //  Later
 //
 //  Created by Peter Zignego on 11/2/15.
-//  Copyright © 2015 Launch Software. All rights reserved.
+//  Copyright © 2016 Launch Software. All rights reserved.
 //
 
 import Cocoa
