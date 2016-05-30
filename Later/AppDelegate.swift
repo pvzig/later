@@ -3,7 +3,7 @@
 //  ShareToInstapaper
 //
 //  Created by Peter Zignego on 10/3/15.
-//  Copyright © 2015 Launch Software. All rights reserved.
+//  Copyright © 2016 Launch Software. All rights reserved.
 //
 
 import Cocoa
@@ -23,8 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(notification: NSNotification) {
-        PocketAPI.sharedAPI().keychainAccessGroup = "com.launchsoft.later"
-        PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
         window.hidesOnDeactivate = true
         window.canHide = true
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: #selector(AppDelegate.closePopover(_:)), name: NSWorkspaceActiveSpaceDidChangeNotification, object: nil)

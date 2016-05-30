@@ -43,7 +43,6 @@ class LoginViewController: NSViewController, IKEngineDelegate {
                 instapaperLogin()
                 break
             case .Pocket:
-                pocketLogin()
                 break
             case .Readability:
                 readabilityLogin()
@@ -59,10 +58,6 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         client?.authTokenForUsername(usernameField.stringValue, password: passwordField.stringValue, userInfo: nil)
         Later.defaults.setObject(usernameField.stringValue, forKey: "instapaperAccountName")
         User.save()
-    }
-    
-    func pocketLogin() {
-        
     }
     
     func readabilityLogin() {

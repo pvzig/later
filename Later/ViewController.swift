@@ -29,22 +29,16 @@ class ViewController: NSViewController {
     }
     
     func setButtonTitles() {
-        if (User.instapaperAccount == true) {
-            connectToInstapaper.title = "Disconnect"
+        connectToInstapaper.title = buttonLabelText(User.instapaperAccount)
+        connectToPocket.title = buttonLabelText(User.pocketAccount)
+        connectToReadability.title = buttonLabelText(User.readabilityAccount)
+    }
+    
+    func buttonLabelText(account: Bool) -> String {
+        if account == true {
+            return "Disconnect"
         } else {
-            connectToInstapaper.title = "Connect"
-        }
-        
-        if (User.pocketAccount == true) {
-            connectToPocket.title = "Disconnect"
-        } else {
-            connectToPocket.title = "Connect"
-        }
-        
-        if (User.readabilityAccount == true) {
-            connectToReadability.title = "Disconnect"
-        } else {
-            connectToReadability.title = "Connect"
+           return "Connect"
         }
     }
     
@@ -67,26 +61,27 @@ class ViewController: NSViewController {
                 Keychain.removeItem("later-instapaper-secret-token", account: account)
             }
             Later.defaults.setBool(false, forKey: "instapaper")
+            Later.defaults.setObject(nil, forKey: "instapaperAccountName")
             User.save()
             setButtonTitles()
         }
     }
     
     @IBAction func pocketAction(sender: NSButton) {
+        PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
         if (User.pocketAccount == false) {
             PocketAPI.sharedAPI().loginWithHandler({(API: PocketAPI!, error: NSError!) -> Void in
                 if (error != nil) {
                     
                 } else {
-                    PocketAPI.sharedAPI().enableKeychainSharingWithKeychainAccessGroup("com.launchsoft.later")
-                    NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(true, forKey: "pocket")
+                    Later.defaults.setBool(true, forKey: "pocket")
                     User.save()
                     self.setButtonTitles()
                 }
             })
         } else {
             PocketAPI.sharedAPI().logout()
-            NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(false, forKey: "pocket")
+            Later.defaults.setBool(false, forKey: "pocket")
             User.save()
             setButtonTitles()
         }
@@ -103,6 +98,7 @@ class ViewController: NSViewController {
                 Keychain.removeItem("later-readability-secret-token", account: account)
             }
             Later.defaults.setBool(false, forKey: "readability")
+            Later.defaults.setObject(nil, forKey: "readabilityAccountName")
             User.save()
             setButtonTitles()
         }

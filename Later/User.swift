@@ -29,9 +29,16 @@ class User: NSObject {
         }
     }
     
+    // MARK: - Pocket
     static var pocketAccount: Bool {
         get {
             return Later.defaults.boolForKey("pocket")
+        }
+    }
+    
+    static var pocketAccountName: String? {
+        get {
+            return Later.defaults.stringForKey("pocketAccountName")
         }
     }
     
