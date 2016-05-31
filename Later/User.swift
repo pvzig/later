@@ -10,7 +10,7 @@ import Foundation
 
 struct Later {
     static var defaults: NSUserDefaults {
-        return NSUserDefaults(suiteName: "com.launchsoft.later")!
+        return NSUserDefaults(suiteName: "U63DWZL52M.co.launchsoft.later")!
     }
 }
 

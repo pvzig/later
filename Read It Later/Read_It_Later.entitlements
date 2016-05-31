@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>com.launchsoft.later</string>
+		<string>U63DWZL52M.co.launchsoft.later</string>
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
