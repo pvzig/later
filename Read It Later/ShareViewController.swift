@@ -3,7 +3,7 @@
 //  Read It Later
 //
 //  Created by Peter Zignego on 11/14/15.
-//  Copyright © 2015 Launch Software. All rights reserved.
+//  Copyright © 2016 Launch Software. All rights reserved.
 //
 
 import Cocoa
@@ -31,18 +31,18 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     }
     
     func saveURL(url: NSURL) {
-        if (User.sharedInstance.instapaperAccount == true) {
+        if (User.instapaperAccount == true) {
             addToInstapaper(url)
         }
-        if (User.sharedInstance.readabilityAccount == true) {
+        if (User.readabilityAccount == true) {
             addToReadability(url)
         }
-        if (User.sharedInstance.pocketAccount == true) {
+        if (User.pocketAccount == true) {
             addToPocket(url)
         }
-        if User.sharedInstance.instapaperAccount == false &&
-            User.sharedInstance.readabilityAccount == false &&
-            User.sharedInstance.pocketAccount == false {
+        if User.instapaperAccount == false &&
+            User.readabilityAccount == false &&
+            User.pocketAccount == false {
                 completionHandler()
         }
     }
@@ -50,10 +50,13 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     func addToInstapaper(url: NSURL) {
         IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
         client = IKEngine(delegate: self)
-        //let keychain = Keychain(service: "Read It Later Extension", accessGroup: "com.launchsoft.later")
-        //client?.OAuthToken = keychain["instapaper-oauth-token"]
-        //client?.OAuthTokenSecret = keychain["instapaper-secret-token"]
-        client?.addBookmarkWithURL(url, userInfo: nil)
+        if let account = User.instapaperAccountName {
+            client?.OAuthToken = Keychain.fetchItem("later-instapaper-oauth-token", account: account)
+            client?.OAuthTokenSecret = Keychain.fetchItem("later-instapaper-secret-token", account: account)
+            client?.addBookmarkWithURL(url, userInfo: nil)
+        } else {
+            completionHandler()
+        }
     }
     
     func addToReadability(url: NSURL) {
@@ -67,7 +70,6 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     }
     
     func addToPocket(url: NSURL) {
-        PocketAPI.sharedAPI().keychainAccessGroup = "com.launchsoft.later"
         PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
         PocketAPI.sharedAPI().saveURL(url, handler:{(API: PocketAPI!, url: NSURL!, error: NSError!) -> Void in
             if (error != nil) {
@@ -93,13 +95,13 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     
     func completionHandler() {
         var successCount = 0
-        if (User.sharedInstance.instapaperAccount == true) {
+        if (User.instapaperAccount == true) {
             successCount += 1
         }
-        if (User.sharedInstance.readabilityAccount == true) {
+        if (User.readabilityAccount == true) {
             successCount += 1
         }
-        if (User.sharedInstance.pocketAccount == true) {
+        if (User.pocketAccount == true) {
             successCount += 1
         }
         var successes = 0

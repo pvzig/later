@@ -3,7 +3,7 @@
 //  Later
 //
 //  Created by Peter Zignego on 11/2/15.
-//  Copyright © 2015 Launch Software. All rights reserved.
+//  Copyright © 2016 Launch Software. All rights reserved.
 //
 
 import Cocoa
@@ -43,7 +43,6 @@ class LoginViewController: NSViewController, IKEngineDelegate {
                 instapaperLogin()
                 break
             case .Pocket:
-                pocketLogin()
                 break
             case .Readability:
                 readabilityLogin()
@@ -57,10 +56,8 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
         client = IKEngine(delegate: self)
         client?.authTokenForUsername(usernameField.stringValue, password: passwordField.stringValue, userInfo: nil)
-    }
-    
-    func pocketLogin() {
-        
+        Later.defaults.setObject(usernameField.stringValue, forKey: "instapaperAccountName")
+        User.save()
     }
     
     func readabilityLogin() {
@@ -77,9 +74,9 @@ class LoginViewController: NSViewController, IKEngineDelegate {
                         let username = self.usernameField.stringValue
                         Keychain.saveItem(secret, account: username, service: "later-readability-secret-token")
                         Keychain.saveItem(oauth, account: username, service: "later-readability-oauth-token")
-                        NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(true, forKey: "readability")
-                        NSUserDefaults(suiteName: "com.launchsoft.later")!.setObject(username, forKey: "readabilityAccountName")
-                        User.sharedInstance.save()
+                        Later.defaults.setBool(true, forKey: "readability")
+                        Later.defaults.setObject(username, forKey: "readabilityAccountName")
+                        User.save()
                         self.progressSpinner.stopAnimation(nil)
                         self.dismiss()
                     }
@@ -92,13 +89,14 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     
     //MARK: IKEngineDelegate
     func engine(engine: IKEngine!, connection: IKURLConnection!, didReceiveAuthToken token: String!, andTokenSecret secret: String!) {
-        engine.OAuthToken  = token;
-        engine.OAuthTokenSecret = secret;
-        //let keychain = Keychain(service: "Read It Later Extension", accessGroup: "com.launchsoft.later")
-        //keychain["instapaper-secret-token"] = engine.OAuthTokenSecret
-        //keychain["instapaper-oauth-token"] = engine.OAuthToken
-        NSUserDefaults(suiteName: "com.launchsoft.later")!.setBool(true, forKey: "instapaper")
-        User.sharedInstance.save()
+        engine.OAuthToken  = token
+        engine.OAuthTokenSecret = secret
+        if let account = User.instapaperAccountName {
+            Keychain.saveItem(token, account: account, service: "later-instapaper-oauth-token")
+            Keychain.saveItem(secret, account: account, service: "later-instapaper-secret-token")
+            Later.defaults.setBool(true, forKey: "instapaper")
+            User.save()
+        }
         progressSpinner.stopAnimation(nil)
         dismiss()
     }
