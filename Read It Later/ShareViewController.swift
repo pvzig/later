@@ -54,7 +54,6 @@ class ShareViewController: NSViewController, IKEngineDelegate {
             client?.OAuthToken = Keychain.fetchItem("later-instapaper-oauth-token", account: account)
             client?.OAuthTokenSecret = Keychain.fetchItem("later-instapaper-secret-token", account: account)
             client?.addBookmarkWithURL(url, userInfo: nil)
-            self.completionHandler()
         } else {
             completionHandler()
         }
