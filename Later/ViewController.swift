@@ -43,10 +43,10 @@ class ViewController: NSViewController {
     }
     
     func setLabelText() {
-        if User.instapaperAccount != true || User.pocketAccount != true || User.readabilityAccount != true {
-            footerLabel.stringValue = "Connect your favorite read later service!"
-        } else {
+        if User.instapaperAccount == true || User.pocketAccount == true || User.readabilityAccount == true {
             footerLabel.stringValue = "Thanks for using Later!"
+        } else {
+            footerLabel.stringValue = "Connect your favorite read later service!"
         }
     }
     

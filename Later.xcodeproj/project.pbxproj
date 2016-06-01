@@ -36,6 +36,7 @@
 		267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267BC23F1BF7C4730004DD91 /* ShareViewController.swift */; };
 		267BC2471BF7C4730004DD91 /* Read It Later.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 267BC2391BF7C4730004DD91 /* Read It Later.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		267BC25D1BF7DDC60004DD91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24561BD70DD6009D6E0C /* User.swift */; };
+		26882AC31CFE8A8500D92F23 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2641E76E1BDD745800B634B2 /* Security.framework */; };
 		268B24341BD6AF06009D6E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B242D1BD6AF06009D6E0C /* AppDelegate.swift */; };
 		268B24351BD6AF06009D6E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
 		268B24391BD6AF06009D6E0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24331BD6AF06009D6E0C /* ViewController.swift */; };
@@ -184,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26882AC31CFE8A8500D92F23 /* Security.framework in Frameworks */,
 				21600136F752293E6AE04532 /* Pods_Read_It_Later.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

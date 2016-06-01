@@ -849,7 +849,7 @@ static NSString *_OAuthConsumerSecret = nil;
     }
     
     // Run
-    [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [connection start];
     
     return identifier;
