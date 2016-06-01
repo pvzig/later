@@ -6,5 +6,5 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-#import <InstapaperKit/InstapaperKit.h>
+#import "InstapaperKit.h"
 #import "PocketAPI.h"
