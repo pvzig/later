@@ -22,7 +22,7 @@
 		261801D81BFACDFB003AD9B4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261801D11BFACDC7003AD9B4 /* Alamofire.framework */; };
 		262DC8801BE5508E0052404A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262DC87F1BE5508E0052404A /* MainMenu.xib */; };
 		262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */; };
-		262FBE771BFA5AF500F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		262FBE771BFA5AF500F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		262FBE7C1BFA5F6A00F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; };
 		262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
 		2645523A1C02313C00DC82B1 /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 264552301C02313C00DC82B1 /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
