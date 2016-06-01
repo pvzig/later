@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2604B3831BFE35C60035015E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261801D11BFACDC7003AD9B4 /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2604B3831BFE35C60035015E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261801D11BFACDC7003AD9B4 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		2604B3851BFE58C00035015E /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */; };
 		2604B3861BFE58CC0035015E /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */; };
 		2604B3881BFE5A870035015E /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3871BFE5A870035015E /* String+Swifter.swift */; };
@@ -22,7 +22,7 @@
 		261801D81BFACDFB003AD9B4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261801D11BFACDC7003AD9B4 /* Alamofire.framework */; };
 		262DC8801BE5508E0052404A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262DC87F1BE5508E0052404A /* MainMenu.xib */; };
 		262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */; };
-		262FBE771BFA5AF500F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		262FBE771BFA5AF500F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		262FBE7C1BFA5F6A00F7AF2B /* InstapaperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FBE741BFA5AED00F7AF2B /* InstapaperKit.framework */; };
 		262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
 		2645523A1C02313C00DC82B1 /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 264552301C02313C00DC82B1 /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -137,6 +137,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8CBA8F66132C26790086AA8F;
 			remoteInfo = InstapaperKit;
+		};
+		26DE1DDC1CFE6A46003AE363 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 261801C61BFACDC7003AD9B4 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		26DE1DDE1CFE6A46003AE363 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 261801C61BFACDC7003AD9B4 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -257,10 +271,12 @@
 			isa = PBXGroup;
 			children = (
 				261801CF1BFACDC7003AD9B4 /* Alamofire.framework */,
-				261801D11BFACDC7003AD9B4 /* Alamofire.framework */,
-				261801D31BFACDC7003AD9B4 /* Alamofire.framework */,
 				261801D51BFACDC7003AD9B4 /* Alamofire iOS Tests.xctest */,
+				261801D11BFACDC7003AD9B4 /* Alamofire.framework */,
 				261801D71BFACDC7003AD9B4 /* Alamofire OSX Tests.xctest */,
+				26DE1DDD1CFE6A46003AE363 /* Alamofire.framework */,
+				26DE1DDF1CFE6A46003AE363 /* Alamofire tvOS Tests.xctest */,
+				261801D31BFACDC7003AD9B4 /* Alamofire.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -529,6 +545,20 @@
 			remoteRef = 262FBE751BFA5AED00F7AF2B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		26DE1DDD1CFE6A46003AE363 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 26DE1DDC1CFE6A46003AE363 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		26DE1DDF1CFE6A46003AE363 /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = 26DE1DDE1CFE6A46003AE363 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -741,7 +771,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -765,7 +795,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f47721e6-189d-4257-97f2-e48f602e943c";
@@ -779,11 +809,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Read It Later/Read_It_Later.entitlements";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a589dcb7-6ade-4c69-9ad7-3c70f8d1e89a";
