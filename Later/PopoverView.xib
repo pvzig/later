@@ -184,12 +184,12 @@
                         <constraint firstAttribute="height" constant="20" id="8oT-yo-fvR"/>
                         <constraint firstAttribute="width" constant="20" id="vRu-0G-4jI"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="power" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="gp0-Wg-QvU">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="settings" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="gp0-Wg-QvU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="powerButton:" target="-2" id="wcz-i0-gYl"/>
+                        <action selector="showSettingsMenu:" target="-2" id="eqa-Z5-5q6"/>
                     </connections>
                 </button>
             </subviews>
@@ -245,7 +245,7 @@
         <image name="instapaper" width="26" height="50"/>
         <image name="logo" width="512" height="512"/>
         <image name="pocket" width="52" height="46"/>
-        <image name="power" width="32" height="32"/>
         <image name="readability" width="66" height="50"/>
+        <image name="settings" width="52" height="52"/>
     </resources>
 </document>

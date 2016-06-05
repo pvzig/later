@@ -22,6 +22,8 @@ class ViewController: NSViewController {
     @IBOutlet var connectToReadability: NSButton!
     @IBOutlet var footerLabel: NSTextField!
     
+    lazy var controller = NSWindowController(windowNibName: "About")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonTitles()
@@ -104,7 +106,28 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func powerButton(sender: NSButton) {
+    @IBAction func showSettingsMenu(sender: NSButton) {
+        let menu = constructMenu()
+        menu.popUpMenuPositioningItem(menu.itemAtIndex(0), atLocation: NSEvent.mouseLocation(), inView: nil)
+    }
+    
+    func constructMenu() -> NSMenu {
+        let menu = NSMenu()
+        let aboutItem = NSMenuItem(title: "About", action: #selector(ViewController.about), keyEquivalent: "")
+        let quitItem = NSMenuItem(title: "Quit", action: #selector(ViewController.quit), keyEquivalent: "q")
+        menu.addItem(aboutItem)
+        menu.addItem(quitItem)
+        return menu
+    }
+    
+    func about() {
+        controller.showWindow(nil)
+        if let delegate = NSApplication.sharedApplication().delegate as? AppDelegate  {
+            delegate.closePopover(self)
+        }
+    }
+    
+    func quit() {
         NSApplication.sharedApplication().terminate(self)
     }
     

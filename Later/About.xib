@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="798" y="560" width="577" height="253"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="577" height="253"/>
+            <value key="maxSize" type="size" width="577" height="253"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="577" height="253"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-6q-D9T">
+                        <rect key="frame" x="20" y="45" width="150" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="4rx-zH-vcq"/>
+                            <constraint firstAttribute="width" constant="150" id="Nkg-y2-AtP"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="ajM-mv-M5v"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YbH-Gc-dzU">
+                        <rect key="frame" x="248" y="203" width="80" height="39"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Later" id="cJC-zo-RPu">
+                            <font key="font" metaFont="system" size="32"/>
+                            <color key="textColor" red="0.90196078430000004" green="0.1529411765" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoU-W8-c8O">
+                        <rect key="frame" x="182" y="20" width="375" height="175"/>
+                        <clipView key="contentView" id="Y1A-EO-VDy">
+                            <rect key="frame" x="1" y="1" width="373" height="173"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" id="7mC-QC-DP5">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="728"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="373" height="173"/>
+                                    <size key="maxSize" width="486" height="10000000"/>
+                                    <attributedString key="textStorage">
+                                        <fragment>
+                                            <mutableString key="content">ACKNOWLEDGEMENTS
+================
+
+InstapaperKit
+Copyright (c) 2011 Matthias Plappert &lt;matthiasplappert@me.com&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+================
+
+PocketSDK 
+Copyright (c) 2012 Read It Later, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</mutableString>
+                                            <attributes>
+                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="373" height="173"/>
+                                    <size key="maxSize" width="486" height="10000000"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="375" id="SI8-e6-zjy"/>
+                            <constraint firstAttribute="height" constant="175" id="fi1-PZ-3Mo"/>
+                        </constraints>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="dyj-Wn-T0f">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.093693693693693694" horizontal="NO" id="FAJ-ca-eGG">
+                            <rect key="frame" x="358" y="1" width="16" height="173"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-sX-UzD">
+                        <rect key="frame" x="55" y="20" width="81" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0.0" id="5mT-tq-v4c">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XoU-W8-c8O" firstAttribute="top" secondItem="YbH-Gc-dzU" secondAttribute="bottom" constant="8" id="3Vy-qr-2dt"/>
+                    <constraint firstItem="YbH-Gc-dzU" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="7Sg-zq-SgG"/>
+                    <constraint firstItem="7mC-QC-DP5" firstAttribute="leading" secondItem="b9l-sX-UzD" secondAttribute="trailing" constant="49" id="HDr-zw-2H0"/>
+                    <constraint firstItem="YbH-Gc-dzU" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="11" id="Lkx-SP-4N4"/>
+                    <constraint firstItem="fW6-6q-D9T" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="PqG-JR-ynI"/>
+                    <constraint firstItem="b9l-sX-UzD" firstAttribute="top" secondItem="fW6-6q-D9T" secondAttribute="bottom" constant="8" id="QEC-gC-Hxn"/>
+                    <constraint firstAttribute="trailing" secondItem="XoU-W8-c8O" secondAttribute="trailing" constant="20" id="jbU-ic-5FO"/>
+                    <constraint firstItem="fW6-6q-D9T" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="58" id="mx3-Ap-UzI"/>
+                    <constraint firstItem="b9l-sX-UzD" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="57" id="nOi-fK-4bw"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="377.5" y="118.5"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="logo" width="512" height="512"/>
+    </resources>
+</document>
