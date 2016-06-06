@@ -22,7 +22,7 @@ class ViewController: NSViewController {
     @IBOutlet var connectToReadability: NSButton!
     @IBOutlet var footerLabel: NSTextField!
     
-    lazy var controller = NSWindowController(windowNibName: "About")
+    var controller: NSWindowController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,14 +114,17 @@ class ViewController: NSViewController {
     func constructMenu() -> NSMenu {
         let menu = NSMenu()
         let aboutItem = NSMenuItem(title: "About", action: #selector(ViewController.about), keyEquivalent: "")
+        aboutItem.target = self
         let quitItem = NSMenuItem(title: "Quit", action: #selector(ViewController.quit), keyEquivalent: "q")
+        quitItem.target = self
         menu.addItem(aboutItem)
         menu.addItem(quitItem)
         return menu
     }
     
     func about() {
-        controller.showWindow(nil)
+        controller = NSWindowController(windowNibName: "About")
+        controller?.showWindow(nil)
         if let delegate = NSApplication.sharedApplication().delegate as? AppDelegate  {
             delegate.closePopover(self)
         }

@@ -96,7 +96,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.093693693693693694" horizontal="NO" id="FAJ-ca-eGG">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="FAJ-ca-eGG">
                             <rect key="frame" x="358" y="1" width="16" height="173"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
