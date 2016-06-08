@@ -12,20 +12,27 @@ import Alamofire
 class ShareViewController: NSViewController, IKEngineDelegate {
 
     var client: IKEngine?
-    var instapaperComplete: Bool?
-    var readabilityComplete: Bool?
-    var pocketComplete: Bool?
+    var instapaperComplete: Bool = false
+    var readabilityComplete: Bool = false
+    var pocketComplete: Bool = false
     
     override func loadView() {
         super.loadView()
-        let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
+        guard let item = self.extensionContext?.inputItems[0] as? NSExtensionItem else {
+            complete()
+            return
+        }
         if let provider = item.attachments?.first as? NSItemProvider {
             if (provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String)) {
                 provider.loadItemForTypeIdentifier(kUTTypeURL as String, options: nil, completionHandler: {(result, error) -> Void in
                     if let resultURL = result as? NSURL {
                         self.saveURL(resultURL)
+                        return
                     }
+                    self.complete()
                 })
+            } else {
+                complete()
             }
         }
     }
@@ -40,11 +47,7 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         if (User.pocketAccount == true) {
             addToPocket(url)
         }
-        if User.instapaperAccount == false &&
-            User.readabilityAccount == false &&
-            User.pocketAccount == false {
-                completionHandler()
-        }
+        completionHandler()
     }
     
     func addToInstapaper(url: NSURL) {
@@ -95,30 +98,32 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     
     func completionHandler() {
         var successCount = 0
-        if (User.instapaperAccount == true) {
-            successCount += 1
-        }
-        if (User.readabilityAccount == true) {
-            successCount += 1
-        }
-        if (User.pocketAccount == true) {
-            successCount += 1
-        }
         var successes = 0
-        if instapaperComplete == true {
-            successes += 1
+        let accounts = [User.instapaperAccount, User.readabilityAccount, User.pocketAccount]
+        accounts.forEach {
+            if $0 == true {
+                successCount += 1
+            }
         }
-        if readabilityComplete == true {
-            successes += 1
-        }
-        if pocketComplete == true {
-            successes += 1
+
+        let completes = [instapaperComplete, readabilityComplete, pocketComplete]
+        completes.forEach {
+            if $0 == true {
+                successes += 1
+            }
         }
         
         if (successes == successCount) {
-            self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+            complete()
         }
-
+    }
+    
+    func complete() {
+        self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+    }
+    
+    deinit {
+        complete()
     }
     
 }
