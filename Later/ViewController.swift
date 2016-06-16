@@ -114,8 +114,8 @@ class ViewController: NSViewController {
     func constructMenu() -> NSMenu {
         let menu = NSMenu()
         let aboutItem = NSMenuItem(title: "About", action: #selector(ViewController.about), keyEquivalent: "")
-        aboutItem.target = self
         let quitItem = NSMenuItem(title: "Quit", action: #selector(ViewController.quit), keyEquivalent: "q")
+        aboutItem.target = self
         quitItem.target = self
         menu.addItem(aboutItem)
         menu.addItem(quitItem)

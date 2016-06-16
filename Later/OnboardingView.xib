@@ -13,19 +13,19 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="423"/>
+            <rect key="frame" x="0.0" y="0.0" width="368" height="391"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-lU-x8h">
-                    <rect key="frame" x="93" y="389" width="183" height="24"/>
+                    <rect key="frame" x="99" y="357" width="171" height="24"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Later!" id="bxR-Fj-5YL">
-                        <font key="font" metaFont="systemBold" size="20"/>
+                        <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TLF-6X-hq1">
-                    <rect key="frame" x="89" y="36" width="191" height="32"/>
+                    <rect key="frame" x="89" y="4" width="191" height="32"/>
                     <buttonCell key="cell" type="push" title="Launch Extensions Panel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DRx-Kq-D6w">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -35,7 +35,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="328" translatesAutoresizingMaskIntoConstraints="NO" id="JTR-15-z6k">
-                    <rect key="frame" x="18" y="325" width="332" height="36"/>
+                    <rect key="frame" x="18" y="293" width="332" height="36"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="First, enable the Later share extension in the system Extensions panel:" id="k2u-Kv-bD7">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -43,7 +43,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-aq-x1f">
-                    <rect key="frame" x="20" y="74" width="328" height="241"/>
+                    <rect key="frame" x="20" y="42" width="328" height="241"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MEs-aq-x1f" secondAttribute="height" multiplier="328:241" id="I9H-AK-HNx"/>
                         <constraint firstAttribute="width" constant="328" id="VJt-Tt-8QM"/>
@@ -51,23 +51,13 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="onboarding" id="UuK-4s-d0d"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Pn-cj-mzE">
-                    <rect key="frame" x="90" y="366" width="188" height="18"/>
+                    <rect key="frame" x="90" y="334" width="188" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Just two steps to get set up:" id="Vfe-1j-dIt">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dm6-46-BJU">
-                    <rect key="frame" x="137" y="3" width="95" height="32"/>
-                    <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="csR-fi-rr4">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="nextButton:" target="H9j-8E-E5l" id="sUx-lJ-GED"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="8Pn-cj-mzE" firstAttribute="top" secondItem="tP1-lU-x8h" secondAttribute="bottom" constant="5" id="9Ss-A1-9vu"/>
@@ -76,18 +66,15 @@
                 <constraint firstItem="JTR-15-z6k" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="IYH-EJ-RUT"/>
                 <constraint firstItem="8Pn-cj-mzE" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Idg-SV-7ZK"/>
                 <constraint firstItem="MEs-aq-x1f" firstAttribute="top" secondItem="JTR-15-z6k" secondAttribute="bottom" constant="10" id="JHi-jh-Bpb"/>
-                <constraint firstItem="dm6-46-BJU" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="M48-gd-3LN"/>
                 <constraint firstAttribute="trailing" secondItem="JTR-15-z6k" secondAttribute="trailing" constant="20" id="MTr-gr-euL"/>
                 <constraint firstItem="JTR-15-z6k" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="RlK-bq-0Mq"/>
                 <constraint firstItem="TLF-6X-hq1" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="VXR-ZC-pZn"/>
                 <constraint firstItem="TLF-6X-hq1" firstAttribute="top" secondItem="MEs-aq-x1f" secondAttribute="bottom" constant="10" id="Yq6-JQ-8MY"/>
                 <constraint firstItem="tP1-lU-x8h" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="ZRx-QQ-iM0"/>
-                <constraint firstItem="dm6-46-BJU" firstAttribute="top" secondItem="TLF-6X-hq1" secondAttribute="bottom" constant="12" id="emI-lB-duF"/>
                 <constraint firstAttribute="trailing" secondItem="MEs-aq-x1f" secondAttribute="trailing" constant="20" id="fZr-7m-Dld"/>
-                <constraint firstAttribute="bottom" secondItem="dm6-46-BJU" secondAttribute="bottom" constant="10" id="jPg-OU-Wk4"/>
                 <constraint firstItem="JTR-15-z6k" firstAttribute="top" secondItem="8Pn-cj-mzE" secondAttribute="bottom" constant="5" id="jog-pV-lOV"/>
             </constraints>
-            <point key="canvasLocation" x="249" y="284.5"/>
+            <point key="canvasLocation" x="249" y="268.5"/>
         </customView>
         <viewController id="H9j-8E-E5l" customClass="OnboardingViewController" customModule="Later" customModuleProvider="target">
             <connections>

@@ -11,7 +11,7 @@ import Alamofire
 
 class ShareViewController: NSViewController, IKEngineDelegate {
 
-    var client: IKEngine?
+    var client: IKEngine? = nil
     var instapaperComplete: Bool = false
     var readabilityComplete: Bool = false
     var pocketComplete: Bool = false

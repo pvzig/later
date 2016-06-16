@@ -776,9 +776,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = co.launchsoft.later;
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
-				PROVISIONING_PROFILE = "0097b92a-51e6-479c-9aaa-73b3459ec08e";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
 			};
 			name = Debug;
@@ -797,9 +797,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = co.launchsoft.later;
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
-				PROVISIONING_PROFILE = "39ed515b-ba03-4592-8a0e-48bf529d2441";
+				PROVISIONING_PROFILE = "273ca284-294e-4421-9264-3ed8b57eaded";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
 			};
 			name = Release;
@@ -815,9 +815,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f47721e6-189d-4257-97f2-e48f602e943c";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
 			};
@@ -834,9 +834,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "co.launchsoft.later.read-it-later";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a589dcb7-6ade-4c69-9ad7-3c70f8d1e89a";
+				PROVISIONING_PROFILE = "76058223-61fa-4ab5-ba7a-b2983eb0a308";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
 			};

@@ -450,7 +450,7 @@ static PocketAPI *sSharedAPI = nil;
 	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
     
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.co.launchsoft.later"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
     [defaults setObject:username forKey:@"pocketAccountName"];
     [defaults synchronize];
     
@@ -479,7 +479,7 @@ static PocketAPI *sSharedAPI = nil;
     [Keychain removeItem:@"later-pocket-token" account:[User pocketAccountName]];
     [Keychain removeItem:@"later-pocket-token-digest" account:[User pocketAccountName]];
 
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.co.launchsoft.later"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
     [defaults setObject:NULL forKey:@"pocketAccountName"];
     [defaults synchronize];
     
