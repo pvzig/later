@@ -16,6 +16,10 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     var readabilityComplete: Bool = false
     var pocketComplete: Bool = false
     
+    override var nibName: String? {
+        return "ShareViewController"
+    }
+    
     override func loadView() {
         super.loadView()
         guard let item = self.extensionContext?.inputItems[0] as? NSExtensionItem else {
