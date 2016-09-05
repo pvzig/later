@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ViewController" customModule="Later" customModuleProvider="target">
             <connections>
                 <outlet property="connectToInstapaper" destination="HbW-Gj-Yq5" id="Vu6-Tr-zbt"/>
+                <outlet property="connectToPinboard" destination="2L0-SV-oez" id="olt-he-Ssg"/>
                 <outlet property="connectToPocket" destination="rY9-Ae-gwf" id="lDk-Vh-hcZ"/>
                 <outlet property="connectToReadability" destination="2L0-SV-oez" id="hPr-Pw-uHC"/>
                 <outlet property="footerLabel" destination="aBL-T4-zEu" id="4Sq-H7-8lu"/>
@@ -70,7 +71,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="readabilityAction:" target="-2" id="Xf5-Go-WoN"/>
+                        <action selector="pinboardAction:" target="-2" id="7Qw-hY-XeV"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-Fa-0rS">
@@ -112,11 +113,11 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="pocket" id="s0W-AC-ZKu"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YuL-fI-gaK">
-                    <rect key="frame" x="66" y="50" width="81" height="30"/>
+                    <rect key="frame" x="66" y="50" width="66" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="TFv-wC-MCV"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Readability" id="RuA-we-Ne2">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pinboard" id="RuA-we-Ne2">
                         <font key="font" size="16" name="SFCompactDisplay-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -128,7 +129,7 @@
                         <constraint firstAttribute="width" constant="30" id="D0r-Kv-I7f"/>
                         <constraint firstAttribute="height" constant="30" id="aLp-bG-H9h"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="readability" id="rs9-2C-pRk"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="rs9-2C-pRk"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oz4-X6-UNU">
                     <rect key="frame" x="8" y="183" width="113" height="19"/>
@@ -227,7 +228,6 @@
         <image name="instapaper" width="26" height="50"/>
         <image name="logo" width="512" height="512"/>
         <image name="pocket" width="52" height="46"/>
-        <image name="readability" width="66" height="50"/>
         <image name="settings" width="52" height="52"/>
     </resources>
 </document>

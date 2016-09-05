@@ -44,8 +44,8 @@ class LoginViewController: NSViewController, IKEngineDelegate {
                 break
             case .Pocket:
                 break
-            case .Readability:
-                readabilityLogin()
+            case .Pinboard:
+                pinboardLogin()
                 break
             }
         }
@@ -60,31 +60,9 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         User.save()
     }
     
-    func readabilityLogin() {
-        let headers = ["Authorization": "OAuth oauth_signature_method=PLAINTEXT, oauth_nonce=\(NSUUID().UUIDString), oauth_timestamp=\(String(Int(NSDate().timeIntervalSince1970))), oauth_consumer_key=ziggy444, oauth_consumer_secret=hdsZ7tTkMQLSdud7mEUYbL4SHyC7Wy4t, x_auth_username=\(usernameField.stringValue), x_auth_password=\(passwordField.stringValue), oauth_signature=hdsZ7tTkMQLSdud7mEUYbL4SHyC7Wy4t%26",
-        ]
-
-        Alamofire.request(.POST, "https://www.readability.com/api/rest/v1/oauth/access_token/", parameters: nil, encoding: .URL, headers: headers).response
-            { response in
-                if (response.1?.statusCode == 200) {
-                    if let string = String(data: response.2!, encoding: NSUTF8StringEncoding) {
-                        let strings = string.componentsSeparatedByString("=")
-                        let secret = strings[1].componentsSeparatedByString("&")[0]
-                        let oauth = strings[2].componentsSeparatedByString("&")[0]
-                        let username = self.usernameField.stringValue
-                        Keychain.saveItem(secret, account: username, service: "later-readability-secret-token")
-                        Keychain.saveItem(oauth, account: username, service: "later-readability-oauth-token")
-                        Later.defaults.setBool(true, forKey: "readability")
-                        Later.defaults.setObject(username, forKey: "readabilityAccountName")
-                        User.save()
-                        self.progressSpinner.stopAnimation(nil)
-                        self.dismiss()
-                    }
-                } else {
-                    self.statusLabel.stringValue = "Readability login failed."
-                    self.progressSpinner.stopAnimation(nil)
-                }
-        }
+    //TODO: - Pinboard login
+    func pinboardLogin() {
+        
     }
     
     //MARK: IKEngineDelegate

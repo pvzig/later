@@ -42,16 +42,16 @@ class User: NSObject {
         }
     }
     
-    // MARK: - Readability
-    static var readabilityAccount: Bool {
+    // MARK: - Pinboard
+    static var pinboardAccount: Bool {
         get {
-            return Later.defaults.boolForKey("readability")
+            return Later.defaults.boolForKey("pinboard")
         }
     }
     
-    static var readabilityAccountName: String? {
+    static var pinboardAccountName: String? {
         get {
-            return Later.defaults.stringForKey("readabilityAccountName")
+            return Later.defaults.stringForKey("pinboardAccountName")
         }
     }
     

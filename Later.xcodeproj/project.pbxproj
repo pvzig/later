@@ -14,8 +14,6 @@
 		2604B3891BFE5A950035015E /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3871BFE5A870035015E /* String+Swifter.swift */; };
 		2604B38B1BFE5ADA0035015E /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */; };
 		2604B38C1BFE5ADE0035015E /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */; };
-		2604B38F1BFE5B5A0035015E /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38E1BFE5B5A0035015E /* OAuth.swift */; };
-		2604B3901BFE5B5A0035015E /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38E1BFE5B5A0035015E /* OAuth.swift */; };
 		2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613636E1BE8175A0011F39E /* EventMonitor.swift */; };
 		261363711BE8344C0011F39E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261363701BE8344C0011F39E /* LoginView.xib */; };
 		261363731BE835D00011F39E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261363721BE835D00011F39E /* LoginViewController.swift */; };
@@ -109,7 +107,6 @@
 		2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
 		2604B3871BFE5A870035015E /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
 		2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
-		2604B38E1BFE5B5A0035015E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		2613636E1BE8175A0011F39E /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		261363701BE8344C0011F39E /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		261363721BE835D00011F39E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -287,7 +284,6 @@
 				261363721BE835D00011F39E /* LoginViewController.swift */,
 				26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */,
 				268B24561BD70DD6009D6E0C /* User.swift */,
-				2604B38E1BFE5B5A0035015E /* OAuth.swift */,
 				26DE1DC31CFB825C003AE363 /* Keychain.swift */,
 				2604B38D1BFE5B370035015E /* Extensions */,
 				268B24581BD70DE8009D6E0C /* Resources */,
@@ -623,7 +619,6 @@
 				26DE1E471CFE7FD5003AE363 /* IKUser.m in Sources */,
 				26DE1E4B1CFE7FD5003AE363 /* IKFolder.m in Sources */,
 				26DE1E431CFE7FD5003AE363 /* IKURLConnection.m in Sources */,
-				2604B38F1BFE5B5A0035015E /* OAuth.swift in Sources */,
 				261363731BE835D00011F39E /* LoginViewController.swift in Sources */,
 				26DE1DC41CFB825C003AE363 /* Keychain.swift in Sources */,
 				2604B38B1BFE5ADA0035015E /* NSURL+Swifter.swift in Sources */,
@@ -659,7 +654,6 @@
 				267BC25D1BF7DDC60004DD91 /* User.swift in Sources */,
 				2604B3891BFE5A950035015E /* String+Swifter.swift in Sources */,
 				26DE1DC51CFB825C003AE363 /* Keychain.swift in Sources */,
-				2604B3901BFE5B5A0035015E /* OAuth.swift in Sources */,
 				267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */,
 				2604B3861BFE58CC0035015E /* Dictionary+Swifter.swift in Sources */,
 			);

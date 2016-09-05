@@ -13,7 +13,7 @@ class ShareViewController: NSViewController, IKEngineDelegate {
 
     var client: IKEngine? = nil
     var instapaperComplete: Bool = false
-    var readabilityComplete: Bool = false
+    var pinboardComplete: Bool = false
     var pocketComplete: Bool = false
     
     override var nibName: String? {
@@ -45,8 +45,8 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         if (User.instapaperAccount == true) {
             addToInstapaper(url)
         }
-        if (User.readabilityAccount == true) {
-            addToReadability(url)
+        if (User.pinboardAccount == true) {
+            addToPinboard(url)
         }
         if (User.pocketAccount == true) {
             addToPocket(url)
@@ -66,14 +66,9 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         }
     }
     
-    func addToReadability(url: NSURL) {
-        let endpoint = "https://www.readability.com/api/rest/v1/bookmarks/"
-        let header = ["Authorization" : OAuth.authorizationHeaderForMethod("POST", url: NSURL(string: endpoint)!, parameters: ["url":url], isMediaUpload: false)]
-        Alamofire.request(.POST, endpoint, parameters: ["url":url], encoding: .URL, headers: header).response
-        { response in
-            self.readabilityComplete = true
-            self.completionHandler()
-        }
+    //TODO: - Add to Pinboard
+    func addToPinboard(url: NSURL) {
+
     }
     
     func addToPocket(url: NSURL) {
@@ -103,14 +98,14 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     func completionHandler() {
         var successCount = 0
         var successes = 0
-        let accounts = [User.instapaperAccount, User.readabilityAccount, User.pocketAccount]
+        let accounts = [User.instapaperAccount, User.pinboardAccount, User.pocketAccount]
         accounts.forEach {
             if $0 == true {
                 successCount += 1
             }
         }
 
-        let completes = [instapaperComplete, readabilityComplete, pocketComplete]
+        let completes = [instapaperComplete, pinboardComplete, pocketComplete]
         completes.forEach {
             if $0 == true {
                 successes += 1

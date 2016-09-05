@@ -12,14 +12,14 @@ import Alamofire
 enum AccountType {
     case Instapaper
     case Pocket
-    case Readability
+    case Pinboard
 }
 
 class ViewController: NSViewController {
     
     @IBOutlet var connectToInstapaper: NSButton!
     @IBOutlet var connectToPocket: NSButton!
-    @IBOutlet var connectToReadability: NSButton!
+    @IBOutlet var connectToPinboard: NSButton!
     @IBOutlet var footerLabel: NSTextField!
     
     var controller: NSWindowController?
@@ -33,7 +33,7 @@ class ViewController: NSViewController {
     func setButtonTitles() {
         connectToInstapaper.title = buttonLabelText(User.instapaperAccount)
         connectToPocket.title = buttonLabelText(User.pocketAccount)
-        connectToReadability.title = buttonLabelText(User.readabilityAccount)
+        connectToPocket.title = buttonLabelText(User.pinboardAccount)
     }
     
     func buttonLabelText(account: Bool) -> String {
@@ -45,7 +45,7 @@ class ViewController: NSViewController {
     }
     
     func setLabelText() {
-        if User.instapaperAccount == true || User.pocketAccount == true || User.readabilityAccount == true {
+        if User.instapaperAccount == true || User.pocketAccount == true || User.pinboardAccount == true {
             footerLabel.stringValue = "Thanks for using Later!"
         } else {
             footerLabel.stringValue = "Connect your favorite read later service!"
@@ -89,23 +89,11 @@ class ViewController: NSViewController {
         }
     }
     
-    @IBAction func readabilityAction(sender: NSButton) {
-        if (User.readabilityAccount == false) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
-            vc.loginType = AccountType.Readability
-            presentViewControllerAsSheet(vc)
-        } else {
-            if let account = User.readabilityAccountName {
-                Keychain.removeItem("later-readability-oauth-token", account: account)
-                Keychain.removeItem("later-readability-secret-token", account: account)
-            }
-            Later.defaults.setBool(false, forKey: "readability")
-            Later.defaults.setObject(nil, forKey: "readabilityAccountName")
-            User.save()
-            setButtonTitles()
-        }
+    //TODO: - Pinboard login
+    @IBAction func pinboardAction(sender: NSButton) {
+        
     }
-
+    
     @IBAction func showSettingsMenu(sender: NSButton) {
         let menu = constructMenu()
         menu.popUpMenuPositioningItem(menu.itemAtIndex(0), atLocation: NSEvent.mouseLocation(), inView: nil)
