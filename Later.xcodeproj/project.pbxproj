@@ -763,7 +763,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
@@ -784,7 +783,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
@@ -793,7 +791,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
-				PROVISIONING_PROFILE = "273ca284-294e-4421-9264-3ed8b57eaded";
+				PROVISIONING_PROFILE = "6f83a543-8ad0-4a7d-851e-0898ea5f3f65";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
 			};
 			name = Release;
@@ -830,7 +828,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76058223-61fa-4ab5-ba7a-b2983eb0a308";
+				PROVISIONING_PROFILE = "20c6b8d5-ca1e-42db-990c-ff759f662aa9";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
 			};

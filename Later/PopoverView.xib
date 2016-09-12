@@ -129,7 +129,7 @@
                         <constraint firstAttribute="width" constant="30" id="D0r-Kv-I7f"/>
                         <constraint firstAttribute="height" constant="30" id="aLp-bG-H9h"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="rs9-2C-pRk"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="pinboard" id="rs9-2C-pRk"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oz4-X6-UNU">
                     <rect key="frame" x="8" y="183" width="113" height="19"/>
@@ -227,6 +227,7 @@
     <resources>
         <image name="instapaper" width="26" height="50"/>
         <image name="logo" width="512" height="512"/>
+        <image name="pinboard" width="139" height="139"/>
         <image name="pocket" width="52" height="46"/>
         <image name="settings" width="52" height="52"/>
     </resources>
