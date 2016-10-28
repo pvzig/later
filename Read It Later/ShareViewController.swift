@@ -13,7 +13,6 @@ class ShareViewController: NSViewController, IKEngineDelegate {
 
     var client: IKEngine? = nil
     var instapaperComplete: Bool = false
-    var readabilityComplete: Bool = false
     var pocketComplete: Bool = false
     
     override var nibName: String? {
@@ -28,8 +27,8 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         }
         if let provider = item.attachments?.first as? NSItemProvider {
             if (provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String)) {
-                provider.loadItemForTypeIdentifier(kUTTypeURL as String, options: nil, completionHandler: {(result, error) -> Void in
-                    if let resultURL = result as? NSURL {
+                provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil, completionHandler: {(result, error) -> Void in
+                    if let resultURL = result as? URL {
                         self.saveURL(resultURL)
                         return
                     }
@@ -41,12 +40,9 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         }
     }
     
-    func saveURL(url: NSURL) {
+    func saveURL(_ url: URL) {
         if (User.instapaperAccount == true) {
             addToInstapaper(url)
-        }
-        if (User.readabilityAccount == true) {
-            addToReadability(url)
         }
         if (User.pocketAccount == true) {
             addToPocket(url)
@@ -54,31 +50,21 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         completionHandler()
     }
     
-    func addToInstapaper(url: NSURL) {
+    func addToInstapaper(_ url: URL) {
         IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
         client = IKEngine(delegate: self)
         if let account = User.instapaperAccountName {
-            client?.OAuthToken = Keychain.fetchItem("later-instapaper-oauth-token", account: account)
-            client?.OAuthTokenSecret = Keychain.fetchItem("later-instapaper-secret-token", account: account)
-            client?.addBookmarkWithURL(url, userInfo: nil)
+            client?.oAuthToken = Keychain.fetchItem("later-instapaper-oauth-token", account: account)
+            client?.oAuthTokenSecret = Keychain.fetchItem("later-instapaper-secret-token", account: account)
+            _ = client?.addBookmark(with: url, userInfo: nil)
         } else {
             completionHandler()
         }
     }
     
-    func addToReadability(url: NSURL) {
-        let endpoint = "https://www.readability.com/api/rest/v1/bookmarks/"
-        let header = ["Authorization" : OAuth.authorizationHeaderForMethod("POST", url: NSURL(string: endpoint)!, parameters: ["url":url], isMediaUpload: false)]
-        Alamofire.request(.POST, endpoint, parameters: ["url":url], encoding: .URL, headers: header).response
-        { response in
-            self.readabilityComplete = true
-            self.completionHandler()
-        }
-    }
-    
-    func addToPocket(url: NSURL) {
-        PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
-        PocketAPI.sharedAPI().saveURL(url, handler:{(API: PocketAPI!, url: NSURL!, error: NSError!) -> Void in
+    func addToPocket(_ url: URL) {
+        PocketAPI.shared().consumerKey = "47240-996424446c9727c03cfc1504"
+        PocketAPI.shared().save(url, handler:{(API: PocketAPI?, url: URL?, error: Error?) -> Void in
             if (error != nil) {
                 self.pocketComplete = true
                 self.completionHandler()
@@ -90,12 +76,12 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     }
     
     //MARK: IKEngineDelegate
-    func engine(engine: IKEngine!, connection: IKURLConnection!, didAddBookmark bookmark: IKBookmark!) {
+    func engine(_ engine: IKEngine!, connection: IKURLConnection!, didAdd bookmark: IKBookmark!) {
         instapaperComplete = true
         completionHandler()
     }
     
-    func engine(engine: IKEngine!, didFailConnection connection: IKURLConnection!, error: NSError!) {
+    func engine(_ engine: IKEngine!, didFail connection: IKURLConnection!, error: Error!) {
         instapaperComplete = true
         completionHandler()
     }
@@ -103,14 +89,14 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     func completionHandler() {
         var successCount = 0
         var successes = 0
-        let accounts = [User.instapaperAccount, User.readabilityAccount, User.pocketAccount]
+        let accounts = [User.instapaperAccount, User.pocketAccount]
         accounts.forEach {
             if $0 == true {
                 successCount += 1
             }
         }
 
-        let completes = [instapaperComplete, readabilityComplete, pocketComplete]
+        let completes = [instapaperComplete, pocketComplete]
         completes.forEach {
             if $0 == true {
                 successes += 1
@@ -123,11 +109,10 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     }
     
     func complete() {
-        self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+        self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
     }
     
     deinit {
         complete()
     }
-    
 }

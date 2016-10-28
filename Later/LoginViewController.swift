@@ -22,30 +22,26 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         
     }
     
-    @IBAction func cancelAction(sender: NSButton) {
-        dismissController(self)
+    @IBAction func cancelAction(_ sender: NSButton) {
+        self.dismiss(self)
     }
     
     func dismiss() {
-        if let vc = presentingViewController as? ViewController {
+        if let vc = presenting as? ViewController {
             vc.setButtonTitles()
             vc.setLabelText()
         }
-        dismissController(self)
+        self.dismiss(self)
     }
     
-    @IBAction func loginButton(sender: NSButton) {
+    @IBAction func loginButton(_ sender: NSButton) {
         statusLabel.stringValue = ""
         progressSpinner.startAnimation(sender)
         if let type = loginType {
             switch type {
-            case .Instapaper:
+            case .instapaper:
                 instapaperLogin()
-                break
-            case .Pocket:
-                break
-            case .Readability:
-                readabilityLogin()
+            case .pocket:
                 break
             }
         }
@@ -55,53 +51,26 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         var client: IKEngine?
         IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
         client = IKEngine(delegate: self)
-        client?.authTokenForUsername(usernameField.stringValue, password: passwordField.stringValue, userInfo: nil)
-        Later.defaults.setObject(usernameField.stringValue, forKey: "instapaperAccountName")
+        _ = client?.authToken(forUsername: usernameField.stringValue, password: passwordField.stringValue, userInfo: nil)
+        Later.defaults.set(usernameField.stringValue, forKey: "instapaperAccountName")
         User.save()
     }
     
-    func readabilityLogin() {
-        let headers = ["Authorization": "OAuth oauth_signature_method=PLAINTEXT, oauth_nonce=\(NSUUID().UUIDString), oauth_timestamp=\(String(Int(NSDate().timeIntervalSince1970))), oauth_consumer_key=ziggy444, oauth_consumer_secret=hdsZ7tTkMQLSdud7mEUYbL4SHyC7Wy4t, x_auth_username=\(usernameField.stringValue), x_auth_password=\(passwordField.stringValue), oauth_signature=hdsZ7tTkMQLSdud7mEUYbL4SHyC7Wy4t%26",
-        ]
-
-        Alamofire.request(.POST, "https://www.readability.com/api/rest/v1/oauth/access_token/", parameters: nil, encoding: .URL, headers: headers).response
-            { response in
-                if (response.1?.statusCode == 200) {
-                    if let string = String(data: response.2!, encoding: NSUTF8StringEncoding) {
-                        let strings = string.componentsSeparatedByString("=")
-                        let secret = strings[1].componentsSeparatedByString("&")[0]
-                        let oauth = strings[2].componentsSeparatedByString("&")[0]
-                        let username = self.usernameField.stringValue
-                        Keychain.saveItem(secret, account: username, service: "later-readability-secret-token")
-                        Keychain.saveItem(oauth, account: username, service: "later-readability-oauth-token")
-                        Later.defaults.setBool(true, forKey: "readability")
-                        Later.defaults.setObject(username, forKey: "readabilityAccountName")
-                        User.save()
-                        self.progressSpinner.stopAnimation(nil)
-                        self.dismiss()
-                    }
-                } else {
-                    self.statusLabel.stringValue = "Readability login failed."
-                    self.progressSpinner.stopAnimation(nil)
-                }
-        }
-    }
-    
     //MARK: IKEngineDelegate
-    func engine(engine: IKEngine!, connection: IKURLConnection!, didReceiveAuthToken token: String!, andTokenSecret secret: String!) {
-        engine.OAuthToken  = token
-        engine.OAuthTokenSecret = secret
+    func engine(_ engine: IKEngine!, connection: IKURLConnection!, didReceiveAuthToken token: String!, andTokenSecret secret: String!) {
+        engine.oAuthToken  = token
+        engine.oAuthTokenSecret = secret
         if let account = User.instapaperAccountName {
             Keychain.saveItem(token, account: account, service: "later-instapaper-oauth-token")
             Keychain.saveItem(secret, account: account, service: "later-instapaper-secret-token")
-            Later.defaults.setBool(true, forKey: "instapaper")
+            Later.defaults.set(true, forKey: "instapaper")
             User.save()
         }
         progressSpinner.stopAnimation(nil)
         dismiss()
     }
     
-    func engine(engine: IKEngine!, didFailConnection connection: IKURLConnection!, error: NSError!) {
+    func engine(_ engine: IKEngine!, didFail connection: IKURLConnection!, error: Error!) {
         statusLabel.stringValue = "Instapaper login failed."
         progressSpinner.stopAnimation(nil)
     }

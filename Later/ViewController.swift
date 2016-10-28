@@ -10,16 +10,14 @@ import Cocoa
 import Alamofire
 
 enum AccountType {
-    case Instapaper
-    case Pocket
-    case Readability
+    case instapaper
+    case pocket
 }
 
 class ViewController: NSViewController {
     
     @IBOutlet var connectToInstapaper: NSButton!
     @IBOutlet var connectToPocket: NSButton!
-    @IBOutlet var connectToReadability: NSButton!
     @IBOutlet var footerLabel: NSTextField!
     
     var controller: NSWindowController?
@@ -33,10 +31,9 @@ class ViewController: NSViewController {
     func setButtonTitles() {
         connectToInstapaper.title = buttonLabelText(User.instapaperAccount)
         connectToPocket.title = buttonLabelText(User.pocketAccount)
-        connectToReadability.title = buttonLabelText(User.readabilityAccount)
     }
     
-    func buttonLabelText(account: Bool) -> String {
+    func buttonLabelText(_ account: Bool) -> String {
         if account == true {
             return "Disconnect"
         } else {
@@ -45,70 +42,53 @@ class ViewController: NSViewController {
     }
     
     func setLabelText() {
-        if User.instapaperAccount == true || User.pocketAccount == true || User.readabilityAccount == true {
+        if User.instapaperAccount == true || User.pocketAccount == true {
             footerLabel.stringValue = "Thanks for using Later!"
         } else {
             footerLabel.stringValue = "Connect your favorite read later service!"
         }
     }
     
-    @IBAction func instapaperAction(sender: NSButton) {
+    @IBAction func instapaperAction(_ sender: NSButton) {
         if (User.instapaperAccount == false) {
             let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
-            vc.loginType = AccountType.Instapaper
+            vc.loginType = AccountType.instapaper
             presentViewControllerAsSheet(vc)
         } else {
             if let account = User.instapaperAccountName {
                 Keychain.removeItem("later-instapaper-oauth-token", account: account)
                 Keychain.removeItem("later-instapaper-secret-token", account: account)
             }
-            Later.defaults.setBool(false, forKey: "instapaper")
-            Later.defaults.setObject(nil, forKey: "instapaperAccountName")
+            Later.defaults.set(false, forKey: "instapaper")
+            Later.defaults.set(nil, forKey: "instapaperAccountName")
             User.save()
             setButtonTitles()
         }
     }
     
-    @IBAction func pocketAction(sender: NSButton) {
-        PocketAPI.sharedAPI().consumerKey = "47240-996424446c9727c03cfc1504"
+    @IBAction func pocketAction(_ sender: NSButton) {
+        PocketAPI.shared().consumerKey = "47240-996424446c9727c03cfc1504"
         if (User.pocketAccount == false) {
-            PocketAPI.sharedAPI().loginWithHandler({(API: PocketAPI!, error: NSError!) -> Void in
+            PocketAPI.shared().login(handler: {(API: PocketAPI?, error: Error?) -> Void in
                 if (error != nil) {
                     
                 } else {
-                    Later.defaults.setBool(true, forKey: "pocket")
+                    Later.defaults.set(true, forKey: "pocket")
                     User.save()
                     self.setButtonTitles()
                 }
             })
         } else {
-            PocketAPI.sharedAPI().logout()
-            Later.defaults.setBool(false, forKey: "pocket")
-            User.save()
-            setButtonTitles()
-        }
-    }
-    
-    @IBAction func readabilityAction(sender: NSButton) {
-        if (User.readabilityAccount == false) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
-            vc.loginType = AccountType.Readability
-            presentViewControllerAsSheet(vc)
-        } else {
-            if let account = User.readabilityAccountName {
-                Keychain.removeItem("later-readability-oauth-token", account: account)
-                Keychain.removeItem("later-readability-secret-token", account: account)
-            }
-            Later.defaults.setBool(false, forKey: "readability")
-            Later.defaults.setObject(nil, forKey: "readabilityAccountName")
+            PocketAPI.shared().logout()
+            Later.defaults.set(false, forKey: "pocket")
             User.save()
             setButtonTitles()
         }
     }
 
-    @IBAction func showSettingsMenu(sender: NSButton) {
+    @IBAction func showSettingsMenu(_ sender: NSButton) {
         let menu = constructMenu()
-        menu.popUpMenuPositioningItem(menu.itemAtIndex(0), atLocation: NSEvent.mouseLocation(), inView: nil)
+        menu.popUp(positioning: menu.item(at: 0), at: NSEvent.mouseLocation(), in: nil)
     }
     
     func constructMenu() -> NSMenu {
@@ -125,13 +105,12 @@ class ViewController: NSViewController {
     func about() {
         controller = NSWindowController(windowNibName: "About")
         controller?.showWindow(nil)
-        if let delegate = NSApplication.sharedApplication().delegate as? AppDelegate  {
+        if let delegate = NSApplication.shared().delegate as? AppDelegate  {
             delegate.closePopover(self)
         }
     }
     
     func quit() {
-        NSApplication.sharedApplication().terminate(self)
+        NSApplication.shared().terminate(self)
     }
-    
 }
