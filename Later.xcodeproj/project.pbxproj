@@ -8,12 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		21600136F752293E6AE04532 /* Pods_Read_It_Later.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B9E5213F4230E060F1AC5B /* Pods_Read_It_Later.framework */; };
-		2604B3851BFE58C00035015E /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */; };
-		2604B3861BFE58CC0035015E /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */; };
-		2604B3881BFE5A870035015E /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3871BFE5A870035015E /* String+Swifter.swift */; };
-		2604B3891BFE5A950035015E /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B3871BFE5A870035015E /* String+Swifter.swift */; };
-		2604B38B1BFE5ADA0035015E /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */; };
-		2604B38C1BFE5ADE0035015E /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */; };
 		2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613636E1BE8175A0011F39E /* EventMonitor.swift */; };
 		261363711BE8344C0011F39E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261363701BE8344C0011F39E /* LoginView.xib */; };
 		261363731BE835D00011F39E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261363721BE835D00011F39E /* LoginViewController.swift */; };
@@ -104,9 +98,6 @@
 /* Begin PBXFileReference section */
 		1D76B658F6D562CF64DD83FC /* Pods-Later.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Later.release.xcconfig"; path = "Pods/Target Support Files/Pods-Later/Pods-Later.release.xcconfig"; sourceTree = "<group>"; };
 		2341FDBFE5E09ECAFF9E2EE7 /* Pods-Read It Later.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Read It Later.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later.debug.xcconfig"; sourceTree = "<group>"; };
-		2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
-		2604B3871BFE5A870035015E /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
-		2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
 		2613636E1BE8175A0011F39E /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		261363701BE8344C0011F39E /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		261363721BE835D00011F39E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -203,16 +194,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2604B38D1BFE5B370035015E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				2604B3841BFE58C00035015E /* Dictionary+Swifter.swift */,
-				2604B38A1BFE5ADA0035015E /* NSURL+Swifter.swift */,
-				2604B3871BFE5A870035015E /* String+Swifter.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		2645522D1C02313C00DC82B1 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,7 +266,6 @@
 				26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */,
 				268B24561BD70DD6009D6E0C /* User.swift */,
 				26DE1DC31CFB825C003AE363 /* Keychain.swift */,
-				2604B38D1BFE5B370035015E /* Extensions */,
 				268B24581BD70DE8009D6E0C /* Resources */,
 			);
 			path = Later;
@@ -384,14 +364,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 266E06251BC0D4A400840D76 /* Build configuration list for PBXNativeTarget "Later" */;
 			buildPhases = (
-				F725D2F4144273DFA33562E8 /* 📦 Check Pods Manifest.lock */,
+				F725D2F4144273DFA33562E8 /* [CP] Check Pods Manifest.lock */,
 				266E06121BC0D4A400840D76 /* Sources */,
 				266E06131BC0D4A400840D76 /* Frameworks */,
 				266E06141BC0D4A400840D76 /* Resources */,
 				266E063E1BC0D98700840D76 /* Embed App Extensions */,
 				268B24551BD6AF96009D6E0C /* Embed Frameworks */,
-				4F0A1EDA8789A7CF5990EAC4 /* 📦 Embed Pods Frameworks */,
-				48D67077A5A5A950DF7A4EFA /* 📦 Copy Pods Resources */,
+				4F0A1EDA8789A7CF5990EAC4 /* [CP] Embed Pods Frameworks */,
+				48D67077A5A5A950DF7A4EFA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -407,12 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 267BC2481BF7C4730004DD91 /* Build configuration list for PBXNativeTarget "Read It Later" */;
 			buildPhases = (
-				B804468B91BC25E5E9E56E05 /* 📦 Check Pods Manifest.lock */,
+				B804468B91BC25E5E9E56E05 /* [CP] Check Pods Manifest.lock */,
 				267BC2351BF7C4730004DD91 /* Sources */,
 				267BC2361BF7C4730004DD91 /* Frameworks */,
 				267BC2371BF7C4730004DD91 /* Resources */,
-				CB772A1321A8A1B98EC7D1CA /* 📦 Embed Pods Frameworks */,
-				073E523522510FBBB819696E /* 📦 Copy Pods Resources */,
+				CB772A1321A8A1B98EC7D1CA /* [CP] Embed Pods Frameworks */,
+				073E523522510FBBB819696E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,12 +410,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Launch Software";
 				TargetAttributes = {
 					266E06151BC0D4A400840D76 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = U63DWZL52M;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -451,6 +432,7 @@
 					267BC2381BF7C4730004DD91 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = U63DWZL52M;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -508,14 +490,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		073E523522510FBBB819696E /* 📦 Copy Pods Resources */ = {
+		073E523522510FBBB819696E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,14 +505,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		48D67077A5A5A950DF7A4EFA /* 📦 Copy Pods Resources */ = {
+		48D67077A5A5A950DF7A4EFA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,14 +520,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Later/Pods-Later-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F0A1EDA8789A7CF5990EAC4 /* 📦 Embed Pods Frameworks */ = {
+		4F0A1EDA8789A7CF5990EAC4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,14 +535,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Later/Pods-Later-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B804468B91BC25E5E9E56E05 /* 📦 Check Pods Manifest.lock */ = {
+		B804468B91BC25E5E9E56E05 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,14 +550,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CB772A1321A8A1B98EC7D1CA /* 📦 Embed Pods Frameworks */ = {
+		CB772A1321A8A1B98EC7D1CA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,14 +565,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F725D2F4144273DFA33562E8 /* 📦 Check Pods Manifest.lock */ = {
+		F725D2F4144273DFA33562E8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,14 +603,11 @@
 				26DE1E431CFE7FD5003AE363 /* IKURLConnection.m in Sources */,
 				261363731BE835D00011F39E /* LoginViewController.swift in Sources */,
 				26DE1DC41CFB825C003AE363 /* Keychain.swift in Sources */,
-				2604B38B1BFE5ADA0035015E /* NSURL+Swifter.swift in Sources */,
 				26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */,
 				2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */,
-				2604B3851BFE58C00035015E /* Dictionary+Swifter.swift in Sources */,
 				268B24571BD70DD6009D6E0C /* User.swift in Sources */,
 				268B24391BD6AF06009D6E0C /* ViewController.swift in Sources */,
 				268B24341BD6AF06009D6E0C /* AppDelegate.swift in Sources */,
-				2604B3881BFE5A870035015E /* String+Swifter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,12 +629,9 @@
 				26DE1E441CFE7FD5003AE363 /* IKURLConnection.m in Sources */,
 				26DE1E521CFE7FD5003AE363 /* NSData+Base64.m in Sources */,
 				26DE1E501CFE7FD5003AE363 /* IKDeserializer.m in Sources */,
-				2604B38C1BFE5ADE0035015E /* NSURL+Swifter.swift in Sources */,
 				267BC25D1BF7DDC60004DD91 /* User.swift in Sources */,
-				2604B3891BFE5A950035015E /* String+Swifter.swift in Sources */,
 				26DE1DC51CFB825C003AE363 /* Keychain.swift in Sources */,
 				267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */,
-				2604B3861BFE58CC0035015E /* Dictionary+Swifter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,8 +659,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -707,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -730,8 +708,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -748,11 +728,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "~/Git/Later/Later/BridgingHeader.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Later-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -760,19 +741,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 950037815945E31BC9407D54 /* Pods-Later.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
 				PROVISIONING_PROFILE = "4eceb959-7866-4d9c-b5f7-33a240d2efba";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -780,19 +762,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D76B658F6D562CF64DD83FC /* Pods-Later.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Later/Later.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = U63DWZL52M;
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
 				PROVISIONING_PROFILE = "6f83a543-8ad0-4a7d-851e-0898ea5f3f65";
+				PROVISIONING_PROFILE_SPECIFIER = "later-production";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/Later/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -800,17 +785,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2341FDBFE5E09ECAFF9E2EE7 /* Pods-Read It Later.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Read It Later/Read_It_Later.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "008ca26d-f6dc-46ff-a740-94a128d2efa4";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -818,17 +806,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D13EA6CED72460C2B5C58AB7 /* Pods-Read It Later.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Read It Later/Read_It_Later.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U63DWZL52M;
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "20c6b8d5-ca1e-42db-990c-ff759f662aa9";
+				PROVISIONING_PROFILE_SPECIFIER = "later-extension-production";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Later/BridgingHeader.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -9,8 +9,8 @@
 import Foundation
 
 struct Later {
-    static var defaults: NSUserDefaults {
-        return NSUserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
+    static var defaults: UserDefaults {
+        return UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
     }
 }
 
@@ -19,45 +19,31 @@ class User: NSObject {
     // MARK: - Instapaper
     static var instapaperAccount: Bool {
         get {
-            return Later.defaults.boolForKey("instapaper")
+            return Later.defaults.bool(forKey: "instapaper")
         }
     }
     
     static var instapaperAccountName: String? {
         get {
-            return Later.defaults.stringForKey("instapaperAccountName")
+            return Later.defaults.string(forKey: "instapaperAccountName")
         }
     }
     
     // MARK: - Pocket
     static var pocketAccount: Bool {
         get {
-            return Later.defaults.boolForKey("pocket")
+            return Later.defaults.bool(forKey: "pocket")
         }
     }
     
     static var pocketAccountName: String? {
         get {
-            return Later.defaults.stringForKey("pocketAccountName")
+            return Later.defaults.string(forKey: "pocketAccountName")
         }
     }
-    
-    // MARK: - Pinboard
-    static var pinboardAccount: Bool {
-        get {
-            return Later.defaults.boolForKey("pinboard")
-        }
-    }
-    
-    static var pinboardAccountName: String? {
-        get {
-            return Later.defaults.stringForKey("pinboardAccountName")
-        }
-    }
-    
+
     // MARK: Utilities
     static func save() {
         Later.defaults.synchronize()
     }
-
 }
