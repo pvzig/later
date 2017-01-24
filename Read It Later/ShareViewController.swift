@@ -7,12 +7,12 @@
 //
 
 import Cocoa
-import Alamofire
 
 class ShareViewController: NSViewController, IKEngineDelegate {
 
     var client: IKEngine? = nil
     var instapaperComplete: Bool = false
+    var pinboardComplete: Bool = false
     var pocketComplete: Bool = false
     
     override var nibName: String? {
@@ -44,6 +44,9 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         if (User.instapaperAccount == true) {
             addToInstapaper(url)
         }
+        if (User.pinboardAccount == true) {
+            addToPinboard(url)
+        }
         if (User.pocketAccount == true) {
             addToPocket(url)
         }
@@ -60,6 +63,34 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         } else {
             completionHandler()
         }
+    }
+    
+    func addToPinboard(_ url: URL) {
+        guard
+            let user = User.pinboardAccountName,
+            let token = Keychain.fetchItem("later-pinboard-api-token", account: user)
+        else {
+            self.pinboardComplete = true
+            self.completionHandler()
+            return
+        }
+        var components = URLComponents(string: "https://api.pinboard.in/v1/posts/add")
+        components?.queryItems = [
+            URLQueryItem(name: "url", value: url.absoluteString),
+            URLQueryItem(name: "description", value: url.absoluteString),
+            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+        ]
+        guard let url = components?.url else {
+            self.pinboardComplete = true
+            self.completionHandler()
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            self.pinboardComplete = true
+            self.completionHandler()
+        }.resume()
     }
     
     func addToPocket(_ url: URL) {
@@ -89,14 +120,14 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     func completionHandler() {
         var successCount = 0
         var successes = 0
-        let accounts = [User.instapaperAccount, User.pocketAccount]
+        let accounts = [User.instapaperAccount, User.pinboardAccount, User.pocketAccount]
         accounts.forEach {
             if $0 == true {
                 successCount += 1
             }
         }
 
-        let completes = [instapaperComplete, pocketComplete]
+        let completes = [instapaperComplete, pinboardComplete, pocketComplete]
         completes.forEach {
             if $0 == true {
                 successes += 1

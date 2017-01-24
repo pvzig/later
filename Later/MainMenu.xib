@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -18,43 +20,17 @@
         </customObject>
         <menu title="Main Menu" systemMenu="main" id="T38-g4-qLL">
             <items>
-                <menuItem title="ShareToInstapaper" id="44O-hj-9QA">
+                <menuItem title="Later" id="44O-hj-9QA">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="ShareToInstapaper" systemMenu="apple" id="Onk-hx-y2F">
+                    <menu key="submenu" title="Later" systemMenu="apple" id="Onk-hx-y2F">
                         <items>
-                            <menuItem title="About ShareToInstapaper" id="Oxw-ZB-pG0">
+                            <menuItem title="About Later" id="Oxw-ZB-pG0">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="uoo-Ub-NRm"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="7AU-zt-hPh"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="hDH-9x-Ev9"/>
-                            <menuItem isSeparatorItem="YES" id="aub-BY-MEe"/>
-                            <menuItem title="Services" id="BJB-Lx-8Md">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Services" systemMenu="services" id="npj-fW-qfd"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="MHW-hA-h9j"/>
-                            <menuItem title="Hide ShareToInstapaper" keyEquivalent="h" id="cvg-41-Fhm">
-                                <connections>
-                                    <action selector="hide:" target="-1" id="GND-gQ-2bk"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Hide Others" keyEquivalent="h" id="Iyx-5Q-9eN">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="hideOtherApplications:" target="-1" id="Bsj-E7-r9l"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Show All" id="aCl-5v-lnZ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="unhideAllApplications:" target="-1" id="h1c-Jp-G1E"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="nRe-D6-kLe"/>
-                            <menuItem title="Quit ShareToInstapaper" keyEquivalent="q" id="sI0-CB-jnf">
+                            <menuItem title="Quit Later" keyEquivalent="q" id="sI0-CB-jnf">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="VPX-9g-hqH"/>
                                 </connections>
@@ -62,109 +38,51 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="File" id="ErY-YI-B4T">
+                <menuItem title="Edit" id="AxU-1a-sl0">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="File" id="bfm-TE-fMG">
+                    <menu key="submenu" title="Edit" id="tVr-2d-qbP">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="0LX-kb-nh1">
+                            <menuItem title="Undo" keyEquivalent="z" id="7Bb-YM-MRn">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="tfg-t1-dyI"/>
+                                    <action selector="undo:" target="-1" id="RNM-8O-96C"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="gi7-S2-e6d">
+                            <menuItem title="Redo" keyEquivalent="Z" id="Tb8-Lf-ltB">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="6d9-cP-Gxh"/>
+                                    <action selector="redo:" target="-1" id="Vo0-aj-Jr1"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open Recent" id="mL4-yf-Qg0">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="96S-qa-WyO">
-                                    <items>
-                                        <menuItem title="Clear Menu" id="GL3-Xb-QoN">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="qyE-v6-Y2v"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="bTu-Uk-QNd"/>
-                            <menuItem title="Close" keyEquivalent="w" id="Ddq-Qk-E2c">
+                            <menuItem isSeparatorItem="YES" id="gEY-v4-GZi"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="weZ-1g-bwY">
                                 <connections>
-                                    <action selector="performClose:" target="-1" id="qKY-Wd-Va7"/>
+                                    <action selector="cut:" target="-1" id="fkC-QW-6DF"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="4i6-2h-k9w">
+                            <menuItem title="Copy" keyEquivalent="c" id="XnO-ww-1Tj">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="ehl-Zh-afy"/>
+                                    <action selector="copy:" target="-1" id="Y4d-OY-ONK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save As…" keyEquivalent="S" id="N5L-jd-Ad3">
+                            <menuItem title="Paste" keyEquivalent="v" id="OHi-pa-1LP">
                                 <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="Oxe-vJ-SnV"/>
+                                    <action selector="paste:" target="-1" id="P0i-6I-Ocr"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Revert to Saved" id="zb5-M8-VFG">
+                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="Kyg-RD-90h">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="pasteAsPlainText:" target="-1" id="Jod-dE-r4e"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="yEM-Nf-uJf">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="revertDocumentToSaved:" target="-1" id="rsq-Y3-nH3"/>
+                                    <action selector="delete:" target="-1" id="anm-bD-gWf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="s3R-ve-2Sn"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="Dbw-Rn-gVz">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                            <menuItem title="Select All" keyEquivalent="a" id="Gr2-pN-FeS">
                                 <connections>
-                                    <action selector="runPageLayout:" target="-1" id="Ln9-VV-Huo"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="htv-Sj-ugq">
-                                <connections>
-                                    <action selector="print:" target="-1" id="nRz-8M-I1S"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Edit" id="NXx-yD-WzU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Edit" id="zIG-lw-R85">
-                        <items>
-                            <menuItem title="Undo" keyEquivalent="z" id="gZP-qs-fA0">
-                                <connections>
-                                    <action selector="undo:" target="-1" id="6kP-BM-ine"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Redo" keyEquivalent="Z" id="7UZ-Xn-Ojd">
-                                <connections>
-                                    <action selector="redo:" target="-1" id="8eC-yS-UyS"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="L4i-je-U5F"/>
-                            <menuItem title="Cut" keyEquivalent="x" id="wGP-Do-FPJ">
-                                <connections>
-                                    <action selector="cut:" target="-1" id="gp0-ec-P50"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Copy" keyEquivalent="c" id="1sS-FZ-NzB">
-                                <connections>
-                                    <action selector="copy:" target="-1" id="nSy-sX-ecy"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Paste" keyEquivalent="v" id="dHC-TY-zFy">
-                                <connections>
-                                    <action selector="paste:" target="-1" id="OHo-ho-Dyd"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Delete" id="aNp-wb-q7D">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="delete:" target="-1" id="dHk-Dz-zfr"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Select All" keyEquivalent="a" id="pjt-0F-OJT">
-                                <connections>
-                                    <action selector="selectAll:" target="-1" id="BFc-qm-wvX"/>
+                                    <action selector="selectAll:" target="-1" id="MgL-yk-e83"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -174,7 +92,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="rhg-Fx-Aq5">
                         <items>
-                            <menuItem title="ShareToInstapaper Help" keyEquivalent="?" id="AqV-eM-ToZ">
+                            <menuItem title="Later Help" keyEquivalent="?" id="AqV-eM-ToZ">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="SLi-7h-c06"/>
                                 </connections>

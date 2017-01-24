@@ -29,6 +29,19 @@ class User: NSObject {
         }
     }
     
+    // MARK: - Pinboard
+    static var pinboardAccount: Bool {
+        get {
+            return Later.defaults.bool(forKey: "pinboard")
+        }
+    }
+    
+    static var pinboardAccountName: String? {
+        get {
+            return Later.defaults.string(forKey: "pinboardAccountName")
+        }
+    }
+    
     // MARK: - Pocket
     static var pocketAccount: Bool {
         get {
