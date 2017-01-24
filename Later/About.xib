@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -10,47 +12,46 @@
         <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="798" y="560" width="577" height="253"/>
+            <rect key="contentRect" x="878" y="499" width="395" height="339"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="577" height="253"/>
-            <value key="maxSize" type="size" width="577" height="253"/>
+            <value key="minSize" type="size" width="395" height="339"/>
+            <value key="maxSize" type="size" width="395" height="339"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="577" height="253"/>
+                <rect key="frame" x="0.0" y="0.0" width="395" height="339"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-6q-D9T">
-                        <rect key="frame" x="20" y="45" width="150" height="150"/>
+                        <rect key="frame" x="148" y="239" width="100" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="4rx-zH-vcq"/>
-                            <constraint firstAttribute="width" constant="150" id="Nkg-y2-AtP"/>
+                            <constraint firstAttribute="height" constant="100" id="4rx-zH-vcq"/>
+                            <constraint firstAttribute="width" constant="100" id="Nkg-y2-AtP"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="ajM-mv-M5v"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YbH-Gc-dzU">
-                        <rect key="frame" x="248" y="203" width="80" height="39"/>
+                        <rect key="frame" x="166" y="210" width="63" height="29"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Later" id="cJC-zo-RPu">
-                            <font key="font" metaFont="system" size="32"/>
+                            <font key="font" metaFont="system" size="24"/>
                             <color key="textColor" red="0.90196078430000004" green="0.1529411765" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoU-W8-c8O">
-                        <rect key="frame" x="182" y="20" width="375" height="175"/>
+                        <rect key="frame" x="10" y="33" width="375" height="150"/>
                         <clipView key="contentView" id="Y1A-EO-VDy">
-                            <rect key="frame" x="1" y="1" width="373" height="173"/>
+                            <rect key="frame" x="1" y="1" width="373" height="148"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" id="7mC-QC-DP5">
-                                    <rect key="frame" x="0.0" y="0.0" width="373" height="728"/>
+                                <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" quoteSubstitution="YES" linkDetection="YES" dashSubstitution="YES" id="7mC-QC-DP5">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="715"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="373" height="173"/>
+                                    <size key="minSize" width="373" height="148"/>
                                     <size key="maxSize" width="486" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
                                             <mutableString key="content">ACKNOWLEDGEMENTS
 ================
-
 InstapaperKit
 Copyright (c) 2011 Matthias Plappert &lt;matthiasplappert@me.com&gt;
 
@@ -82,28 +83,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="373" height="173"/>
-                                    <size key="maxSize" width="486" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <constraints>
                             <constraint firstAttribute="width" constant="375" id="SI8-e6-zjy"/>
-                            <constraint firstAttribute="height" constant="175" id="fi1-PZ-3Mo"/>
+                            <constraint firstAttribute="height" constant="150" id="fi1-PZ-3Mo"/>
                         </constraints>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="dyj-Wn-T0f">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="FAJ-ca-eGG">
-                            <rect key="frame" x="358" y="1" width="16" height="173"/>
+                            <rect key="frame" x="358" y="1" width="16" height="148"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-sX-UzD">
-                        <rect key="frame" x="55" y="20" width="81" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0.0" id="5mT-tq-v4c">
+                        <rect key="frame" x="145" y="191" width="106" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0.2 (11)" id="5mT-tq-v4c">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2yE-e9-gE5">
+                        <rect key="frame" x="121" y="8" width="154" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="© Launch Software 2017" id="GVp-Yb-Jjt">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -111,18 +118,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XoU-W8-c8O" firstAttribute="top" secondItem="YbH-Gc-dzU" secondAttribute="bottom" constant="8" id="3Vy-qr-2dt"/>
                     <constraint firstItem="YbH-Gc-dzU" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="7Sg-zq-SgG"/>
-                    <constraint firstItem="7mC-QC-DP5" firstAttribute="leading" secondItem="b9l-sX-UzD" secondAttribute="trailing" constant="49" id="HDr-zw-2H0"/>
-                    <constraint firstItem="YbH-Gc-dzU" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="11" id="Lkx-SP-4N4"/>
-                    <constraint firstItem="fW6-6q-D9T" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="PqG-JR-ynI"/>
-                    <constraint firstItem="b9l-sX-UzD" firstAttribute="top" secondItem="fW6-6q-D9T" secondAttribute="bottom" constant="8" id="QEC-gC-Hxn"/>
-                    <constraint firstAttribute="trailing" secondItem="XoU-W8-c8O" secondAttribute="trailing" constant="20" id="jbU-ic-5FO"/>
-                    <constraint firstItem="fW6-6q-D9T" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="58" id="mx3-Ap-UzI"/>
-                    <constraint firstItem="b9l-sX-UzD" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="57" id="nOi-fK-4bw"/>
+                    <constraint firstItem="b9l-sX-UzD" firstAttribute="centerX" secondItem="fW6-6q-D9T" secondAttribute="centerX" id="DV0-on-UEX"/>
+                    <constraint firstItem="YbH-Gc-dzU" firstAttribute="top" secondItem="fW6-6q-D9T" secondAttribute="bottom" id="IoO-pr-Mx8"/>
+                    <constraint firstItem="2yE-e9-gE5" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="XQQ-Qt-H2l"/>
+                    <constraint firstItem="b9l-sX-UzD" firstAttribute="top" secondItem="YbH-Gc-dzU" secondAttribute="bottom" constant="2" id="bIH-fY-MCz"/>
+                    <constraint firstItem="XoU-W8-c8O" firstAttribute="top" secondItem="b9l-sX-UzD" secondAttribute="bottom" constant="8" id="eua-7E-sLo"/>
+                    <constraint firstAttribute="trailing" secondItem="XoU-W8-c8O" secondAttribute="trailing" constant="10" id="fRc-Hy-e4P"/>
+                    <constraint firstItem="XoU-W8-c8O" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="10" id="pDm-HP-Un2"/>
+                    <constraint firstItem="fW6-6q-D9T" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="pS1-bB-mkM"/>
+                    <constraint firstItem="fW6-6q-D9T" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="tz2-sh-JPP"/>
+                    <constraint firstItem="2yE-e9-gE5" firstAttribute="top" secondItem="XoU-W8-c8O" secondAttribute="bottom" constant="8" id="xfS-Yc-RgD"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="377.5" y="118.5"/>
+            <point key="canvasLocation" x="311" y="226"/>
         </window>
     </objects>
     <resources>
