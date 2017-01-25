@@ -24,6 +24,7 @@ open class EventMonitor {
     
     open func start() {
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
+        (NSApplication.shared().delegate as? AppDelegate)?.registerForNotifications()
     }
     
     open func stop() {
@@ -31,5 +32,6 @@ open class EventMonitor {
             NSEvent.removeMonitor(monitor!)
             monitor = nil
         }
+        (NSApplication.shared().delegate as? AppDelegate)?.deregisterForNotifications()
     }
 }

@@ -15,13 +15,28 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     @IBOutlet var usernameField: NSTextField!
     @IBOutlet var passwordField: NSSecureTextField!
     @IBOutlet var passwordLabel: NSTextField!
+    @IBOutlet var helpButton: NSButton!
     @IBOutlet var statusLabel: NSTextField!
     @IBOutlet var progressSpinner: NSProgressIndicator!
+    
+    override func viewDidAppear() {
+        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.stop()
+    }
+    
+    override func viewDidDisappear() {
+        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.start()
+    }
     
     override func viewDidLoad() {
         if loginType == .pinboard {
             passwordLabel.stringValue = "API Token:"
+            helpButton.isHidden = false
         }
+    }
+    
+    @IBAction func helpPressed(_ sender: NSButton) {
+        let url = URL(string: "https://pinboard.in/settings/password")!
+        NSWorkspace.shared().open(url)
     }
     
     @IBAction func cancelAction(_ sender: NSButton) {

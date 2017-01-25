@@ -18,17 +18,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
 
-    func applicationWillFinishLaunching(_ notification: Notification) {
-        
-    }
+    func applicationWillFinishLaunching(_ notification: Notification) {}
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         window.hidesOnDeactivate = true
         window.canHide = true
-        NSWorkspace.shared().notificationCenter.addObserver(self,
-                                                            selector: #selector(AppDelegate.closePopover(_:)),
-                                                            name: NSNotification.Name.NSWorkspaceActiveSpaceDidChange,
-                                                            object: nil)
 
         if let button = statusItem.button {
             button.image = NSImage(named: "later-menu")
@@ -67,5 +61,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             showPopover(sender)
         }
+    }
+    
+    func registerForNotifications() {
+        NSWorkspace.shared().notificationCenter.addObserver(self,
+                                                            selector: #selector(AppDelegate.closePopover(_:)),
+                                                            name: NSNotification.Name.NSWorkspaceActiveSpaceDidChange,
+                                                            object: nil)
+    }
+    
+    func deregisterForNotifications() {
+        NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
 }

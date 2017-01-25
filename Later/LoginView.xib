@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginViewController" customModule="Later" customModuleProvider="target">
             <connections>
+                <outlet property="helpButton" destination="ng6-Nh-Wyn" id="hbr-za-jzr"/>
                 <outlet property="passwordField" destination="MJI-qf-v77" id="tPG-I2-0MC"/>
                 <outlet property="passwordLabel" destination="MHS-v8-Hzx" id="HtL-Vj-O4i"/>
                 <outlet property="progressSpinner" destination="oa6-h1-4F5" id="t5V-99-cEb"/>
@@ -40,7 +41,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="umw-DB-ZJE">
-                    <rect key="frame" x="91" y="87" width="178" height="22"/>
+                    <rect key="frame" x="91" y="87" width="173" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="RgJ-VZ-9nu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +49,7 @@
                     </textFieldCell>
                 </textField>
                 <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-qf-v77">
-                    <rect key="frame" x="91" y="63" width="178" height="22"/>
+                    <rect key="frame" x="91" y="63" width="173" height="22"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="iv3-y3-Uk8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -103,9 +104,19 @@ Gw
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="oa6-h1-4F5">
                     <rect key="frame" x="137" y="10" width="16" height="16"/>
                 </progressIndicator>
+                <button hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ng6-Nh-Wyn">
+                    <rect key="frame" x="263" y="61" width="25" height="25"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cuS-aB-fTQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="helpPressed:" target="-2" id="Rfh-fG-a8P"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="MJI-qf-v77" secondAttribute="trailing" constant="20" id="1P9-lU-mxW"/>
+                <constraint firstAttribute="trailing" secondItem="MJI-qf-v77" secondAttribute="trailing" constant="25" id="1P9-lU-mxW"/>
                 <constraint firstItem="oa6-h1-4F5" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="2e3-ZI-ABh"/>
                 <constraint firstItem="EJG-sw-1Dm" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="38" id="4ub-lG-Di6"/>
                 <constraint firstAttribute="bottom" secondItem="7lC-yc-vqQ" secondAttribute="bottom" constant="10" id="7Tj-2Z-h2v"/>
@@ -113,11 +124,12 @@ Gw
                 <constraint firstItem="umw-DB-ZJE" firstAttribute="top" secondItem="jHJ-w9-wg8" secondAttribute="bottom" constant="10" id="AMV-IP-7kg"/>
                 <constraint firstItem="MHS-v8-Hzx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="24" id="Avp-XN-3rF"/>
                 <constraint firstItem="MJI-qf-v77" firstAttribute="top" secondItem="umw-DB-ZJE" secondAttribute="bottom" constant="2" id="COn-88-Enl"/>
-                <constraint firstAttribute="trailing" secondItem="umw-DB-ZJE" secondAttribute="trailing" constant="20" id="GLf-st-tti"/>
+                <constraint firstAttribute="trailing" secondItem="umw-DB-ZJE" secondAttribute="trailing" constant="25" id="GLf-st-tti"/>
                 <constraint firstAttribute="bottom" secondItem="oa6-h1-4F5" secondAttribute="bottom" constant="10" id="H7t-we-xg6"/>
                 <constraint firstItem="jHJ-w9-wg8" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="LS5-WN-YTx"/>
                 <constraint firstItem="MJI-qf-v77" firstAttribute="leading" secondItem="MHS-v8-Hzx" secondAttribute="trailing" constant="5" id="Nat-ev-Mdy"/>
                 <constraint firstItem="EJG-sw-1Dm" firstAttribute="top" secondItem="MJI-qf-v77" secondAttribute="bottom" constant="10" id="PBc-5q-gNa"/>
+                <constraint firstItem="ng6-Nh-Wyn" firstAttribute="leading" secondItem="MJI-qf-v77" secondAttribute="trailing" constant="1.5" id="PXy-Br-LIK"/>
                 <constraint firstItem="7lC-yc-vqQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="QdH-Jf-DT7"/>
                 <constraint firstItem="nz5-xb-6or" firstAttribute="centerY" secondItem="umw-DB-ZJE" secondAttribute="centerY" id="VhW-jx-7Fr"/>
                 <constraint firstItem="nz5-xb-6or" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="aLS-rB-bJP"/>
@@ -126,10 +138,11 @@ Gw
                 <constraint firstItem="1se-pd-aZk" firstAttribute="top" secondItem="MJI-qf-v77" secondAttribute="bottom" constant="10" id="gA2-8j-UaM"/>
                 <constraint firstItem="jHJ-w9-wg8" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="nye-4L-Zo4"/>
                 <constraint firstItem="1se-pd-aZk" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="-38" id="r0i-ZA-nYT"/>
+                <constraint firstItem="ng6-Nh-Wyn" firstAttribute="centerY" secondItem="MJI-qf-v77" secondAttribute="centerY" id="sOF-Ej-8pj"/>
                 <constraint firstItem="umw-DB-ZJE" firstAttribute="leading" secondItem="nz5-xb-6or" secondAttribute="trailing" constant="5" id="v9F-16-r9z"/>
                 <constraint firstAttribute="trailing" secondItem="7lC-yc-vqQ" secondAttribute="trailing" constant="20" id="vw9-dO-Sgm"/>
             </constraints>
-            <point key="canvasLocation" x="306.5" y="257"/>
+            <point key="canvasLocation" x="198.5" y="234"/>
         </customView>
     </objects>
 </document>
