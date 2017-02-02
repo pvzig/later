@@ -9,7 +9,7 @@
 import Cocoa
 
 open class EventMonitor {
-    fileprivate var monitor: AnyObject?
+    fileprivate var monitor: Any?
     fileprivate let mask: NSEventMask
     fileprivate let handler: (NSEvent?) -> ()
     
@@ -23,7 +23,7 @@ open class EventMonitor {
     }
     
     open func start() {
-        monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler) as AnyObject?
+        monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
     }
     
     open func stop() {

@@ -73,6 +73,5 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     func engine(_ engine: IKEngine!, didFail connection: IKURLConnection!, error: Error!) {
         statusLabel.stringValue = "Instapaper login failed."
         progressSpinner.stopAnimation(nil)
-    }
-    
+    }    
 }

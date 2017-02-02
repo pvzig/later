@@ -94,10 +94,13 @@ class ViewController: NSViewController {
     func constructMenu() -> NSMenu {
         let menu = NSMenu()
         let aboutItem = NSMenuItem(title: "About", action: #selector(ViewController.about), keyEquivalent: "")
+        let emailItem = NSMenuItem(title: "Support", action: #selector(ViewController.email), keyEquivalent: "")
         let quitItem = NSMenuItem(title: "Quit", action: #selector(ViewController.quit), keyEquivalent: "q")
         aboutItem.target = self
+        emailItem.target = self
         quitItem.target = self
         menu.addItem(aboutItem)
+        menu.addItem(emailItem)
         menu.addItem(quitItem)
         return menu
     }
@@ -108,6 +111,11 @@ class ViewController: NSViewController {
         if let delegate = NSApplication.shared().delegate as? AppDelegate  {
             delegate.closePopover(self)
         }
+    }
+    
+    func email() {
+        let url = URL(string: "mailto:peter@launchsoft.co?subject=Later%20Support")!
+        NSWorkspace.shared().open(url)
     }
     
     func quit() {

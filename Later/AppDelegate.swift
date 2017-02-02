@@ -25,7 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         window.hidesOnDeactivate = true
         window.canHide = true
-        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(AppDelegate.closePopover(_:)), name: NSNotification.Name.NSWorkspaceActiveSpaceDidChange, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self,
+                                                            selector: #selector(AppDelegate.closePopover(_:)),
+                                                            name: NSNotification.Name.NSWorkspaceActiveSpaceDidChange,
+                                                            object: nil)
+
         if let button = statusItem.button {
             button.image = NSImage(named: "later-menu")
             button.action = #selector(AppDelegate.togglePopover(_:))
@@ -38,8 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let vc = ViewController(nibName: "PopoverView", bundle: nil)
             popover.contentViewController = vc
         }
-        eventMonitor = EventMonitor(mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) {
-            [unowned self] event in
+        
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) {[unowned self] event in
             if self.popover.isShown {
                 self.closePopover(event)
             }
@@ -49,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func showPopover(_ sender: AnyObject?) {
         if let button = statusItem.button {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         }
     }
     
@@ -64,5 +68,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showPopover(sender)
         }
     }
-
 }

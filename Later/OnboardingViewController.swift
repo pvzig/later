@@ -22,5 +22,4 @@ class OnboardingViewController: NSViewController {
             delegate.closePopover(self)
         }
     }
-
 }

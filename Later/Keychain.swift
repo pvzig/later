@@ -38,7 +38,7 @@ open class Keychain: NSObject {
                                          &ref)
     }
     
-    static func fetchItem(_ service: String, account: String) -> String {
+    static func fetchItem(_ service: String, account: String) -> String? {
         var length:UInt32 = 0
         var data:UnsafeMutableRawPointer? = nil
         var ref: SecKeychainItem? = nil
@@ -50,7 +50,11 @@ open class Keychain: NSObject {
                                        &length,
                                        &data,
                                        &ref)
-        let item = NSString(bytes: UnsafeMutableRawPointer(data)!, length: Int(length), encoding: String.Encoding.utf8.rawValue)!
+        guard let bytes = UnsafeMutableRawPointer(data) else {
+            SecKeychainItemFreeContent(nil, data)
+            return nil
+        }
+        let item = NSString(bytes: bytes, length: Int(length), encoding: String.Encoding.utf8.rawValue)!
         SecKeychainItemFreeContent(nil, data)
         return item as String
     }
