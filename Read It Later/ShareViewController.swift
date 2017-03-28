@@ -7,12 +7,12 @@
 //
 
 import Cocoa
-import Alamofire
 
 class ShareViewController: NSViewController, IKEngineDelegate {
 
     var client: IKEngine? = nil
     var instapaperComplete: Bool = false
+    var pinboardComplete: Bool = false
     var pocketComplete: Bool = false
     
     override var nibName: String? {
@@ -21,28 +21,35 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     
     override func loadView() {
         super.loadView()
-        guard let item = self.extensionContext?.inputItems[0] as? NSExtensionItem else {
+        guard
+            let item = self.extensionContext?.inputItems[0] as? NSExtensionItem,
+            let attachments = item.attachments as? [NSItemProvider]
+        else {
             complete()
             return
         }
-        if let provider = item.attachments?.first as? NSItemProvider {
-            if (provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String)) {
-                provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil, completionHandler: {(result, error) -> Void in
-                    if let resultURL = result as? URL {
-                        self.saveURL(resultURL)
+        for provider in attachments {
+            if provider.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) {
+                provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String, options: nil, completionHandler: { (item, error) in
+                    let dict = item as? [String: Any]
+                    let info = dict?[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any]
+                    let title = info?["title"] as? String
+                    guard let urlString = info?["URL"] as? String, let url = URL(string: urlString) else {
+                        self.complete()
                         return
                     }
-                    self.complete()
+                    self.saveURL(url, title: title)
                 })
-            } else {
-                complete()
             }
         }
     }
     
-    func saveURL(_ url: URL) {
+    func saveURL(_ url: URL, title: String?) {
         if (User.instapaperAccount == true) {
             addToInstapaper(url)
+        }
+        if (User.pinboardAccount == true) {
+            addToPinboard(url, title: title)
         }
         if (User.pocketAccount == true) {
             addToPocket(url)
@@ -60,6 +67,34 @@ class ShareViewController: NSViewController, IKEngineDelegate {
         } else {
             completionHandler()
         }
+    }
+    
+    func addToPinboard(_ url: URL, title: String?) {
+        guard
+            let user = User.pinboardAccountName,
+            let token = Keychain.fetchItem("later-pinboard-api-token", account: user)
+        else {
+            self.pinboardComplete = true
+            self.completionHandler()
+            return
+        }
+        var components = URLComponents(string: "https://api.pinboard.in/v1/posts/add")
+        components?.queryItems = [
+            URLQueryItem(name: "url", value: url.absoluteString),
+            URLQueryItem(name: "description", value: title ?? url.absoluteString),
+            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+        ]
+        guard let url = components?.url else {
+            self.pinboardComplete = true
+            self.completionHandler()
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            self.pinboardComplete = true
+            self.completionHandler()
+        }.resume()
     }
     
     func addToPocket(_ url: URL) {
@@ -89,14 +124,14 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     func completionHandler() {
         var successCount = 0
         var successes = 0
-        let accounts = [User.instapaperAccount, User.pocketAccount]
+        let accounts = [User.instapaperAccount, User.pinboardAccount, User.pocketAccount]
         accounts.forEach {
             if $0 == true {
                 successCount += 1
             }
         }
 
-        let completes = [instapaperComplete, pocketComplete]
+        let completes = [instapaperComplete, pinboardComplete, pocketComplete]
         completes.forEach {
             if $0 == true {
                 successes += 1

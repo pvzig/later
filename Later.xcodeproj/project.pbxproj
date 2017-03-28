@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21600136F752293E6AE04532 /* Pods_Read_It_Later.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B9E5213F4230E060F1AC5B /* Pods_Read_It_Later.framework */; };
 		2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613636E1BE8175A0011F39E /* EventMonitor.swift */; };
 		261363711BE8344C0011F39E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261363701BE8344C0011F39E /* LoginView.xib */; };
 		261363731BE835D00011F39E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261363721BE835D00011F39E /* LoginViewController.swift */; };
@@ -25,6 +24,7 @@
 		264552421C02313C00DC82B1 /* PocketAPIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 264552381C02313C00DC82B1 /* PocketAPIOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		264552431C02313C00DC82B1 /* PocketAPIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 264552381C02313C00DC82B1 /* PocketAPIOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26515AB91D04D9330001C1FB /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26515AB81D04D9330001C1FB /* About.xib */; };
+		265DDA981E381D7A009D63E5 /* Preprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = 265DDA971E381D7A009D63E5 /* Preprocessor.js */; };
 		267BC23D1BF7C4730004DD91 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 267BC23C1BF7C4730004DD91 /* icon.icns */; };
 		267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267BC23F1BF7C4730004DD91 /* ShareViewController.swift */; };
 		267BC2471BF7C4730004DD91 /* Read It Later.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 267BC2391BF7C4730004DD91 /* Read It Later.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,7 +58,6 @@
 		26DE1E501CFE7FD5003AE363 /* IKDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E1C1CFE7FD5003AE363 /* IKDeserializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26DE1E511CFE7FD5003AE363 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26DE1E521CFE7FD5003AE363 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C71893EDC80CF4300227C717 /* Pods_Later.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8668D3FCB291A47865F60C7F /* Pods_Later.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +95,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D76B658F6D562CF64DD83FC /* Pods-Later.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Later.release.xcconfig"; path = "Pods/Target Support Files/Pods-Later/Pods-Later.release.xcconfig"; sourceTree = "<group>"; };
-		2341FDBFE5E09ECAFF9E2EE7 /* Pods-Read It Later.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Read It Later.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later.debug.xcconfig"; sourceTree = "<group>"; };
 		2613636E1BE8175A0011F39E /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		261363701BE8344C0011F39E /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		261363721BE835D00011F39E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +115,7 @@
 		264552381C02313C00DC82B1 /* PocketAPIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPIOperation.m; sourceTree = "<group>"; };
 		264552391C02313C00DC82B1 /* PocketAPITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPITypes.h; sourceTree = "<group>"; };
 		26515AB81D04D9330001C1FB /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
+		265DDA971E381D7A009D63E5 /* Preprocessor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Preprocessor.js; sourceTree = "<group>"; };
 		266E06161BC0D4A400840D76 /* Later.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Later.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267BC2151BF68C730004DD91 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		267BC2391BF7C4730004DD91 /* Read It Later.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Read It Later.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,10 +153,6 @@
 		26DE1E1D1CFE7FD5003AE363 /* IKURLConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IKURLConnection+Private.h"; sourceTree = "<group>"; };
 		26DE1E1F1CFE7FD5003AE363 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		8668D3FCB291A47865F60C7F /* Pods_Later.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Later.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		950037815945E31BC9407D54 /* Pods-Later.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Later.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Later/Pods-Later.debug.xcconfig"; sourceTree = "<group>"; };
-		B8B9E5213F4230E060F1AC5B /* Pods_Read_It_Later.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Read_It_Later.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D13EA6CED72460C2B5C58AB7 /* Pods-Read It Later.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Read It Later.release.xcconfig"; path = "Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2693F96B1CC881F1009FD89D /* Security.framework in Frameworks */,
-				C71893EDC80CF4300227C717 /* Pods_Later.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +169,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				26882AC31CFE8A8500D92F23 /* Security.framework in Frameworks */,
-				21600136F752293E6AE04532 /* Pods_Read_It_Later.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +180,6 @@
 			children = (
 				2641E76E1BDD745800B634B2 /* Security.framework */,
 				267BC2151BF68C730004DD91 /* Cocoa.framework */,
-				8668D3FCB291A47865F60C7F /* Pods_Later.framework */,
-				B8B9E5213F4230E060F1AC5B /* Pods_Read_It_Later.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -222,7 +212,6 @@
 				267BC23A1BF7C4730004DD91 /* Read It Later */,
 				266E06171BC0D4A400840D76 /* Products */,
 				2470254F4953155C2236DDA7 /* Frameworks */,
-				DF660CAA21B4FB418CFE1A0B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,6 +237,7 @@
 		267BC23B1BF7C4730004DD91 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				265DDA971E381D7A009D63E5 /* Preprocessor.js */,
 				267BC2441BF7C4730004DD91 /* Info.plist */,
 				267BC23C1BF7C4730004DD91 /* icon.icns */,
 				267BC23E1BF7C4730004DD91 /* Read_It_Later.entitlements */,
@@ -346,17 +336,6 @@
 			path = InstapaperKit/InstapaperKit;
 			sourceTree = "<group>";
 		};
-		DF660CAA21B4FB418CFE1A0B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				950037815945E31BC9407D54 /* Pods-Later.debug.xcconfig */,
-				1D76B658F6D562CF64DD83FC /* Pods-Later.release.xcconfig */,
-				2341FDBFE5E09ECAFF9E2EE7 /* Pods-Read It Later.debug.xcconfig */,
-				D13EA6CED72460C2B5C58AB7 /* Pods-Read It Later.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,14 +343,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 266E06251BC0D4A400840D76 /* Build configuration list for PBXNativeTarget "Later" */;
 			buildPhases = (
-				F725D2F4144273DFA33562E8 /* [CP] Check Pods Manifest.lock */,
 				266E06121BC0D4A400840D76 /* Sources */,
 				266E06131BC0D4A400840D76 /* Frameworks */,
 				266E06141BC0D4A400840D76 /* Resources */,
 				266E063E1BC0D98700840D76 /* Embed App Extensions */,
 				268B24551BD6AF96009D6E0C /* Embed Frameworks */,
-				4F0A1EDA8789A7CF5990EAC4 /* [CP] Embed Pods Frameworks */,
-				48D67077A5A5A950DF7A4EFA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,12 +363,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 267BC2481BF7C4730004DD91 /* Build configuration list for PBXNativeTarget "Read It Later" */;
 			buildPhases = (
-				B804468B91BC25E5E9E56E05 /* [CP] Check Pods Manifest.lock */,
 				267BC2351BF7C4730004DD91 /* Sources */,
 				267BC2361BF7C4730004DD91 /* Frameworks */,
 				267BC2371BF7C4730004DD91 /* Resources */,
-				CB772A1321A8A1B98EC7D1CA /* [CP] Embed Pods Frameworks */,
-				073E523522510FBBB819696E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -484,105 +457,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */,
+				265DDA981E381D7A009D63E5 /* Preprocessor.js in Resources */,
 				262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */,
 				267BC23D1BF7C4730004DD91 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		073E523522510FBBB819696E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		48D67077A5A5A950DF7A4EFA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Later/Pods-Later-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4F0A1EDA8789A7CF5990EAC4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Later/Pods-Later-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B804468B91BC25E5E9E56E05 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CB772A1321A8A1B98EC7D1CA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Read It Later/Pods-Read It Later-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F725D2F4144273DFA33562E8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		266E06121BC0D4A400840D76 /* Sources */ = {
@@ -741,7 +622,6 @@
 		};
 		266E06261BC0D4A400840D76 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 950037815945E31BC9407D54 /* Pods-Later.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -751,7 +631,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -764,7 +644,6 @@
 		};
 		266E06271BC0D4A400840D76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D76B658F6D562CF64DD83FC /* Pods-Later.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -774,7 +653,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -787,7 +666,6 @@
 		};
 		267BC2491BF7C4730004DD91 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2341FDBFE5E09ECAFF9E2EE7 /* Pods-Read It Later.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -797,7 +675,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -810,7 +688,6 @@
 		};
 		267BC24A1BF7C4730004DD91 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D13EA6CED72460C2B5C58AB7 /* Pods-Read It Later.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -820,7 +697,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Read It Later/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

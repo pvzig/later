@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Alamofire
 
 class LoginViewController: NSViewController, IKEngineDelegate {
  
@@ -15,11 +14,29 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     
     @IBOutlet var usernameField: NSTextField!
     @IBOutlet var passwordField: NSSecureTextField!
+    @IBOutlet var passwordLabel: NSTextField!
+    @IBOutlet var helpButton: NSButton!
     @IBOutlet var statusLabel: NSTextField!
     @IBOutlet var progressSpinner: NSProgressIndicator!
     
+    override func viewDidAppear() {
+        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.stop()
+    }
+    
+    override func viewDidDisappear() {
+        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.start()
+    }
+    
     override func viewDidLoad() {
-        
+        if loginType == .pinboard {
+            passwordLabel.stringValue = "API Token:"
+            helpButton.isHidden = false
+        }
+    }
+    
+    @IBAction func helpPressed(_ sender: NSButton) {
+        let url = URL(string: "https://pinboard.in/settings/password")!
+        NSWorkspace.shared().open(url)
     }
     
     @IBAction func cancelAction(_ sender: NSButton) {
@@ -41,10 +58,41 @@ class LoginViewController: NSViewController, IKEngineDelegate {
             switch type {
             case .instapaper:
                 instapaperLogin()
+            case .pinboard:
+                pinboardLogin()
             case .pocket:
                 break
             }
         }
+    }
+    
+    func pinboardLogin() {
+        let user = usernameField.stringValue
+        let token = passwordField.stringValue
+        var components = URLComponents(string: "https://api.pinboard.in/v1/user/api_token")
+        components?.queryItems = [
+            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+        ]
+        guard let url = components?.url else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let r = response as? HTTPURLResponse, r.statusCode == 200 else {
+                    self.statusLabel.stringValue = "Pinboard API token validation failed."
+                    self.progressSpinner.stopAnimation(nil)
+                    return
+                }
+                Later.defaults.set(user, forKey: "pinboardAccountName")
+                Later.defaults.set(true, forKey: "pinboard")
+                Keychain.saveItem(token, account: user, service: "later-pinboard-api-token")
+                User.save()
+                self.progressSpinner.stopAnimation(nil)
+                self.dismiss()
+            }
+        }.resume()
     }
     
     func instapaperLogin() {

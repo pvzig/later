@@ -7,17 +7,19 @@
 //
 
 import Cocoa
-import Alamofire
 
 enum AccountType {
     case instapaper
     case pocket
+    case pinboard
 }
 
 class ViewController: NSViewController {
     
     @IBOutlet var connectToInstapaper: NSButton!
     @IBOutlet var connectToPocket: NSButton!
+    @IBOutlet var connectToPinboard: NSButton!
+    
     @IBOutlet var footerLabel: NSTextField!
     
     var controller: NSWindowController?
@@ -30,6 +32,7 @@ class ViewController: NSViewController {
     
     func setButtonTitles() {
         connectToInstapaper.title = buttonLabelText(User.instapaperAccount)
+        connectToPinboard.title = buttonLabelText(User.pinboardAccount)
         connectToPocket.title = buttonLabelText(User.pocketAccount)
     }
     
@@ -42,7 +45,7 @@ class ViewController: NSViewController {
     }
     
     func setLabelText() {
-        if User.instapaperAccount == true || User.pocketAccount == true {
+        if User.instapaperAccount == true || User.pinboardAccount == true || User.pocketAccount == true {
             footerLabel.stringValue = "Thanks for using Later!"
         } else {
             footerLabel.stringValue = "Connect your favorite read later service!"
@@ -61,6 +64,22 @@ class ViewController: NSViewController {
             }
             Later.defaults.set(false, forKey: "instapaper")
             Later.defaults.set(nil, forKey: "instapaperAccountName")
+            User.save()
+            setButtonTitles()
+        }
+    }
+    
+    @IBAction func pinboardAction(_ sender: NSButton) {
+        if (User.pinboardAccount == false) {
+            let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
+            vc.loginType = AccountType.pinboard
+            presentViewControllerAsSheet(vc)
+        } else {
+            if let account = User.pinboardAccountName {
+                Keychain.removeItem("later-pinboard-api-token", account: account)
+            }
+            Later.defaults.set(false, forKey: "pinboard")
+            Later.defaults.set(nil, forKey: "pinboardAccountName")
             User.save()
             setButtonTitles()
         }
