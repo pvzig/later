@@ -54,7 +54,7 @@ class ViewController: NSViewController {
     
     @IBAction func instapaperAction(_ sender: NSButton) {
         if (User.instapaperAccount == false) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
+            let vc = LoginViewController(nibName: NSNib.Name(rawValue: "LoginView"), bundle: nil)
             vc.loginType = AccountType.instapaper
             presentViewControllerAsSheet(vc)
         } else {
@@ -71,7 +71,7 @@ class ViewController: NSViewController {
     
     @IBAction func pinboardAction(_ sender: NSButton) {
         if (User.pinboardAccount == false) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: nil)!
+            let vc = LoginViewController(nibName: NSNib.Name(rawValue: "LoginView"), bundle: nil)
             vc.loginType = AccountType.pinboard
             presentViewControllerAsSheet(vc)
         } else {
@@ -107,7 +107,7 @@ class ViewController: NSViewController {
 
     @IBAction func showSettingsMenu(_ sender: NSButton) {
         let menu = constructMenu()
-        menu.popUp(positioning: menu.item(at: 0), at: NSEvent.mouseLocation(), in: nil)
+        menu.popUp(positioning: menu.item(at: 0), at: NSEvent.mouseLocation, in: nil)
     }
     
     func constructMenu() -> NSMenu {
@@ -124,20 +124,20 @@ class ViewController: NSViewController {
         return menu
     }
     
-    func about() {
-        controller = NSWindowController(windowNibName: "About")
+    @objc func about() {
+        controller = NSWindowController(windowNibName: NSNib.Name(rawValue: "About"))
         controller?.showWindow(nil)
-        if let delegate = NSApplication.shared().delegate as? AppDelegate  {
+        if let delegate = NSApplication.shared.delegate as? AppDelegate  {
             delegate.closePopover(self)
         }
     }
     
-    func email() {
+    @objc func email() {
         let url = URL(string: "mailto:peter@launchsoft.co?subject=Later%20Support")!
-        NSWorkspace.shared().open(url)
+        NSWorkspace.shared.open(url)
     }
     
-    func quit() {
-        NSApplication.shared().terminate(self)
+    @objc func quit() {
+        NSApplication.shared.terminate(self)
     }
 }

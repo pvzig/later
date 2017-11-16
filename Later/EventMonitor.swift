@@ -10,10 +10,10 @@ import Cocoa
 
 open class EventMonitor {
     fileprivate var monitor: Any?
-    fileprivate let mask: NSEventMask
+    fileprivate let mask: NSEvent.EventTypeMask
     fileprivate let handler: (NSEvent?) -> ()
     
-    public init(mask: NSEventMask, handler: @escaping (NSEvent?) -> ()) {
+    public init(mask: NSEvent.EventTypeMask, handler: @escaping (NSEvent?) -> ()) {
         self.mask = mask
         self.handler = handler
     }
@@ -24,7 +24,7 @@ open class EventMonitor {
     
     open func start() {
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
-        (NSApplication.shared().delegate as? AppDelegate)?.registerForNotifications()
+        (NSApplication.shared.delegate as? AppDelegate)?.registerForNotifications()
     }
     
     open func stop() {
@@ -32,6 +32,6 @@ open class EventMonitor {
             NSEvent.removeMonitor(monitor!)
             monitor = nil
         }
-        (NSApplication.shared().delegate as? AppDelegate)?.deregisterForNotifications()
+        (NSApplication.shared.delegate as? AppDelegate)?.deregisterForNotifications()
     }
 }

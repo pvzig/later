@@ -49,7 +49,7 @@ class User: NSObject {
         }
     }
     
-    static var pocketAccountName: String? {
+    @objc static var pocketAccountName: String? {
         get {
             return Later.defaults.string(forKey: "pocketAccountName")
         }

@@ -15,8 +15,8 @@ class ShareViewController: NSViewController, IKEngineDelegate {
     var pinboardComplete: Bool = false
     var pocketComplete: Bool = false
     
-    override var nibName: String? {
-        return "ShareViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name(rawValue: "ShareViewController")
     }
     
     override func loadView() {

@@ -86,12 +86,17 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 
 -(void)dealloc{
 	[operationQueue waitUntilAllOperationsAreFinished];
-	[operationQueue release], operationQueue = nil;
+    [operationQueue release];
+    operationQueue = nil;
 	
-	[requestToken release], requestToken = nil;
-	[accessToken  release], accessToken  = nil;
-	[API release], API = nil;
-	[delegate release], delegate = nil;
+    [requestToken release];
+    requestToken = nil;
+    [accessToken  release];
+    accessToken  = nil;
+    [API release];
+    API = nil;
+    [delegate release];
+    delegate = nil;
 	
 	[super dealloc];
 }
@@ -188,7 +193,8 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 	
 	[self loginDidFinish:YES];
 
-	[delegate release], delegate = nil;
+    [delegate release];
+    delegate = nil;
 }
 
 -(void)pocketAPI:(PocketAPI *)api hadLoginError:(NSError *)error{
@@ -198,7 +204,8 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 	
 	[self loginDidFinish:NO];
 	
-	[delegate release], delegate = nil;
+    [delegate release];
+    delegate = nil;
 }
 
 -(void)loginDidStart{

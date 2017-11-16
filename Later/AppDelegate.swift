@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     
-    let statusItem = NSStatusBar.system().statusItem(withLength: 19)
+    let statusItem = NSStatusBar.system.statusItem(withLength: 19)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
 
@@ -25,19 +25,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.canHide = true
 
         if let button = statusItem.button {
-            button.image = NSImage(named: "later-menu")
+            button.image = NSImage(named: NSImage.Name(rawValue: "later-menu"))
             button.action = #selector(AppDelegate.togglePopover(_:))
         }
         
         if UserDefaults.standard.bool(forKey: "onboardingComplete") == false {
-            let vc = OnboardingViewController(nibName: "OnboardingView", bundle: nil)
+            let vc = OnboardingViewController(nibName: NSNib.Name(rawValue: "OnboardingView"), bundle: nil)
             popover.contentViewController = vc
         } else {
-            let vc = ViewController(nibName: "PopoverView", bundle: nil)
+            let vc = ViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
             popover.contentViewController = vc
         }
-        
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) {[unowned self] event in
+
+
+        // Monitor events for dismissing the popover
+        eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) {[unowned self] event in
             if self.popover.isShown {
                 self.closePopover(event)
             }
@@ -51,11 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func closePopover(_ sender: AnyObject?) {
+    @objc func closePopover(_ sender: AnyObject?) {
         popover.performClose(sender)
     }
     
-    func togglePopover(_ sender: AnyObject?) {
+    @objc func togglePopover(_ sender: AnyObject?) {
         if popover.isShown {
             closePopover(sender)
         } else {
@@ -64,13 +66,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func registerForNotifications() {
-        NSWorkspace.shared().notificationCenter.addObserver(self,
+        NSWorkspace.shared.notificationCenter.addObserver(self,
                                                             selector: #selector(AppDelegate.closePopover(_:)),
-                                                            name: NSNotification.Name.NSWorkspaceActiveSpaceDidChange,
+                                                            name: NSWorkspace.activeSpaceDidChangeNotification,
                                                             object: nil)
     }
     
     func deregisterForNotifications() {
-        NSWorkspace.shared().notificationCenter.removeObserver(self)
+        NSWorkspace.shared.notificationCenter.removeObserver(self)
     }
 }

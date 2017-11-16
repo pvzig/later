@@ -247,12 +247,17 @@ static PocketAPI *sSharedAPI = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	[operationQueue waitUntilAllOperationsAreFinished];
-	[operationQueue release], operationQueue = nil;
+    [operationQueue release];
+    operationQueue = nil;
 
-	[consumerKey release], consumerKey = nil;
-	[URLScheme release], URLScheme = nil;
-	[userAgent release], userAgent = nil;
-    [keychainAccessGroup release], keychainAccessGroup = nil;
+    [consumerKey release];
+    consumerKey = nil;
+    [URLScheme release];
+    URLScheme = nil;
+    [userAgent release];
+    userAgent = nil;
+    [keychainAccessGroup release];
+    keychainAccessGroup = nil;
 	
 	[super dealloc];
 }
@@ -810,9 +815,12 @@ static PocketAPI *sSharedAPI = nil;
 }
 
 -(void)dealloc{
-	[loginHandler release], loginHandler = nil;
-	[saveHandler release], saveHandler = nil;
-	[responseHandler release], responseHandler = nil;
+    [loginHandler release];
+    loginHandler = nil;
+    [saveHandler release];
+    saveHandler = nil;
+    [responseHandler release];
+    responseHandler = nil;
 	
 	[super dealloc];
 }

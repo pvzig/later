@@ -9,9 +9,9 @@
 import Foundation
 import Security
 
-open class Keychain: NSObject {
+final class Keychain: NSObject {
  
-    static func saveItem(_ item: String, account: String, service: String) {
+    @objc static func saveItem(_ item: String, account: String, service: String) {
         let path = Bundle.main.builtInPlugInsPath! + "/Read It Later.appex"
         var appExtension: SecTrustedApplication?
         var app: SecTrustedApplication?
@@ -38,14 +38,14 @@ open class Keychain: NSObject {
                                          &ref)
     }
     
-    static func fetchItem(_ service: String, account: String) -> String? {
+    @objc static func fetchItem(_ service: String, account: String) -> String? {
         var length:UInt32 = 0
         var data:UnsafeMutableRawPointer? = nil
         var ref: SecKeychainItem? = nil
         SecKeychainFindGenericPassword(nil,
-                                       UInt32(service.characters.count),
+                                       UInt32(service.count),
                                        service,
-                                       UInt32(account.characters.count),
+                                       UInt32(account.count),
                                        account,
                                        &length,
                                        &data,
@@ -59,14 +59,14 @@ open class Keychain: NSObject {
         return item as String
     }
     
-    static func removeItem(_ service: String, account: String) {
+    @objc static func removeItem(_ service: String, account: String) {
         var length:UInt32 = 0
         var data:UnsafeMutableRawPointer? = nil
         var ref: SecKeychainItem? = nil
         SecKeychainFindGenericPassword(nil,
-                                       UInt32(service.characters.count),
+                                       UInt32(service.count),
                                        service,
-                                       UInt32(account.characters.count),
+                                       UInt32(account.count),
                                        account,
                                        &length,
                                        &data,

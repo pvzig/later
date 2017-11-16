@@ -20,11 +20,11 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     @IBOutlet var progressSpinner: NSProgressIndicator!
     
     override func viewDidAppear() {
-        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.stop()
+        (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.stop()
     }
     
     override func viewDidDisappear() {
-        (NSApplication.shared().delegate as? AppDelegate)?.eventMonitor?.start()
+        (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.start()
     }
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     
     @IBAction func helpPressed(_ sender: NSButton) {
         let url = URL(string: "https://pinboard.in/settings/password")!
-        NSWorkspace.shared().open(url)
+        NSWorkspace.shared.open(url)
     }
     
     @IBAction func cancelAction(_ sender: NSButton) {

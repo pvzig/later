@@ -99,17 +99,24 @@ NSString *PocketAPINameForHTTPMethod(PocketAPIHTTPMethod method){
 }
 
 -(void)dealloc{
-	[API release], API = nil;
+    [API release];
+    API = nil;
 	delegate = nil;
 	
-	[APIMethod release], APIMethod = nil;
-	[arguments release], arguments = nil;
+    [APIMethod release];
+    APIMethod = nil;
+    [arguments release];
+    arguments = nil;
 	
-	[connection release], connection = nil;
-	[response release], response = nil;
-	[data release], data = nil;
+    [connection release];
+    connection = nil;
+    [response release];
+    response = nil;
+    [data release];
+    data = nil;
 
-	[error release], error = nil;
+    [error release];
+    error = nil;
 	
 	[super dealloc];
 }
@@ -387,7 +394,8 @@ NSString *PocketAPINameForHTTPMethod(PocketAPIHTTPMethod method){
 	[self  didChangeValueForKey:@"isFinished"];
 	[self  didChangeValueForKey:@"isExecuting"];
 
-	[delegate release], delegate = nil;
+    [delegate release];
+    delegate = nil;
 }
 
 +(NSError *)errorFromXError:(NSString *)xError
