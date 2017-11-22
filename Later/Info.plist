@@ -32,6 +32,18 @@
 				<string>pocketapp47240</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLIconFile</key>
+			<string>icon_512x512@2x</string>
+			<key>CFBundleURLName</key>
+			<string>com.launchsoft.later</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>later</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>14</string>

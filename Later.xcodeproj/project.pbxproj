@@ -42,7 +42,7 @@
 		262DC8801BE5508E0052404A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262DC87F1BE5508E0052404A /* MainMenu.xib */; };
 		262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */; };
 		262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
-		26515AB91D04D9330001C1FB /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26515AB81D04D9330001C1FB /* About.xib */; };
+		2641A0CF1E9B314600E7E66E /* icon_512x512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641A0CE1E9B314600E7E66E /* icon_512x512@2x.png */; };26515AB91D04D9330001C1FB /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26515AB81D04D9330001C1FB /* About.xib */; };
 		265DDA981E381D7A009D63E5 /* Preprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = 265DDA971E381D7A009D63E5 /* Preprocessor.js */; };
 		267BC23D1BF7C4730004DD91 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 267BC23C1BF7C4730004DD91 /* icon.icns */; };
 		267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267BC23F1BF7C4730004DD91 /* ShareViewController.swift */; };
@@ -109,6 +109,7 @@
 		261D194C1FBE1A2F00C16669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		262DC87F1BE5508E0052404A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
+		2641A0CE1E9B314600E7E66E /* icon_512x512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_512x512@2x.png"; path = "../icon_512x512@2x.png"; sourceTree = "<group>"; };
 		2641E76E1BDD745800B634B2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2645522E1C02313C00DC82B1 /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
 		2645522F1C02313C00DC82B1 /* PocketAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPI.h; sourceTree = "<group>"; };
@@ -298,6 +299,7 @@
 				26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */,
 				262DC87F1BE5508E0052404A /* MainMenu.xib */,
 				261363701BE8344C0011F39E /* LoginView.xib */,
+				2641A0CE1E9B314600E7E66E /* icon_512x512@2x.png */,
 				268B24311BD6AF06009D6E0C /* Info.plist */,
 				267BC25E1BF7DDF10004DD91 /* Later.entitlements */,
 			);
@@ -523,6 +525,7 @@
 			files = (
 				268B24351BD6AF06009D6E0C /* Assets.xcassets in Resources */,
 				261363711BE8344C0011F39E /* LoginView.xib in Resources */,
+				2641A0CF1E9B314600E7E66E /* icon_512x512@2x.png in Resources */,
 				26C9B7CB1C41F0FD00237113 /* PopoverView.xib in Resources */,
 				26DC5C3F1C7D331F00F77EF2 /* OnboardingView.xib in Resources */,
 				262DC8801BE5508E0052404A /* MainMenu.xib in Resources */,
