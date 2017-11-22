@@ -20,10 +20,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "IKConstants.h"
-#import "IKURLConnection.h"
-#import "IKEngine.h"
+#import "LaterKit/IKConstants.h"
+#import "LaterKit/IKURLConnection.h"
+#import "LaterKit/IKEngine.h"
 
-#import "IKUser.h"
-#import "IKBookmark.h"
-#import "IKFolder.h"
+#import "LaterKit/IKUser.h"
+#import "LaterKit/IKBookmark.h"
+#import "LaterKit/IKFolder.h"

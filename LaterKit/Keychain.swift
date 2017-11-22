@@ -9,7 +9,7 @@
 import Foundation
 import Security
 
-final class Keychain: NSObject {
+public class Keychain: NSObject {
  
     @objc static func saveItem(_ item: String, account: String, service: String) {
         let path = Bundle.main.builtInPlugInsPath! + "/Read It Later.appex"

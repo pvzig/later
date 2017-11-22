@@ -21,7 +21,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonHMAC.h>
 
 
 @class IKEngine, IKURLConnection, IKUser, IKFolder, IKBookmark;

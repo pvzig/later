@@ -29,7 +29,7 @@
 #import <dispatch/dispatch.h>
 #import <sys/sysctl.h>
 #import <CommonCrypto/CommonDigest.h>
-#import "Later-Swift.h"
+#import <LaterKit/LaterKit-Swift.h>
 
 #define POCKET_SDK_VERSION @"1.0.2"
 #define PocketGlobalKeychainServiceName @"PocketAPI"

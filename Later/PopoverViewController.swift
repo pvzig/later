@@ -7,14 +7,9 @@
 //
 
 import Cocoa
+import LaterKit
 
-enum AccountType {
-    case instapaper
-    case pocket
-    case pinboard
-}
-
-class ViewController: NSViewController {
+class PopoverViewController: NSViewController {
     
     @IBOutlet var connectToInstapaper: NSButton!
     @IBOutlet var connectToPocket: NSButton!
@@ -22,30 +17,34 @@ class ViewController: NSViewController {
     
     @IBOutlet var footerLabel: NSTextField!
     
-    var controller: NSWindowController?
+    private var aboutWindowController: NSWindowController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+
+    public func configureUI() {
         setButtonTitles()
         setLabelText()
     }
-    
-    func setButtonTitles() {
+
+    private func setButtonTitles() {
         connectToInstapaper.title = buttonLabelText(User.instapaperAccount)
         connectToPinboard.title = buttonLabelText(User.pinboardAccount)
         connectToPocket.title = buttonLabelText(User.pocketAccount)
     }
     
-    func buttonLabelText(_ account: Bool) -> String {
-        if account == true {
+    private func buttonLabelText(_ account: Bool) -> String {
+        if account {
             return "Disconnect"
         } else {
-           return "Connect"
+            return "Connect"
         }
     }
     
-    func setLabelText() {
-        if User.instapaperAccount == true || User.pinboardAccount == true || User.pocketAccount == true {
+    private func setLabelText() {
+        if User.instapaperAccount || User.pinboardAccount || User.pocketAccount {
             footerLabel.stringValue = "Thanks for using Later!"
         } else {
             footerLabel.stringValue = "Connect your favorite read later service!"
@@ -53,54 +52,41 @@ class ViewController: NSViewController {
     }
     
     @IBAction func instapaperAction(_ sender: NSButton) {
-        if (User.instapaperAccount == false) {
-            let vc = LoginViewController(nibName: NSNib.Name(rawValue: "LoginView"), bundle: nil)
+        if !User.instapaperAccount {
+            let vc = LoginViewController(nibName: .LoginView, bundle: nil)
             vc.loginType = AccountType.instapaper
             presentViewControllerAsSheet(vc)
         } else {
-            if let account = User.instapaperAccountName {
-                Keychain.removeItem("later-instapaper-oauth-token", account: account)
-                Keychain.removeItem("later-instapaper-secret-token", account: account)
-            }
-            Later.defaults.set(false, forKey: "instapaper")
-            Later.defaults.set(nil, forKey: "instapaperAccountName")
-            User.save()
+            Later.shared.delete(type: .instapaper)
             setButtonTitles()
         }
     }
     
     @IBAction func pinboardAction(_ sender: NSButton) {
-        if (User.pinboardAccount == false) {
-            let vc = LoginViewController(nibName: NSNib.Name(rawValue: "LoginView"), bundle: nil)
+        if !User.pinboardAccount {
+            let vc = LoginViewController(nibName: .LoginView, bundle: nil)
             vc.loginType = AccountType.pinboard
             presentViewControllerAsSheet(vc)
         } else {
-            if let account = User.pinboardAccountName {
-                Keychain.removeItem("later-pinboard-api-token", account: account)
-            }
-            Later.defaults.set(false, forKey: "pinboard")
-            Later.defaults.set(nil, forKey: "pinboardAccountName")
-            User.save()
+            Later.shared.delete(type: .pinboard)
             setButtonTitles()
         }
     }
     
     @IBAction func pocketAction(_ sender: NSButton) {
         PocketAPI.shared().consumerKey = "47240-996424446c9727c03cfc1504"
-        if (User.pocketAccount == false) {
-            PocketAPI.shared().login(handler: {(API: PocketAPI?, error: Error?) -> Void in
-                if (error != nil) {
+        if !User.pocketAccount {
+            PocketAPI.shared().login(handler: { (API: PocketAPI?, error: Error?) -> Void in
+                if error != nil {
                     
                 } else {
-                    Later.defaults.set(true, forKey: "pocket")
-                    User.save()
+                    User.pocketLoginSuccess()
                     self.setButtonTitles()
                 }
             })
         } else {
             PocketAPI.shared().logout()
-            Later.defaults.set(false, forKey: "pocket")
-            User.save()
+            Later.shared.delete(type: .pocket)
             setButtonTitles()
         }
     }
@@ -112,9 +98,9 @@ class ViewController: NSViewController {
     
     func constructMenu() -> NSMenu {
         let menu = NSMenu()
-        let aboutItem = NSMenuItem(title: "About", action: #selector(ViewController.about), keyEquivalent: "")
-        let emailItem = NSMenuItem(title: "Support", action: #selector(ViewController.email), keyEquivalent: "")
-        let quitItem = NSMenuItem(title: "Quit", action: #selector(ViewController.quit), keyEquivalent: "q")
+        let aboutItem = NSMenuItem(title: "About", action: #selector(PopoverViewController.about), keyEquivalent: "")
+        let emailItem = NSMenuItem(title: "Support", action: #selector(PopoverViewController.email), keyEquivalent: "")
+        let quitItem = NSMenuItem(title: "Quit", action: #selector(PopoverViewController.quit), keyEquivalent: "q")
         aboutItem.target = self
         emailItem.target = self
         quitItem.target = self
@@ -125,9 +111,9 @@ class ViewController: NSViewController {
     }
     
     @objc func about() {
-        controller = NSWindowController(windowNibName: NSNib.Name(rawValue: "About"))
-        controller?.showWindow(nil)
-        if let delegate = NSApplication.shared.delegate as? AppDelegate  {
+        aboutWindowController = NSWindowController(windowNibName: NSNib.Name(rawValue: "About"))
+        aboutWindowController.showWindow(self)
+        if let delegate = NSApplication.shared.delegate as? AppDelegate {
             delegate.closePopover(self)
         }
     }
@@ -140,4 +126,8 @@ class ViewController: NSViewController {
     @objc func quit() {
         NSApplication.shared.terminate(self)
     }
+}
+
+private extension NSNib.Name {
+    static let LoginView = NSNib.Name(rawValue: "LoginView")
 }

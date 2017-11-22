@@ -8,12 +8,12 @@
 
 import Cocoa
 
-open class EventMonitor {
-    fileprivate var monitor: Any?
-    fileprivate let mask: NSEvent.EventTypeMask
-    fileprivate let handler: (NSEvent?) -> ()
-    
-    public init(mask: NSEvent.EventTypeMask, handler: @escaping (NSEvent?) -> ()) {
+class EventMonitor {
+    private var monitor: Any?
+    private let mask: NSEvent.EventTypeMask
+    private let handler: (NSEvent?) -> ()
+
+    init(mask: NSEvent.EventTypeMask, handler: @escaping (NSEvent?) -> ()) {
         self.mask = mask
         self.handler = handler
     }
@@ -21,13 +21,13 @@ open class EventMonitor {
     deinit {
         stop()
     }
-    
-    open func start() {
+
+    func start() {
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
         (NSApplication.shared.delegate as? AppDelegate)?.registerForNotifications()
     }
-    
-    open func stop() {
+
+    func stop() {
         if monitor != nil {
             NSEvent.removeMonitor(monitor!)
             monitor = nil

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 1,
+  "name": "Later: Read Later Extensions",
+  "description": "Save articles quickly and easily to the read later service of your choice",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_icon": "later.png"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}

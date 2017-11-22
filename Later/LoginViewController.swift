@@ -7,8 +7,9 @@
 //
 
 import Cocoa
+import LaterKit
 
-class LoginViewController: NSViewController, IKEngineDelegate {
+class LoginViewController: NSViewController {
  
     var loginType: AccountType?
     
@@ -20,14 +21,17 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     @IBOutlet var progressSpinner: NSProgressIndicator!
     
     override func viewDidAppear() {
+        super.viewDidAppear()
         (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.stop()
     }
     
     override func viewDidDisappear() {
+        super.viewDidDisappear()
         (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.start()
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         if loginType == .pinboard {
             passwordLabel.stringValue = "API Token:"
             helpButton.isHidden = false
@@ -40,15 +44,14 @@ class LoginViewController: NSViewController, IKEngineDelegate {
     }
     
     @IBAction func cancelAction(_ sender: NSButton) {
-        self.dismiss(self)
+        dismiss(self)
     }
     
     func dismiss() {
-        if let vc = presenting as? ViewController {
-            vc.setButtonTitles()
-            vc.setLabelText()
+        if let vc = presenting as? PopoverViewController {
+            vc.configureUI()
         }
-        self.dismiss(self)
+        dismiss(self)
     }
     
     @IBAction func loginButton(_ sender: NSButton) {
@@ -57,69 +60,33 @@ class LoginViewController: NSViewController, IKEngineDelegate {
         if let type = loginType {
             switch type {
             case .instapaper:
-                instapaperLogin()
+                Later.shared.login(
+                    type: .instapaper,
+                    username: usernameField.stringValue,
+                    password: passwordField.stringValue,
+                    success: {
+                        self.progressSpinner.stopAnimation(self)
+                        self.dismiss()
+                }, failure: { errorMessage in
+                    self.statusLabel.stringValue = errorMessage
+                    self.progressSpinner.stopAnimation(self)
+
+                })
             case .pinboard:
-                pinboardLogin()
+                Later.shared.login(
+                    type: .pinboard,
+                    username: usernameField.stringValue,
+                    password: passwordField.stringValue,
+                    success: {
+                        self.progressSpinner.stopAnimation(self)
+                        self.dismiss()
+                }, failure: { errorMessage in
+                    self.statusLabel.stringValue = errorMessage
+                    self.progressSpinner.stopAnimation(self)
+                })
             case .pocket:
                 break
             }
         }
     }
-    
-    func pinboardLogin() {
-        let user = usernameField.stringValue
-        let token = passwordField.stringValue
-        var components = URLComponents(string: "https://api.pinboard.in/v1/user/api_token")
-        components?.queryItems = [
-            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
-        ]
-        guard let url = components?.url else {
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                guard let r = response as? HTTPURLResponse, r.statusCode == 200 else {
-                    self.statusLabel.stringValue = "Pinboard API token validation failed."
-                    self.progressSpinner.stopAnimation(nil)
-                    return
-                }
-                Later.defaults.set(user, forKey: "pinboardAccountName")
-                Later.defaults.set(true, forKey: "pinboard")
-                Keychain.saveItem(token, account: user, service: "later-pinboard-api-token")
-                User.save()
-                self.progressSpinner.stopAnimation(nil)
-                self.dismiss()
-            }
-        }.resume()
-    }
-    
-    func instapaperLogin() {
-        var client: IKEngine?
-        IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
-        client = IKEngine(delegate: self)
-        _ = client?.authToken(forUsername: usernameField.stringValue, password: passwordField.stringValue, userInfo: nil)
-        Later.defaults.set(usernameField.stringValue, forKey: "instapaperAccountName")
-        User.save()
-    }
-    
-    //MARK: IKEngineDelegate
-    func engine(_ engine: IKEngine!, connection: IKURLConnection!, didReceiveAuthToken token: String!, andTokenSecret secret: String!) {
-        engine.oAuthToken  = token
-        engine.oAuthTokenSecret = secret
-        if let account = User.instapaperAccountName {
-            Keychain.saveItem(token, account: account, service: "later-instapaper-oauth-token")
-            Keychain.saveItem(secret, account: account, service: "later-instapaper-secret-token")
-            Later.defaults.set(true, forKey: "instapaper")
-            User.save()
-        }
-        progressSpinner.stopAnimation(nil)
-        dismiss()
-    }
-    
-    func engine(_ engine: IKEngine!, didFail connection: IKURLConnection!, error: Error!) {
-        statusLabel.stringValue = "Instapaper login failed."
-        progressSpinner.stopAnimation(nil)
-    }    
 }

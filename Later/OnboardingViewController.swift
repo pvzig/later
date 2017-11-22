@@ -7,18 +7,15 @@
 //
 
 import Cocoa
+import LaterKit
 
 class OnboardingViewController: NSViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
-        UserDefaults.standard.set(true, forKey: "onboardingComplete")
+        User.setOnboardingComplete()
         if let delegate = NSApplication.shared.delegate as? AppDelegate  {
-            delegate.popover.contentViewController = ViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
+            delegate.popover.contentViewController = PopoverViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
             delegate.closePopover(self)
         }
     }

@@ -31,7 +31,7 @@
 #import "IKURLConnection+Private.h"
 
 #import "NSData+Base64.h"
-
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface IKEngine ()
 
