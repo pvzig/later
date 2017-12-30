@@ -19,6 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
 
+    static var sharedDelegate: AppDelegate {
+        return NSApplication.shared.delegate as! AppDelegate
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         window.hidesOnDeactivate = true
         window.canHide = true
@@ -39,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUpdateDynamicServices()
 
         // Monitor events for dismissing the popover
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [unowned self] event in
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { event in
             if self.popover.isShown {
                 self.closePopover(event)
             }

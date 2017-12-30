@@ -14,9 +14,7 @@ class OnboardingViewController: NSViewController {
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
         User.setOnboardingComplete()
-        if let delegate = NSApplication.shared.delegate as? AppDelegate  {
-            delegate.popover.contentViewController = PopoverViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
-            delegate.closePopover(self)
-        }
+        AppDelegate.sharedDelegate.popover.contentViewController = PopoverViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
+        AppDelegate.sharedDelegate.closePopover(self)
     }
 }

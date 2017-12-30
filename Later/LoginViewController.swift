@@ -22,12 +22,12 @@ class LoginViewController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.stop()
+        AppDelegate.sharedDelegate.eventMonitor?.stop()
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear()
-        (NSApplication.shared.delegate as? AppDelegate)?.eventMonitor?.start()
+        AppDelegate.sharedDelegate.eventMonitor?.start()
     }
     
     override func viewDidLoad() {
