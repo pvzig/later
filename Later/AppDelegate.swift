@@ -14,13 +14,12 @@ import LaterKit
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    
+
     let statusItem = NSStatusBar.system.statusItem(withLength: 19)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        registerForLaterURLScheme()
         window.hidesOnDeactivate = true
         window.canHide = true
 
@@ -76,26 +75,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showPopover(sender)
         }
     }
-
-    // Chrome extension
-    func registerForLaterURLScheme() {
-        NSAppleEventManager.shared().setEventHandler(self, andSelector: .getURL, forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-    }
-    
-    @objc func handleGetURLEvent(_ event: NSAppleEventDescriptor, with replyEvent:NSAppleEventDescriptor) {
-        guard
-            let keyObject = event.paramDescriptor(forKeyword: keyDirectObject),
-            let urlString = keyObject.stringValue,
-            let url = URL(string:urlString)
-        else {
-            return
-        }
-        print(url)
-    }
 }
 
 private extension Selector {
     static let togglePopover = #selector(AppDelegate.togglePopover(_:))
-    static let getURL = #selector(AppDelegate.handleGetURLEvent(_:with:))
     static let closePopover = #selector(AppDelegate.closePopover(_:))
 }

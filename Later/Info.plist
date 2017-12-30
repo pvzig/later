@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.4</string>
+	<string>1.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -32,21 +32,9 @@
 				<string>pocketapp47240</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleURLIconFile</key>
-			<string>icon_512x512@2x</string>
-			<key>CFBundleURLName</key>
-			<string>com.launchsoft.later</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>later</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>14</string>
+	<string>15</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
@@ -76,24 +64,24 @@
 			<string>saveArticle</string>
 			<key>NSPortName</key>
 			<string>Later</string>
+			<key>NSRequiredContext</key>
+			<array>
+				<dict>
+					<key>NSTextContent</key>
+					<string>URL</string>
+				</dict>
+				<dict>
+					<key>NSLinkSchemes</key>
+					<array>
+						<string>http</string>
+						<string>https</string>
+					</array>
+				</dict>
+			</array>
 			<key>NSSendTypes</key>
 			<array>
 				<string>public.rtf</string>
 				<string>public.utf8-plain-text</string>
-			</array>
-			<key>NSRequiredContext</key>
-			<array>
-				<dict>
-				<key>NSTextContent</key>
-				<string>URL</string>
-				</dict>
-				<dict>
-				<key>NSLinkSchemes</key>
-				<array>
-					<string>http</string>
-					<string>https</string>
-				</array>
-				</dict>
 			</array>
 		</dict>
 	</array>

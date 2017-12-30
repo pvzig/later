@@ -25,6 +25,7 @@ class ShareViewController: NSViewController {
             return
         }
         for provider in attachments {
+            // Safari
             if provider.hasItemConformingToTypeIdentifier(kUTTypePropertyList as String) {
                 provider.loadItem(forTypeIdentifier: kUTTypePropertyList as String, options: nil, completionHandler: { (item, error) in
                     let dict = item as? [String: Any]
@@ -37,6 +38,21 @@ class ShareViewController: NSViewController {
                         self.finish()
                     }
                 })
+            // Chrome
+            } else if provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String) {
+                provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil, completionHandler: { (item, error) in
+                    guard let url = item as? URL else {
+                        self.finish()
+                        return
+                    }
+                    Later.shared.saveURL(url, title: nil)
+                    Later.shared.saveGroup.notify(queue: .main) {
+                        self.finish()
+                    }
+                })
+            // Failed
+            } else {
+                self.finish()
             }
         }
     }
