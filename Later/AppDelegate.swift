@@ -28,14 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.canHide = true
 
         if let button = statusItem.button {
-            button.image = NSImage(named: NSImage.Name(rawValue: "later-menu"))
+            button.image = NSImage(named: "later-menu")
             button.action = .togglePopover
         }
         
         if !User.onboardingComplete {
-            popover.contentViewController = OnboardingViewController(nibName: NSNib.Name(rawValue: "OnboardingView"), bundle: nil)
+            popover.contentViewController = OnboardingViewController(nibName: "OnboardingView", bundle: nil)
         } else {
-            popover.contentViewController = PopoverViewController(nibName: NSNib.Name(rawValue: "PopoverView"), bundle: nil)
+            popover.contentViewController = PopoverViewController(nibName: "PopoverView", bundle: nil)
         }
 
         // Service

@@ -48,7 +48,7 @@ class LoginViewController: NSViewController {
     }
     
     func dismiss() {
-        if let vc = presenting as? PopoverViewController {
+        if let vc = presentingViewController as? PopoverViewController {
             vc.configureUI()
         }
         dismiss(self)

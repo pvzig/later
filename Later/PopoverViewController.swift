@@ -55,7 +55,7 @@ class PopoverViewController: NSViewController {
         if !User.instapaperAccount {
             let vc = LoginViewController(nibName: .LoginView, bundle: nil)
             vc.loginType = AccountType.instapaper
-            presentViewControllerAsSheet(vc)
+            presentAsSheet(vc)
         } else {
             Later.shared.delete(type: .instapaper)
             setButtonTitles()
@@ -66,7 +66,7 @@ class PopoverViewController: NSViewController {
         if !User.pinboardAccount {
             let vc = LoginViewController(nibName: .LoginView, bundle: nil)
             vc.loginType = AccountType.pinboard
-            presentViewControllerAsSheet(vc)
+            presentAsSheet(vc)
         } else {
             Later.shared.delete(type: .pinboard)
             setButtonTitles()
@@ -111,7 +111,7 @@ class PopoverViewController: NSViewController {
     }
     
     @objc func about() {
-        aboutWindowController = NSWindowController(windowNibName: NSNib.Name(rawValue: "About"))
+        aboutWindowController = NSWindowController(windowNibName: "About")
         aboutWindowController.showWindow(self)
         if let delegate = NSApplication.shared.delegate as? AppDelegate {
             delegate.closePopover(self)
@@ -129,5 +129,5 @@ class PopoverViewController: NSViewController {
 }
 
 private extension NSNib.Name {
-    static let LoginView = NSNib.Name(rawValue: "LoginView")
+    static let LoginView = "LoginView"
 }

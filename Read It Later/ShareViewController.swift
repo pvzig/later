@@ -12,12 +12,12 @@ import LaterKit
 class ShareViewController: NSViewController {
     
     override var nibName: NSNib.Name? {
-        return NSNib.Name(rawValue: "ShareViewController")
+        return "ShareViewController"
     }
     
     override func loadView() {
         super.loadView()
-        guard let item = self.extensionContext?.inputItems[0] as? NSExtensionItem, let attachments = item.attachments as? [NSItemProvider] else {
+        guard let item = self.extensionContext?.inputItems[0] as? NSExtensionItem, let attachments = item.attachments else {
             finish()
             return
         }
