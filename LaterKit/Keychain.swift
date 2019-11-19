@@ -6,7 +6,6 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-import Foundation
 import Security
 
 public class Keychain: NSObject {

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-import Cocoa
 import LaterKit
 
 class LoginViewController: NSViewController {
@@ -19,16 +18,6 @@ class LoginViewController: NSViewController {
     @IBOutlet var helpButton: NSButton!
     @IBOutlet var statusLabel: NSTextField!
     @IBOutlet var progressSpinner: NSProgressIndicator!
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        AppDelegate.sharedDelegate.eventMonitor?.stop()
-    }
-    
-    override func viewDidDisappear() {
-        super.viewDidDisappear()
-        AppDelegate.sharedDelegate.eventMonitor?.start()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +37,7 @@ class LoginViewController: NSViewController {
     }
     
     func dismiss() {
-        if let vc = presentingViewController as? PopoverViewController {
+        if let vc = presentingViewController as? MainViewController {
             vc.configureUI()
         }
         dismiss(self)

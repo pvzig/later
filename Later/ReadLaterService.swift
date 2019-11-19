@@ -6,7 +6,6 @@
 //  Copyright © 2017 Launch Software. All rights reserved.
 //
 
-import Cocoa
 import LaterKit
 
 class ReadLaterService: NSObject {

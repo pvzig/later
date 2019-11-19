@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613636E1BE8175A0011F39E /* EventMonitor.swift */; };
 		261363711BE8344C0011F39E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261363701BE8344C0011F39E /* LoginView.xib */; };
 		261363731BE835D00011F39E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261363721BE835D00011F39E /* LoginViewController.swift */; };
 		261885701FBEA019007BE611 /* LaterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261D19491FBE1A2F00C16669 /* LaterKit.framework */; };
@@ -50,9 +49,8 @@
 		268922121FBB7D5700515202 /* ReadLaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268922111FBB7D5700515202 /* ReadLaterService.swift */; };
 		268B24341BD6AF06009D6E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B242D1BD6AF06009D6E0C /* AppDelegate.swift */; };
 		268B24351BD6AF06009D6E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
-		268B24391BD6AF06009D6E0C /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24331BD6AF06009D6E0C /* PopoverViewController.swift */; };
+		268B24391BD6AF06009D6E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24331BD6AF06009D6E0C /* MainViewController.swift */; };
 		26B26ACE1FBE1FD5003B7067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24561BD70DD6009D6E0C /* User.swift */; };
-		26C9B7CB1C41F0FD00237113 /* PopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C9B7CA1C41F0FD00237113 /* PopoverView.xib */; };
 		26DC5C3F1C7D331F00F77EF2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */; };
 		26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -100,7 +98,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2613636E1BE8175A0011F39E /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		261363701BE8344C0011F39E /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		261363721BE835D00011F39E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		261885711FBF5B8E007BE611 /* Later.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Later.swift; sourceTree = "<group>"; };
@@ -136,9 +133,8 @@
 		268B242D1BD6AF06009D6E0C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		268B242E1BD6AF06009D6E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		268B24311BD6AF06009D6E0C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		268B24331BD6AF06009D6E0C /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		268B24331BD6AF06009D6E0C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		268B24561BD70DD6009D6E0C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		26C9B7CA1C41F0FD00237113 /* PopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverView.xib; sourceTree = "<group>"; };
 		26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		26DE1DC31CFB825C003AE363 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -279,8 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				268B242D1BD6AF06009D6E0C /* AppDelegate.swift */,
-				2613636E1BE8175A0011F39E /* EventMonitor.swift */,
-				268B24331BD6AF06009D6E0C /* PopoverViewController.swift */,
+				268B24331BD6AF06009D6E0C /* MainViewController.swift */,
 				261363721BE835D00011F39E /* LoginViewController.swift */,
 				26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */,
 				268922111FBB7D5700515202 /* ReadLaterService.swift */,
@@ -293,10 +288,9 @@
 			isa = PBXGroup;
 			children = (
 				268B242E1BD6AF06009D6E0C /* Assets.xcassets */,
-				26515AB81D04D9330001C1FB /* About.xib */,
-				26C9B7CA1C41F0FD00237113 /* PopoverView.xib */,
-				26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */,
 				262DC87F1BE5508E0052404A /* MainMenu.xib */,
+				26515AB81D04D9330001C1FB /* About.xib */,
+				26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */,
 				261363701BE8344C0011F39E /* LoginView.xib */,
 				268B24311BD6AF06009D6E0C /* Info.plist */,
 				267BC25E1BF7DDF10004DD91 /* Later.entitlements */,
@@ -491,7 +485,7 @@
 				};
 			};
 			buildConfigurationList = 266E06111BC0D4A400840D76 /* Build configuration list for PBXProject "Later" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -524,7 +518,6 @@
 			files = (
 				268B24351BD6AF06009D6E0C /* Assets.xcassets in Resources */,
 				261363711BE8344C0011F39E /* LoginView.xib in Resources */,
-				26C9B7CB1C41F0FD00237113 /* PopoverView.xib in Resources */,
 				26DC5C3F1C7D331F00F77EF2 /* OnboardingView.xib in Resources */,
 				262DC8801BE5508E0052404A /* MainMenu.xib in Resources */,
 				26515AB91D04D9330001C1FB /* About.xib in Resources */,
@@ -576,8 +569,7 @@
 				268922121FBB7D5700515202 /* ReadLaterService.swift in Sources */,
 				261363731BE835D00011F39E /* LoginViewController.swift in Sources */,
 				26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */,
-				2613636F1BE8175A0011F39E /* EventMonitor.swift in Sources */,
-				268B24391BD6AF06009D6E0C /* PopoverViewController.swift in Sources */,
+				268B24391BD6AF06009D6E0C /* MainViewController.swift in Sources */,
 				268B24341BD6AF06009D6E0C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,7 +622,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LaterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.LaterKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -668,7 +664,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LaterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.LaterKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -729,7 +729,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -781,12 +781,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "~/Git/Later/Later/BridgingHeader.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Later-Swift.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -800,8 +801,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -822,8 +826,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -844,8 +851,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Read It Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -866,8 +877,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Read It Later/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -518,10 +518,13 @@ static PocketAPI *sSharedAPI = nil;
 
 -(void)pkt_saveCurrentLoginToDefaults{
 	if(currentLogin){
-		NSData *loginData = [NSKeyedArchiver archivedDataWithRootObject:currentLogin];
-		
-		NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
-		[defaults setObject:loginData forKey:kPocketAPICurrentLoginKey];
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+
+        if (@available(macOS 10.11, *)) {
+            NSData *loginData = [NSKeyedArchiver archivedDataWithRootObject:currentLogin];
+            [defaults setObject:loginData forKey:kPocketAPICurrentLoginKey];
+        }
+        
 		[defaults synchronize];
 		[defaults release];
 	}
