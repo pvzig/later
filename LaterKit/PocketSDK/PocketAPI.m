@@ -182,7 +182,7 @@ static PocketAPI *sSharedAPI = nil;
 	}
 	
 	// ensure the access token stored matches the consumer key that generated it
-    NSString *existingHash = [Keychain fetchItem:@"later-pocket-token-digest" account:[User pocketAccountName]];
+    NSString *existingHash = [User pocketTokenDigest];
     NSString *currentHash = [[self class] pkt_hashForConsumerKey:self.consumerKey accessToken:[self pkt_getToken]];
 		
     if(![existingHash isEqualToString:currentHash]){
@@ -444,28 +444,19 @@ static PocketAPI *sSharedAPI = nil;
 #pragma mark Account Info
 
 -(NSString *)username{
-    return [User pocketAccountName];
+    return User.pocketAccountName;
 }
 
 -(NSString *)pkt_getToken{
-    return [Keychain fetchItem:@"later-pocket-token" account:[User pocketAccountName]];
+    return [User pocketToken];
 }
 
 -(void)pkt_loggedInWithUsername:(NSString *)username token:(NSString *)token{
 	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
     
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
-    [defaults setObject:username forKey:@"pocketAccountName"];
-    [defaults synchronize];
-    
-    [Keychain saveItem:token
-               account:[User pocketAccountName]
-               service:@"later-pocket-token"];
-    
-    [Keychain saveItem:[[self class] pkt_hashForConsumerKey:self.consumerKey accessToken:token]
-               account:[User pocketAccountName]
-               service:@"later-pocket-token-digest"];
+    [User setPocketToken:token];
+    [User setPocketTokenDigest:[PocketAPI pkt_hashForConsumerKey:self.consumerKey accessToken:token]];
 	
 	[self  didChangeValueForKey:@"isLoggedIn"];
 	[self  didChangeValueForKey:@"username"];
@@ -481,12 +472,7 @@ static PocketAPI *sSharedAPI = nil;
 	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
 	
-    [Keychain removeItem:@"later-pocket-token" account:[User pocketAccountName]];
-    [Keychain removeItem:@"later-pocket-token-digest" account:[User pocketAccountName]];
-
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
-    [defaults setObject:NULL forKey:@"pocketAccountName"];
-    [defaults synchronize];
+    [User pocketLogout];
     
 	[self didChangeValueForKey:@"isLoggedIn"];
 	[self didChangeValueForKey:@"username"];

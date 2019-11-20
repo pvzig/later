@@ -6,6 +6,8 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
+import KeychainAccess
+
 public class User: NSObject {
     private static let defaults = UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
 
@@ -14,42 +16,64 @@ public class User: NSObject {
     }
 
     // MARK: - Onboarding
-
-    static public func setOnboardingComplete(_ complete: Bool) {
-        UserDefaults.standard.set(complete, forKey: Keys.onboarding)
-    }
     
-    static public var isOnboardingComplete: Bool {
-        return UserDefaults.standard.bool(forKey: Keys.onboarding)
+    public static var isOnboardingComplete: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Keys.onboarding)
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.onboarding)
+        }
     }
 
     // MARK: - Services
-
-    static public func setAccount(_ type: AccountType) {
-        defaults.set(true, forKey: type.accountKey)
-    }
-
-    static public func setAccountName(_ type: AccountType, account: String) {
-        defaults.set(account, forKey: type.nameKey)
-    }
-
-    static public func hasAccount(_ type: AccountType) -> Bool {
-        return defaults.bool(forKey: type.accountKey)
-    }
-
-    static public func accountName(_ type: AccountType) -> String? {
-        return defaults.string(forKey: type.nameKey)
-    }
-
-    static public func removeService(_ type: AccountType) {
-        defaults.removeObject(forKey: type.nameKey)
-        defaults.removeObject(forKey: type.accountKey)
+    
+    public static func hasAccount(_ type: AccountType) -> Bool {
+        switch type {
+        case .instapaper:
+            return Later.shared.keychain[Later.Constants.Instapaper.oauthToken] != nil
+        case .pocket:
+            return Later.shared.keychain[Later.Constants.Pocket.tokenKey] != nil
+        case .pinboard:
+            return Later.shared.keychain[Later.Constants.Pinboard.apiToken] != nil
+        }
     }
 }
 
-@objc
-public extension User {
-    static var pocketAccountName: String? {
-        return accountName(.pocket)
+// Interface with the Obj-C Pocket SDK
+extension User {
+    
+    private struct Constants {
+        static let key = "pocketAccountName"
+    }
+    
+    @objc static var pocketAccountName: String? {
+        return defaults.string(forKey: Constants.key)
+    }
+    
+    @objc static func setPocketAccountName(_ name: String) {
+        defaults.set(name, forKey: Constants.key)
+    }
+    
+    @objc static var pocketToken: String? {
+        return Later.shared.keychain[Later.Constants.Pocket.tokenKey]
+    }
+    
+    @objc static func setPocketToken(_ value: String) {
+        Later.shared.keychain[Later.Constants.Pocket.tokenKey] = value
+    }
+    
+    @objc static var pocketTokenDigest: String? {
+        return Later.shared.keychain[Later.Constants.Pocket.tokenDigestKey]
+    }
+    
+    @objc static func setPocketTokenDigest(_ value: String) {
+        Later.shared.keychain[Later.Constants.Pocket.tokenDigestKey] = value
+    }
+    
+    @objc static func pocketLogout() {
+        try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenKey)
+        try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenDigestKey)
+        defaults.removeObject(forKey: Constants.key)
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,7 +37,6 @@
 		261D19601FBE1BFB00C16669 /* NSString+IKEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E1A1CFE7FD5003AE363 /* NSString+IKEncoding.m */; };
 		261D19611FBE1BFE00C16669 /* IKDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E1C1CFE7FD5003AE363 /* IKDeserializer.m */; };
 		261D19621FBE1C0600C16669 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */; };
-		261D19631FBE1EB300C16669 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DE1DC31CFB825C003AE363 /* Keychain.swift */; };
 		262DC8801BE5508E0052404A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262DC87F1BE5508E0052404A /* MainMenu.xib */; };
 		262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */; };
 		262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
@@ -53,6 +52,8 @@
 		26B26ACE1FBE1FD5003B7067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B24561BD70DD6009D6E0C /* User.swift */; };
 		26DC5C3F1C7D331F00F77EF2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */; };
 		26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */; };
+		AD6281B02384453B004CFA76 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6281AF2384453B004CFA76 /* KeychainAccess */; };
+		AD6281B22384460C004CFA76 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6281B12384460C004CFA76 /* AccountType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,7 +138,6 @@
 		268B24561BD70DD6009D6E0C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		26DC5C3E1C7D331F00F77EF2 /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		26DE1DC31CFB825C003AE363 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		26DE1E0B1CFE7FD5003AE363 /* InstapaperKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstapaperKit.h; sourceTree = "<group>"; };
 		26DE1E0C1CFE7FD5003AE363 /* IKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKConstants.h; sourceTree = "<group>"; };
 		26DE1E0D1CFE7FD5003AE363 /* IKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKConstants.m; sourceTree = "<group>"; };
@@ -158,6 +158,7 @@
 		26DE1E1D1CFE7FD5003AE363 /* IKURLConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IKURLConnection+Private.h"; sourceTree = "<group>"; };
 		26DE1E1F1CFE7FD5003AE363 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		AD6281B12384460C004CFA76 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6281B02384453B004CFA76 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				261885711FBF5B8E007BE611 /* Later.swift */,
-				26DE1DC31CFB825C003AE363 /* Keychain.swift */,
+				AD6281B12384460C004CFA76 /* AccountType.swift */,
 				268B24561BD70DD6009D6E0C /* User.swift */,
 				2645522D1C02313C00DC82B1 /* PocketSDK */,
 				26DE1E281CFE7FD5003AE363 /* InstapaperKit */,
@@ -394,6 +396,9 @@
 			dependencies = (
 			);
 			name = LaterKit;
+			packageProductDependencies = (
+				AD6281AF2384453B004CFA76 /* KeychainAccess */,
+			);
 			productName = LaterKit;
 			productReference = 261D19491FBE1A2F00C16669 /* LaterKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -442,7 +447,7 @@
 		266E060E1BC0D4A400840D76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Launch Software";
 				TargetAttributes = {
@@ -493,6 +498,9 @@
 				Base,
 			);
 			mainGroup = 266E060D1BC0D4A400840D76;
+			packageReferences = (
+				AD6281AE2384453B004CFA76 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 266E06171BC0D4A400840D76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -555,10 +563,10 @@
 				261D195F1FBE1BF400C16669 /* IKFolder.m in Sources */,
 				261D19551FBE1BC300C16669 /* PocketAPI.m in Sources */,
 				261D19561FBE1BC900C16669 /* PocketAPIExtensionSafe.m in Sources */,
+				AD6281B22384460C004CFA76 /* AccountType.swift in Sources */,
 				261D195D1FBE1BEE00C16669 /* IKUser.m in Sources */,
 				261D19611FBE1BFE00C16669 /* IKDeserializer.m in Sources */,
 				261D195C1FBE1BE700C16669 /* IKEngine.m in Sources */,
-				261D19631FBE1EB300C16669 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +945,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD6281AE2384453B004CFA76 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD6281AF2384453B004CFA76 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD6281AE2384453B004CFA76 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 266E060E1BC0D4A400840D76 /* Project object */;
 }

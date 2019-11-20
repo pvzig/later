@@ -7,6 +7,7 @@
 //
 
 import LaterKit
+import OSLog
 
 class ReadLaterService: NSObject {
 
@@ -20,10 +21,17 @@ class ReadLaterService: NSObject {
                                                       options: [.documentType: NSAttributedString.DocumentType.rtf],
                                                       documentAttributes: nil)
                     let attributes = attr.attributes(at: 0, longestEffectiveRange: nil, in: NSRange(location: 0, length: attr.length))
+                    // Check for a link
                     guard let url = attributes[NSAttributedString.Key.link] as? URL else { continue }
+                    // Check for a title
                     let title = item.string(forType: NSPasteboard.PasteboardType(rawValue: "public.utf8-plain-text"))
+                    // Save URL via the service
                     Later.shared.saveURL(url, title: title)
-                } catch {}
+                } catch let error {
+                    if #available(OSX 10.14, *) {
+                        os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
+                    }
+                }
             }
         }
     }

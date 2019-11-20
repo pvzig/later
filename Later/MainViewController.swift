@@ -19,8 +19,8 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
         configureUI()
     }
-
-    public func configureUI() {
+    
+    func configureUI() {
         setButtonTitles()
         setLabelText()
     }
@@ -32,11 +32,7 @@ class MainViewController: NSViewController {
     }
     
     private func buttonLabelText(_ account: Bool) -> String {
-        if account {
-            return "Disconnect"
-        } else {
-            return "Connect"
-        }
+        return account ? "Disconnect" : "Connect"
     }
     
     private func setLabelText() {
@@ -49,9 +45,7 @@ class MainViewController: NSViewController {
     
     @IBAction func instapaperAction(_ sender: NSButton) {
         if !User.hasAccount(.instapaper) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: .main)
-            vc.loginType = .instapaper
-            presentAsSheet(vc)
+            present(LoginViewController(loginType: .instapaper), asPopoverRelativeTo: connectToInstapaper.frame, of: view, preferredEdge: .maxX, behavior: .semitransient)
         } else {
             Later.shared.delete(type: .instapaper)
             setButtonTitles()
@@ -60,9 +54,7 @@ class MainViewController: NSViewController {
     
     @IBAction func pinboardAction(_ sender: NSButton) {
         if !User.hasAccount(.pinboard) {
-            let vc = LoginViewController(nibName: "LoginView", bundle: nil)
-            vc.loginType = .pinboard
-            presentAsSheet(vc)
+            present(LoginViewController(loginType: .pinboard), asPopoverRelativeTo: connectToPinboard.frame, of: view, preferredEdge: .maxX, behavior: .semitransient)
         } else {
             Later.shared.delete(type: .pinboard)
             setButtonTitles()
@@ -70,16 +62,13 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func pocketAction(_ sender: NSButton) {
-        PocketAPI.shared().consumerKey = "47240-996424446c9727c03cfc1504"
         if !User.hasAccount(.pocket) {
-            PocketAPI.shared().login(handler: { (API: PocketAPI?, error: Error?) -> Void in
-                if error != nil {
-                    
-                } else {
-                    User.setAccount(.pocket)
-                    self.setButtonTitles()
-                }
-            })
+            // Username and password are gathered by the web ui flow
+            Later.shared.login(type: .pocket, username: "", password: "", success: {
+                self.setButtonTitles()
+            }) { error in
+                self.setButtonTitles()
+            }
         } else {
             PocketAPI.shared().logout()
             Later.shared.delete(type: .pocket)

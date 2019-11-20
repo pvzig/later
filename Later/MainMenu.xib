@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,7 +24,7 @@
                 <outlet property="connectToPinboard" destination="s1e-0A-2oA" id="0oJ-v1-OB8"/>
                 <outlet property="connectToPocket" destination="nM1-s3-d3H" id="72L-2U-OKe"/>
                 <outlet property="footerLabel" destination="PaM-bZ-SL2" id="epw-Ws-zDy"/>
-                <outlet property="sourceItemView" destination="RPR-6K-HgL" id="gGP-W9-DhW"/>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="mJD-Xf-DhS"/>
             </connections>
         </viewController>
         <menu title="Main Menu" systemMenu="main" id="T38-g4-qLL">
@@ -136,30 +136,30 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1021" y="571" width="375" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1097"/>
             <value key="minSize" type="size" width="375" height="270"/>
             <value key="maxSize" type="size" width="375" height="270"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPR-6K-HgL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                        <rect key="frame" x="0.0" y="34" width="375" height="236"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="tDZ-Ob-jif">
-                                <rect key="frame" x="0.0" y="168" width="375" height="5"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-X1-ROq">
-                                <rect key="frame" x="0.0" y="122" width="375" height="5"/>
+                                <rect key="frame" x="0.0" y="118" width="375" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="J9n-tq-vVI">
-                                <rect key="frame" x="0.0" y="76" width="375" height="5"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="sED-6t-Oom">
-                                <rect key="frame" x="0.0" y="30" width="375" height="5"/>
+                                <rect key="frame" x="0.0" y="26" width="375" height="5"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-SM-JRR">
-                                <rect key="frame" x="274" y="130" width="92" height="32"/>
+                                <rect key="frame" x="274" y="126" width="92" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jGs-i4-BEx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-s3-d3H">
-                                <rect key="frame" x="274" y="38" width="92" height="32"/>
+                                <rect key="frame" x="274" y="34" width="92" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iDQ-Az-K6j">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -179,7 +179,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="816-nc-62Z">
-                                <rect key="frame" x="66" y="133" width="78" height="30"/>
+                                <rect key="frame" x="66" y="129" width="79" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="rge-yw-hKL"/>
                                 </constraints>
@@ -190,7 +190,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-ft-mlY">
-                                <rect key="frame" x="20" y="133" width="30" height="30"/>
+                                <rect key="frame" x="20" y="129" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Ztr-eA-6od"/>
                                     <constraint firstAttribute="height" constant="30" id="m9s-KF-Xo0"/>
@@ -198,7 +198,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="instapaper" id="NGM-KG-srm"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-h0-U36">
-                                <rect key="frame" x="66" y="41" width="51" height="30"/>
+                                <rect key="frame" x="66" y="37" width="52" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="66O-Sq-lVa"/>
                                 </constraints>
@@ -209,7 +209,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-Fd-jEH">
-                                <rect key="frame" x="20" y="41" width="30" height="30"/>
+                                <rect key="frame" x="20" y="37" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8eb-cF-Ew6"/>
                                     <constraint firstAttribute="width" constant="30" id="OAN-JJ-wAL"/>
@@ -217,7 +217,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="pocket" id="gU1-NI-zCu"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLl-AT-U9L">
-                                <rect key="frame" x="8" y="173" width="113" height="19"/>
+                                <rect key="frame" x="8" y="173" width="114" height="15"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Read Later Services" id="TqK-Nt-dCY">
                                     <font key="font" size="13" name="SFCompactDisplay-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -225,7 +225,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tih-QN-q3I">
-                                <rect key="frame" x="265" y="174" width="110" height="110"/>
+                                <rect key="frame" x="265" y="170" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="Tmv-5c-3Qq"/>
                                     <constraint firstAttribute="width" constant="110" id="dyo-kQ-KEd"/>
@@ -233,7 +233,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="zbW-kj-v3u"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaM-bZ-SL2">
-                                <rect key="frame" x="76" y="8" width="223" height="19"/>
+                                <rect key="frame" x="75" y="8" width="225" height="15"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Connect your favorite read later service!" id="JtR-Tz-DEh">
                                     <font key="font" size="13" name="SFCompactDisplay-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -241,7 +241,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="959-Xz-9gI">
-                                <rect key="frame" x="158" y="194" width="60" height="31"/>
+                                <rect key="frame" x="157" y="191" width="62" height="30"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Later" id="fC6-g3-V9v">
                                     <font key="font" metaFont="system" size="26"/>
                                     <color key="textColor" red="0.90196078430000004" green="0.1529411765" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -249,7 +249,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s1e-0A-2oA">
-                                <rect key="frame" x="274" y="84" width="92" height="32"/>
+                                <rect key="frame" x="274" y="80" width="92" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Tw-SN-olw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZpX-vW-hQi">
-                                <rect key="frame" x="66" y="87" width="66" height="30"/>
+                                <rect key="frame" x="66" y="83" width="67" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qVu-iR-Tfr"/>
                                 </constraints>
@@ -270,7 +270,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-ke-xQW">
-                                <rect key="frame" x="20" y="87" width="30" height="30"/>
+                                <rect key="frame" x="20" y="83" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cz0-MO-UhP"/>
                                     <constraint firstAttribute="width" constant="30" id="ie1-xC-s6G"/>
@@ -331,7 +331,7 @@
                     <constraint firstAttribute="trailing" secondItem="RPR-6K-HgL" secondAttribute="trailing" id="x1K-XL-oy7"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="327" y="266"/>
+            <point key="canvasLocation" x="327" y="257"/>
         </window>
     </objects>
     <resources>
