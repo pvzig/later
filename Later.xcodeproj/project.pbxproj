@@ -54,6 +54,7 @@
 		26DC5C4A1C7D346100F77EF2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DC5C491C7D346100F77EF2 /* OnboardingViewController.swift */; };
 		AD6281B02384453B004CFA76 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6281AF2384453B004CFA76 /* KeychainAccess */; };
 		AD6281B22384460C004CFA76 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6281B12384460C004CFA76 /* AccountType.swift */; };
+		AD6281C62386E984004CFA76 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6281C52386E984004CFA76 /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		26DE1E1F1CFE7FD5003AE363 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		26DE1E201CFE7FD5003AE363 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		AD6281B12384460C004CFA76 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
+		AD6281C52386E984004CFA76 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				261885711FBF5B8E007BE611 /* Later.swift */,
+				AD6281C52386E984004CFA76 /* Keychain.swift */,
 				AD6281B12384460C004CFA76 /* AccountType.swift */,
 				268B24561BD70DD6009D6E0C /* User.swift */,
 				2645522D1C02313C00DC82B1 /* PocketSDK */,
@@ -555,6 +558,7 @@
 				261D19571FBE1BCF00C16669 /* PocketAPIKeychainUtils.m in Sources */,
 				261D19621FBE1C0600C16669 /* NSData+Base64.m in Sources */,
 				26B26ACE1FBE1FD5003B7067 /* User.swift in Sources */,
+				AD6281C62386E984004CFA76 /* Keychain.swift in Sources */,
 				261D19591FBE1BD900C16669 /* PocketAPIOperation.m in Sources */,
 				261D195A1FBE1BE000C16669 /* IKConstants.m in Sources */,
 				261D195E1FBE1BF100C16669 /* IKBookmark.m in Sources */,

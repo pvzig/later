@@ -17,13 +17,13 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         if User.isOnboardingComplete {
             // Migration for 1.2.0
             Later.shared.migrate()
         } else {
             presentAsModalWindow(OnboardingViewController(nibName: "OnboardingView", bundle: nil))
         }
+        configureUI()
     }
     
     func configureUI() {

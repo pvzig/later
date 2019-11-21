@@ -34,6 +34,7 @@ public class Later: NSObject, IKEngineDelegate {
 
     public static let shared = Later()
     public let saveGroup = DispatchGroup()
+
     var keychain: Keychain {
         var keychain = Keychain(service: "Later: Read Later Extensions", accessGroup: "U63DWZL52M.com.launchsoft.later")
         if #available(OSXApplicationExtension 10.15, *) {
@@ -241,11 +242,47 @@ extension Later {
 extension Later {
     
     public func migrate() {
-        if let account = defaults.string(forKey: "pinboardAccountName"), let token = keychain[Constants.Pinboard.apiToken], !isMigrated {
-            keychain[Constants.Pinboard.apiToken] = "\(account):\(token)"
-            defaults.removeObject(forKey: "pinboardAccountName")
-            defaults.set(true, forKey: Constants.migrationKey)
+        guard !isMigrated else { return }
+        // Instapaper
+        if
+            let account = defaults.string(forKey: "instapaperAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Instapaper.oauthToken, account: account),
+            let secret = LegacyKeychain.fetchItem(Constants.Instapaper.oauthSecret, account: account) {
+            // Set
+            keychain[Constants.Instapaper.oauthToken] = token
+            keychain[Constants.Instapaper.oauthSecret] = secret
+            // Remove
+            LegacyKeychain.removeItem(Constants.Instapaper.oauthToken, account: account)
+            LegacyKeychain.removeItem(Constants.Instapaper.oauthSecret, account: account)
+            defaults.removeObject(forKey: "instapaperAccountName")
         }
+        
+        // Pinboard
+        if
+            let account = defaults.string(forKey: "pinboardAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Pinboard.apiToken, account: account) {
+            // Set
+            keychain[Constants.Pinboard.apiToken] = "\(account):\(token)"
+            // Remove
+            LegacyKeychain.removeItem(Constants.Pinboard.apiToken, account: account)
+            defaults.removeObject(forKey: "pinboardAccountName")
+        }
+        
+        // Pocket
+        if
+            let account = defaults.string(forKey: "pocketAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Pocket.tokenKey, account: account),
+            let digest = LegacyKeychain.fetchItem(Constants.Pocket.tokenDigestKey, account: account) {
+            // Set
+            keychain[Constants.Pocket.tokenKey] = token
+            keychain[Constants.Pocket.tokenDigestKey] = digest
+            // Remove
+            LegacyKeychain.removeItem(Constants.Pocket.tokenKey, account: account)
+            LegacyKeychain.removeItem(Constants.Pocket.tokenDigestKey, account: account)
+        }
+        
+        // Migration completed
+        defaults.set(true, forKey: Constants.migrationKey)
     }
     
     private var isMigrated: Bool {
