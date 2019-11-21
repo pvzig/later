@@ -18,6 +18,12 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        if User.isOnboardingComplete {
+            // Migration for 1.2.0
+            Later.shared.migrate()
+        } else {
+            presentAsModalWindow(OnboardingViewController(nibName: "OnboardingView", bundle: nil))
+        }
     }
     
     func configureUI() {
@@ -76,13 +82,28 @@ class MainViewController: NSViewController {
         }
     }
     
+    // MARK: - Menu commands
+    
     @IBAction func showAboutWindow(_ sender: NSMenuItem) {
         let aboutWindow = NSWindowController(windowNibName: "About")
         aboutWindow.showWindow(self)
     }
     
-    @objc func email() {
+    @IBAction func emailSupport(_ sender: NSMenuItem) {
         let url = URL(string: "mailto:peter@launchsoft.co?subject=Later%20Support")!
         NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction func showResetModal(_ sender: NSMenuItem) {
+        let alert = NSAlert()
+        alert.messageText = "Reset All Accounts?"
+        alert.informativeText = "Resetting your accounts will log out of all services and clear Later's application data."
+        alert.addButton(withTitle: "Reset All Accounts")
+        alert.addButton(withTitle: "Cancel")
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            Later.shared.reset()
+            configureUI()
+        }
     }
 }

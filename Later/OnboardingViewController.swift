@@ -13,6 +13,6 @@ class OnboardingViewController: NSViewController {
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
         User.isOnboardingComplete = true
-        AppDelegate.sharedDelegate.window.contentViewController = MainViewController(nibName: "MainMenu", bundle: nil)
+        view.window?.close()
     }
 }

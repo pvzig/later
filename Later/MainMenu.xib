@@ -120,9 +120,21 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="rhg-Fx-Aq5">
                         <items>
-                            <menuItem title="Later Help" keyEquivalent="?" id="AqV-eM-ToZ">
+                            <menuItem title="Email Support" id="AqV-eM-ToZ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="SLi-7h-c06"/>
+                                    <action selector="emailSupport:" target="h2j-Yc-sEo" id="TYu-rM-60u"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Reset All Accounts" id="XXW-nL-vgG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showResetModal:" target="h2j-Yc-sEo" id="q9h-pL-l6Y"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Later Help" keyEquivalent="?" id="1ZA-jf-6Le">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="U3n-r1-7MN"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -139,12 +151,12 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1097"/>
             <value key="minSize" type="size" width="375" height="270"/>
             <value key="maxSize" type="size" width="375" height="270"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <view key="contentView" misplaced="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPR-6K-HgL">
-                        <rect key="frame" x="0.0" y="34" width="375" height="236"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="tDZ-Ob-jif">
                                 <rect key="frame" x="0.0" y="164" width="375" height="5"/>

@@ -214,6 +214,15 @@ extension Later {
 
 extension Later {
 
+    public func reset() {
+        delete(type: .instapaper)
+        delete(type: .pinboard)
+        delete(type: .pocket)
+        if let bundle = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundle)
+        }
+    }
+    
     public func delete(type: AccountType) {
         switch type {
         case .instapaper:
@@ -231,15 +240,15 @@ extension Later {
 
 extension Later {
     
-    private var isMigrated: Bool {
-        return defaults.bool(forKey: Constants.migrationKey)
-    }
-    
-    func migrate() {
+    public func migrate() {
         if let account = defaults.string(forKey: "pinboardAccountName"), let token = keychain[Constants.Pinboard.apiToken], !isMigrated {
             keychain[Constants.Pinboard.apiToken] = "\(account):\(token)"
             defaults.removeObject(forKey: "pinboardAccountName")
             defaults.set(true, forKey: Constants.migrationKey)
         }
+    }
+    
+    private var isMigrated: Bool {
+        return defaults.bool(forKey: Constants.migrationKey)
     }
 }
