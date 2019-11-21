@@ -39,8 +39,6 @@
           ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.url"
       ).@count == 1
   ).@count == 1</string>
-			<key>NSExtensionJavaScriptPreprocessingFile</key>
-			<string>Preprocessor</string>
 		</dict>
 		<key>NSExtensionMainNibFile</key>
 		<string>ShareViewController</string>

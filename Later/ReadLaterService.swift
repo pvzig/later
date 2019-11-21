@@ -28,9 +28,7 @@ class ReadLaterService: NSObject {
                     // Save URL via the service
                     Later.shared.saveURL(url, title: title)
                 } catch let error {
-                    if #available(OSX 10.14, *) {
-                        os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
-                    }
+                    os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
                 }
             }
         }

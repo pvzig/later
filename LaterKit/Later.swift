@@ -35,13 +35,8 @@ public class Later: NSObject, IKEngineDelegate {
     public static let shared = Later()
     public let saveGroup = DispatchGroup()
 
-    var keychain: Keychain {
-        var keychain = Keychain(service: "Later: Read Later Extensions", accessGroup: "U63DWZL52M.com.launchsoft.later")
-        if #available(OSXApplicationExtension 10.15, *) {
-            keychain = keychain.attributes([String(kSecUseDataProtectionKeychain): true])
-        }
-        return keychain
-    }
+    let keychain: Keychain = Keychain(service: "Later: Read Later Extensions", accessGroup: "U63DWZL52M.com.launchsoft.later")
+        .attributes([String(kSecUseDataProtectionKeychain): true])
     
     private let client = IKEngine()
     private let defaults = UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
@@ -186,9 +181,7 @@ extension Later {
         PocketAPI.shared().consumerKey = Constants.Pocket.consumerKey
         PocketAPI.shared().login(handler: { (API: PocketAPI?, error: Error?) -> Void in
             if let error = error {
-                if #available(OSX 10.14, *) {
-                    os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
-                }
+                os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
                 complete(false)
             } else {
                 complete(true)

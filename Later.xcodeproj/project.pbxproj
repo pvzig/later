@@ -41,7 +41,6 @@
 		262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262FBE581BF7E1E300F7AF2B /* ShareViewController.xib */; };
 		262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268B242E1BD6AF06009D6E0C /* Assets.xcassets */; };
 		26515AB91D04D9330001C1FB /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26515AB81D04D9330001C1FB /* About.xib */; };
-		265DDA981E381D7A009D63E5 /* Preprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = 265DDA971E381D7A009D63E5 /* Preprocessor.js */; };
 		267BC23D1BF7C4730004DD91 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 267BC23C1BF7C4730004DD91 /* icon.icns */; };
 		267BC2401BF7C4730004DD91 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267BC23F1BF7C4730004DD91 /* ShareViewController.swift */; };
 		267BC2471BF7C4730004DD91 /* Read It Later.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 267BC2391BF7C4730004DD91 /* Read It Later.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -122,7 +121,6 @@
 		264552381C02313C00DC82B1 /* PocketAPIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPIOperation.m; sourceTree = "<group>"; };
 		264552391C02313C00DC82B1 /* PocketAPITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPITypes.h; sourceTree = "<group>"; };
 		26515AB81D04D9330001C1FB /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
-		265DDA971E381D7A009D63E5 /* Preprocessor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Preprocessor.js; sourceTree = "<group>"; };
 		266E06161BC0D4A400840D76 /* Later.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Later.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267BC2151BF68C730004DD91 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		267BC2391BF7C4730004DD91 /* Read It Later.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Read It Later.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,7 +266,6 @@
 		267BC23B1BF7C4730004DD91 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				265DDA971E381D7A009D63E5 /* Preprocessor.js */,
 				267BC23C1BF7C4730004DD91 /* icon.icns */,
 				267BC2441BF7C4730004DD91 /* Info.plist */,
 				267BC23E1BF7C4730004DD91 /* Read_It_Later.entitlements */,
@@ -540,7 +537,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				262FBE591BF7E1E300F7AF2B /* ShareViewController.xib in Resources */,
-				265DDA981E381D7A009D63E5 /* Preprocessor.js in Resources */,
 				262FBE941BFA78ED00F7AF2B /* Assets.xcassets in Resources */,
 				267BC23D1BF7C4730004DD91 /* icon.icns in Resources */,
 			);
@@ -639,7 +635,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.LaterKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -681,7 +677,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.LaterKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -741,7 +737,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -793,7 +789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -818,7 +814,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -844,7 +840,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchsoft.later;
 				PRODUCT_NAME = Later;
@@ -871,7 +867,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -898,7 +894,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.launchsoft.later.read-it-later";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
