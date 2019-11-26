@@ -25,6 +25,10 @@ public class User: NSObject {
             UserDefaults.standard.set(newValue, forKey: Keys.onboarding)
         }
     }
+    
+    public static var isAccountAdded: Bool {
+        return hasAccount(.instapaper) || hasAccount(.pinboard) || hasAccount(.pocket)
+    }
 
     // MARK: - Services
     

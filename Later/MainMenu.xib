@@ -26,6 +26,113 @@
                 <outlet property="view" destination="EiT-Mj-1SZ" id="mJD-Xf-DhS"/>
             </connections>
         </viewController>
+        <menu title="Main Menu" systemMenu="main" id="T38-g4-qLL">
+            <items>
+                <menuItem title="Later" id="44O-hj-9QA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Later" systemMenu="apple" id="Onk-hx-y2F">
+                        <items>
+                            <menuItem title="About Later" id="Oxw-ZB-pG0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Quit Later" keyEquivalent="q" id="sI0-CB-jnf">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="VPX-9g-hqH"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="AxU-1a-sl0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="tVr-2d-qbP">
+                        <items>
+                            <menuItem title="Undo" keyEquivalent="z" id="7Bb-YM-MRn">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="RNM-8O-96C"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Redo" keyEquivalent="Z" id="Tb8-Lf-ltB">
+                                <connections>
+                                    <action selector="redo:" target="-1" id="Vo0-aj-Jr1"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="gEY-v4-GZi"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="weZ-1g-bwY">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="fkC-QW-6DF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" keyEquivalent="c" id="XnO-ww-1Tj">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="Y4d-OY-ONK"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" keyEquivalent="v" id="OHi-pa-1LP">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="P0i-6I-Ocr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="Kyg-RD-90h">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="pasteAsPlainText:" target="-1" id="Jod-dE-r4e"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="yEM-Nf-uJf">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="delete:" target="-1" id="anm-bD-gWf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="Gr2-pN-FeS">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="MgL-yk-e83"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="cIq-Om-Ut1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="UNH-SA-DsW">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="kFm-JT-hQN">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="vEY-gM-qX4"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="i42-mj-aUt"/>
+                            <menuItem title="Bring All to Front" id="FQ3-KU-jUM">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="N5O-Xi-nqY"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="rOg-hc-Yvi">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="rhg-Fx-Aq5">
+                        <items>
+                            <menuItem title="Email Support" id="AqV-eM-ToZ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Reset All Accounts" id="XXW-nL-vgG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Later Help" keyEquivalent="?" id="1ZA-jf-6Le">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="U3n-r1-7MN"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="264" y="48"/>
+        </menu>
         <window title="Later" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
@@ -165,16 +272,15 @@
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="WdK-ft-mlY" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="7" id="23B-NO-A6o"/>
                             <constraint firstItem="kjG-h0-U36" firstAttribute="centerY" secondItem="nM1-s3-d3H" secondAttribute="centerY" id="7SY-D7-8Jt"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" id="8oK-pQ-txr"/>
                             <constraint firstAttribute="trailing" secondItem="VGx-SM-JRR" secondAttribute="trailing" constant="15" id="CZF-H6-eza"/>
                             <constraint firstItem="ZpX-vW-hQi" firstAttribute="leading" secondItem="bPA-ke-xQW" secondAttribute="trailing" constant="18" id="JlW-KP-h6m"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="top" secondItem="s1e-0A-2oA" secondAttribute="bottom" constant="12" id="MRB-js-TJn"/>
                             <constraint firstAttribute="trailing" secondItem="tDZ-Ob-jif" secondAttribute="trailing" id="NTU-Mk-hdo"/>
-                            <constraint firstItem="pw4-Fd-jEH" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="7" id="OdG-RE-TwN"/>
+                            <constraint firstItem="pw4-Fd-jEH" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="7" id="Ssp-tR-VjR"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="45" id="T7h-o5-gFR"/>
-                            <constraint firstItem="bPA-ke-xQW" firstAttribute="top" secondItem="hVy-X1-ROq" secondAttribute="bottom" constant="7" id="W1G-7i-ikH"/>
+                            <constraint firstItem="WdK-ft-mlY" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="7" id="WgW-wL-0ni"/>
                             <constraint firstAttribute="trailing" secondItem="tih-QN-q3I" secondAttribute="trailing" id="XhA-Fp-ZeX"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="VGx-SM-JRR" secondAttribute="bottom" constant="12" id="Xjw-vV-7Q8"/>
                             <constraint firstAttribute="trailing" secondItem="J9n-tq-vVI" secondAttribute="trailing" id="YpB-GR-EO2"/>
@@ -198,6 +304,7 @@
                             <constraint firstAttribute="trailing" secondItem="hVy-X1-ROq" secondAttribute="trailing" id="rtU-0o-Fj7"/>
                             <constraint firstItem="sED-6t-Oom" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" id="sE7-bB-Xh5"/>
                             <constraint firstItem="VGx-SM-JRR" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="12" id="tge-Cf-0g7"/>
+                            <constraint firstItem="bPA-ke-xQW" firstAttribute="top" secondItem="hVy-X1-ROq" secondAttribute="bottom" constant="7" id="u9U-Tr-n4T"/>
                             <constraint firstItem="hLl-AT-U9L" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" constant="10" id="uoT-jK-RA7"/>
                             <constraint firstItem="nM1-s3-d3H" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="12" id="uwS-vO-Hoh"/>
                             <constraint firstItem="816-nc-62Z" firstAttribute="centerY" secondItem="VGx-SM-JRR" secondAttribute="centerY" id="veu-lK-wze"/>

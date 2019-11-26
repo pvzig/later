@@ -26,6 +26,10 @@ class MainViewController: NSViewController {
             window.styleMask.remove(.miniaturizable)
             let windowController = NSWindowController(window: window)
             windowController.showWindow(self)
+        } else if !User.isAccountAdded {
+            guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
+            let windowController = NSWindowController(window: appDelegate.window)
+            windowController.showWindow(self)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(configureUI), name: .updateUI, object: nil)

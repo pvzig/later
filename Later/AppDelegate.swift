@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = NSImage(named: "later-menu")
             let menu = NSMenu()
-            let setup = NSMenuItem(title: "Configure Accounts", action: .showWindow, keyEquivalent: "a")
-            let ext = NSMenuItem(title: "Configure Extension", action: .openExtension, keyEquivalent: "e")
+            let setup = NSMenuItem(title: "Setup Accounts", action: .showWindow, keyEquivalent: "a")
+            let ext = NSMenuItem(title: "Add Extension", action: .openExtension, keyEquivalent: "e")
             let support = NSMenuItem(title: "Email Support", action: .emailSupport, keyEquivalent: "s")
             let reset = NSMenuItem(title: "Reset Accounts", action: .resetAccounts, keyEquivalent: "")
             let about = NSMenuItem(title: "About", action: .showAbout, keyEquivalent: "")
