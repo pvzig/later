@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,127 +26,11 @@
                 <outlet property="view" destination="EiT-Mj-1SZ" id="mJD-Xf-DhS"/>
             </connections>
         </viewController>
-        <menu title="Main Menu" systemMenu="main" id="T38-g4-qLL">
-            <items>
-                <menuItem title="Later" id="44O-hj-9QA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Later" systemMenu="apple" id="Onk-hx-y2F">
-                        <items>
-                            <menuItem title="About Later" id="Oxw-ZB-pG0">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="showAboutWindow:" target="h2j-Yc-sEo" id="pPR-1J-WkM"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Quit Later" keyEquivalent="q" id="sI0-CB-jnf">
-                                <connections>
-                                    <action selector="terminate:" target="-1" id="VPX-9g-hqH"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Edit" id="AxU-1a-sl0">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Edit" id="tVr-2d-qbP">
-                        <items>
-                            <menuItem title="Undo" keyEquivalent="z" id="7Bb-YM-MRn">
-                                <connections>
-                                    <action selector="undo:" target="-1" id="RNM-8O-96C"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Redo" keyEquivalent="Z" id="Tb8-Lf-ltB">
-                                <connections>
-                                    <action selector="redo:" target="-1" id="Vo0-aj-Jr1"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="gEY-v4-GZi"/>
-                            <menuItem title="Cut" keyEquivalent="x" id="weZ-1g-bwY">
-                                <connections>
-                                    <action selector="cut:" target="-1" id="fkC-QW-6DF"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Copy" keyEquivalent="c" id="XnO-ww-1Tj">
-                                <connections>
-                                    <action selector="copy:" target="-1" id="Y4d-OY-ONK"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Paste" keyEquivalent="v" id="OHi-pa-1LP">
-                                <connections>
-                                    <action selector="paste:" target="-1" id="P0i-6I-Ocr"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="Kyg-RD-90h">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="pasteAsPlainText:" target="-1" id="Jod-dE-r4e"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Delete" id="yEM-Nf-uJf">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="delete:" target="-1" id="anm-bD-gWf"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Select All" keyEquivalent="a" id="Gr2-pN-FeS">
-                                <connections>
-                                    <action selector="selectAll:" target="-1" id="MgL-yk-e83"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Window" id="cIq-Om-Ut1">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Window" systemMenu="window" id="UNH-SA-DsW">
-                        <items>
-                            <menuItem title="Minimize" keyEquivalent="m" id="kFm-JT-hQN">
-                                <connections>
-                                    <action selector="performMiniaturize:" target="-1" id="vEY-gM-qX4"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="i42-mj-aUt"/>
-                            <menuItem title="Bring All to Front" id="FQ3-KU-jUM">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="arrangeInFront:" target="-1" id="N5O-Xi-nqY"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Help" id="rOg-hc-Yvi">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Help" systemMenu="help" id="rhg-Fx-Aq5">
-                        <items>
-                            <menuItem title="Email Support" id="AqV-eM-ToZ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="emailSupport:" target="h2j-Yc-sEo" id="TYu-rM-60u"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Reset All Accounts" id="XXW-nL-vgG">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="showResetModal:" target="h2j-Yc-sEo" id="q9h-pL-l6Y"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Later Help" keyEquivalent="?" id="1ZA-jf-6Le">
-                                <connections>
-                                    <action selector="showHelp:" target="-1" id="U3n-r1-7MN"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-            </items>
-            <point key="canvasLocation" x="264" y="48"/>
-        </menu>
-        <window title="Later" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
+        <window title="Later" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1021" y="571" width="375" height="236"/>
+            <rect key="contentRect" x="1235" y="747" width="375" height="236"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1097"/>
             <value key="minSize" type="size" width="375" height="236"/>
             <value key="maxSize" type="size" width="375" height="236"/>
@@ -191,17 +74,14 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="816-nc-62Z">
-                                <rect key="frame" x="66" y="129" width="79" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="rge-yw-hKL"/>
-                                </constraints>
+                                <rect key="frame" x="66" y="134" width="79" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Instapaper" id="zL3-gY-Y8V">
                                     <font key="font" size="16" name="SFCompactDisplay-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-ft-mlY">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-ft-mlY">
                                 <rect key="frame" x="20" y="129" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Ztr-eA-6od"/>
@@ -210,17 +90,14 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="instapaper" id="NGM-KG-srm"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-h0-U36">
-                                <rect key="frame" x="66" y="37" width="52" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="66O-Sq-lVa"/>
-                                </constraints>
+                                <rect key="frame" x="66" y="42" width="52" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pocket" id="jM0-Ge-OXv">
                                     <font key="font" size="16" name="SFCompactDisplay-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-Fd-jEH">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-Fd-jEH">
                                 <rect key="frame" x="20" y="37" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8eb-cF-Ew6"/>
@@ -271,17 +148,14 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZpX-vW-hQi">
-                                <rect key="frame" x="66" y="83" width="67" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="qVu-iR-Tfr"/>
-                                </constraints>
+                                <rect key="frame" x="66" y="88" width="67" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pinboard" id="mRD-ZK-VOC">
                                     <font key="font" size="16" name="SFCompactDisplay-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-ke-xQW">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-ke-xQW">
                                 <rect key="frame" x="20" y="83" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cz0-MO-UhP"/>
@@ -291,14 +165,12 @@
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="kjG-h0-U36" firstAttribute="centerY" secondItem="nM1-s3-d3H" secondAttribute="centerY" id="7SY-D7-8Jt"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" id="8oK-pQ-txr"/>
                             <constraint firstAttribute="trailing" secondItem="VGx-SM-JRR" secondAttribute="trailing" constant="15" id="CZF-H6-eza"/>
-                            <constraint firstItem="bPA-ke-xQW" firstAttribute="centerY" secondItem="ZpX-vW-hQi" secondAttribute="centerY" id="IfG-rn-dse"/>
                             <constraint firstItem="ZpX-vW-hQi" firstAttribute="leading" secondItem="bPA-ke-xQW" secondAttribute="trailing" constant="18" id="JlW-KP-h6m"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="top" secondItem="s1e-0A-2oA" secondAttribute="bottom" constant="12" id="MRB-js-TJn"/>
-                            <constraint firstItem="816-nc-62Z" firstAttribute="centerY" secondItem="WdK-ft-mlY" secondAttribute="centerY" id="MUK-wd-DcU"/>
                             <constraint firstAttribute="trailing" secondItem="tDZ-Ob-jif" secondAttribute="trailing" id="NTU-Mk-hdo"/>
-                            <constraint firstItem="kjG-h0-U36" firstAttribute="centerY" secondItem="pw4-Fd-jEH" secondAttribute="centerY" id="O07-hl-MSb"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="45" id="T7h-o5-gFR"/>
                             <constraint firstAttribute="trailing" secondItem="tih-QN-q3I" secondAttribute="trailing" id="XhA-Fp-ZeX"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="VGx-SM-JRR" secondAttribute="bottom" constant="12" id="Xjw-vV-7Q8"/>
@@ -306,13 +178,12 @@
                             <constraint firstAttribute="bottom" secondItem="PaM-bZ-SL2" secondAttribute="bottom" constant="8" id="Zl6-ck-IA1"/>
                             <constraint firstItem="sED-6t-Oom" firstAttribute="top" secondItem="nM1-s3-d3H" secondAttribute="bottom" constant="12" id="aG2-Zn-7Db"/>
                             <constraint firstItem="PaM-bZ-SL2" firstAttribute="top" secondItem="sED-6t-Oom" secondAttribute="bottom" constant="5" id="bKB-ql-1D8"/>
+                            <constraint firstItem="ZpX-vW-hQi" firstAttribute="centerY" secondItem="s1e-0A-2oA" secondAttribute="centerY" id="dMm-x8-VXW"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="top" secondItem="hVy-X1-ROq" secondAttribute="bottom" constant="45" id="fJ9-Vi-6nm"/>
                             <constraint firstAttribute="trailing" secondItem="nM1-s3-d3H" secondAttribute="trailing" constant="15" id="gBF-kl-A0S"/>
                             <constraint firstItem="tih-QN-q3I" firstAttribute="top" secondItem="RPR-6K-HgL" secondAttribute="top" constant="-44" id="gvo-lC-HeV"/>
-                            <constraint firstItem="nM1-s3-d3H" firstAttribute="centerY" secondItem="kjG-h0-U36" secondAttribute="centerY" id="hck-mZ-0eJ"/>
                             <constraint firstItem="hLl-AT-U9L" firstAttribute="top" secondItem="RPR-6K-HgL" secondAttribute="top" constant="48" id="k3v-sp-OOc"/>
                             <constraint firstItem="WdK-ft-mlY" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" constant="20" id="kN5-N1-BVT"/>
-                            <constraint firstItem="VGx-SM-JRR" firstAttribute="centerY" secondItem="816-nc-62Z" secondAttribute="centerY" id="ldo-8m-3dF"/>
                             <constraint firstItem="PaM-bZ-SL2" firstAttribute="centerX" secondItem="RPR-6K-HgL" secondAttribute="centerX" id="ls5-Sb-J41"/>
                             <constraint firstItem="bPA-ke-xQW" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" constant="20" id="n4X-pa-QBV"/>
                             <constraint firstAttribute="trailing" secondItem="sED-6t-Oom" secondAttribute="trailing" id="ofv-4s-o3g"/>
@@ -326,12 +197,12 @@
                             <constraint firstItem="VGx-SM-JRR" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="12" id="tge-Cf-0g7"/>
                             <constraint firstItem="hLl-AT-U9L" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" constant="10" id="uoT-jK-RA7"/>
                             <constraint firstItem="nM1-s3-d3H" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="12" id="uwS-vO-Hoh"/>
+                            <constraint firstItem="816-nc-62Z" firstAttribute="centerY" secondItem="VGx-SM-JRR" secondAttribute="centerY" id="veu-lK-wze"/>
                             <constraint firstItem="pw4-Fd-jEH" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" constant="20" id="vtg-yV-IMD"/>
                             <constraint firstItem="sED-6t-Oom" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="45" id="vuv-by-SgX"/>
                             <constraint firstItem="959-Xz-9gI" firstAttribute="centerX" secondItem="RPR-6K-HgL" secondAttribute="centerX" id="wYq-0s-gsj"/>
                             <constraint firstItem="s1e-0A-2oA" firstAttribute="top" secondItem="hVy-X1-ROq" secondAttribute="bottom" constant="12" id="xU1-8R-Lhj"/>
                             <constraint firstItem="816-nc-62Z" firstAttribute="leading" secondItem="WdK-ft-mlY" secondAttribute="trailing" constant="18" id="xrH-30-OX6"/>
-                            <constraint firstItem="s1e-0A-2oA" firstAttribute="centerY" secondItem="ZpX-vW-hQi" secondAttribute="centerY" id="yb4-ev-64c"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" id="zFq-sp-XEW"/>
                         </constraints>
                     </customView>

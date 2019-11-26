@@ -12,7 +12,10 @@ class OnboardingViewController: NSViewController {
     
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
-        User.isOnboardingComplete = true
         view.window?.close()
+    }
+    
+    deinit {
+        User.isOnboardingComplete = true
     }
 }

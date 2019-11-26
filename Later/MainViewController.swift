@@ -17,15 +17,21 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if User.isOnboardingComplete {
-            // Migration for 1.2.0
-            Later.shared.migrate()
-        } else {
-            presentAsModalWindow(OnboardingViewController(nibName: "OnboardingView", bundle: nil))
-        }
         configureUI()
+        
+        if !User.isOnboardingComplete {
+            let window = NSWindow(contentViewController: OnboardingViewController(nibName: "OnboardingView", bundle: nil))
+            window.titleVisibility = .hidden
+            window.styleMask.remove(.resizable)
+            window.styleMask.remove(.miniaturizable)
+            let windowController = NSWindowController(window: window)
+            windowController.showWindow(self)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(configureUI), name: .updateUI, object: nil)
     }
     
+    @objc
     func configureUI() {
         setButtonTitles()
         setLabelText()
@@ -79,31 +85,6 @@ class MainViewController: NSViewController {
             PocketAPI.shared().logout()
             Later.shared.delete(type: .pocket)
             setButtonTitles()
-        }
-    }
-    
-    // MARK: - Menu commands
-    
-    @IBAction func showAboutWindow(_ sender: NSMenuItem) {
-        let aboutWindow = NSWindowController(windowNibName: "About")
-        aboutWindow.showWindow(self)
-    }
-    
-    @IBAction func emailSupport(_ sender: NSMenuItem) {
-        let url = URL(string: "mailto:peter@launchsoft.co?subject=Later%20Support")!
-        NSWorkspace.shared.open(url)
-    }
-    
-    @IBAction func showResetModal(_ sender: NSMenuItem) {
-        let alert = NSAlert()
-        alert.messageText = "Reset All Accounts?"
-        alert.informativeText = "Resetting your accounts will log out of all services and clear Later's application data."
-        alert.addButton(withTitle: "Reset All Accounts")
-        alert.addButton(withTitle: "Cancel")
-        let response = alert.runModal()
-        if response == .alertFirstButtonReturn {
-            Later.shared.reset()
-            configureUI()
         }
     }
 }
