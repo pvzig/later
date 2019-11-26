@@ -83,7 +83,8 @@ public class Later: NSObject, IKEngineDelegate {
         components?.queryItems = [
             URLQueryItem(name: "url", value: url.absoluteString),
             URLQueryItem(name: "description", value: title ?? url.absoluteString),
-            URLQueryItem(name: "auth_token", value: token)
+            URLQueryItem(name: "auth_token", value: token),
+            URLQueryItem(name: "toread", value: "yes")
         ]
         guard let url = components?.url else {
             saveGroup.leave()
@@ -139,7 +140,7 @@ extension Later {
                 failure(error)
             }
         case .pinboard:
-            pinboardLogin(user: username, token: password, success: success, failure: failure)
+            pinboardLogin(token: password, success: success, failure: failure)
         case .pocket:
             pocketLogin { isLoggedIn in
                 if isLoggedIn {
@@ -151,14 +152,13 @@ extension Later {
         }
     }
 
-    func pinboardLogin(user: String,
-                       token: String,
+    func pinboardLogin(token: String,
                        success: @escaping () -> Void,
                        failure: @escaping (String) -> Void) {
 
         var components = URLComponents(string: "https://api.pinboard.in/v1/user/api_token")
         components?.queryItems = [
-            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+            URLQueryItem(name: "auth_token", value: token)
         ]
         guard let url = components?.url else {
             return
@@ -171,7 +171,7 @@ extension Later {
                     failure("Pinboard API token validation failed.")
                     return
                 }
-                self.keychain[Constants.Pinboard.apiToken] = "\(user):\(token)"
+                self.keychain[Constants.Pinboard.apiToken] = token
                 success()
             }
         }.resume()

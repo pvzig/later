@@ -10,6 +10,7 @@ import LaterKit
 
 class LoginViewController: NSViewController {
      
+    @IBOutlet weak var usernameLabel: NSTextField!
     @IBOutlet var usernameField: NSTextField!
     @IBOutlet var passwordField: NSSecureTextField!
     @IBOutlet var passwordLabel: NSTextField!
@@ -31,6 +32,8 @@ class LoginViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if loginType == .pinboard {
+            usernameLabel.isHidden = true
+            usernameField.isHidden = true
             passwordLabel.stringValue = "API Token:"
             helpButton.isHidden = false
         }
@@ -71,7 +74,7 @@ class LoginViewController: NSViewController {
         case .pinboard:
             Later.shared.login(
                 type: .pinboard,
-                username: usernameField.stringValue,
+                username: "",
                 password: passwordField.stringValue,
                 success: {
                     self.progressSpinner.stopAnimation(self)

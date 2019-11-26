@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +13,7 @@
                 <outlet property="progressSpinner" destination="oa6-h1-4F5" id="t5V-99-cEb"/>
                 <outlet property="statusLabel" destination="7lC-yc-vqQ" id="M5s-jU-qN7"/>
                 <outlet property="usernameField" destination="umw-DB-ZJE" id="ccv-lM-3es"/>
+                <outlet property="usernameLabel" destination="nz5-xb-6or" id="o3J-h6-tdQ"/>
                 <outlet property="view" destination="c22-O7-iKe" id="xK5-tQ-cuI"/>
             </connections>
         </customObject>
@@ -31,7 +31,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-xb-6or">
                     <rect key="frame" x="18" y="92" width="70" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="a2z-5d-BJ2">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -39,7 +39,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHS-v8-Hzx">
                     <rect key="frame" x="22" y="69" width="66" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password:" id="yXm-zm-BvJ">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -47,7 +47,7 @@
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umw-DB-ZJE">
                     <rect key="frame" x="91" y="89" width="173" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="RgJ-VZ-9nu">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -55,7 +55,7 @@
                 <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-qf-v77">
                     <rect key="frame" x="91" y="66" width="173" height="21"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="iv3-y3-Uk8">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <allowedInputSourceLocales>
@@ -67,7 +67,7 @@
                     <rect key="frame" x="66" y="28" width="82" height="32"/>
                     <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FhV-4B-W1h">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -80,7 +80,7 @@ Gw
                     <rect key="frame" x="142" y="28" width="82" height="32"/>
                     <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ccG-c9-T8t">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
@@ -92,7 +92,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lC-yc-vqQ">
                     <rect key="frame" x="18" y="10" width="253" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="2I1-M3-gu4">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -100,7 +100,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHJ-w9-wg8">
                     <rect key="frame" x="126" y="120" width="38" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Login" id="owv-1k-weO">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -112,7 +112,7 @@ Gw
                     <rect key="frame" x="264" y="62" width="25" height="25"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cuS-aB-fTQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="message"/>
                     </buttonCell>
                     <connections>
                         <action selector="helpPressed:" target="-2" id="Rfh-fG-a8P"/>
