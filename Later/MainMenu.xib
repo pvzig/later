@@ -81,7 +81,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-ft-mlY">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-ft-mlY">
                                 <rect key="frame" x="20" y="129" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Ztr-eA-6od"/>
@@ -97,7 +97,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-Fd-jEH">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-Fd-jEH">
                                 <rect key="frame" x="20" y="37" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8eb-cF-Ew6"/>
@@ -155,7 +155,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-ke-xQW">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-ke-xQW">
                                 <rect key="frame" x="20" y="83" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cz0-MO-UhP"/>
@@ -165,13 +165,16 @@
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="WdK-ft-mlY" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="7" id="23B-NO-A6o"/>
                             <constraint firstItem="kjG-h0-U36" firstAttribute="centerY" secondItem="nM1-s3-d3H" secondAttribute="centerY" id="7SY-D7-8Jt"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="leading" secondItem="RPR-6K-HgL" secondAttribute="leading" id="8oK-pQ-txr"/>
                             <constraint firstAttribute="trailing" secondItem="VGx-SM-JRR" secondAttribute="trailing" constant="15" id="CZF-H6-eza"/>
                             <constraint firstItem="ZpX-vW-hQi" firstAttribute="leading" secondItem="bPA-ke-xQW" secondAttribute="trailing" constant="18" id="JlW-KP-h6m"/>
                             <constraint firstItem="J9n-tq-vVI" firstAttribute="top" secondItem="s1e-0A-2oA" secondAttribute="bottom" constant="12" id="MRB-js-TJn"/>
                             <constraint firstAttribute="trailing" secondItem="tDZ-Ob-jif" secondAttribute="trailing" id="NTU-Mk-hdo"/>
+                            <constraint firstItem="pw4-Fd-jEH" firstAttribute="top" secondItem="J9n-tq-vVI" secondAttribute="bottom" constant="7" id="OdG-RE-TwN"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="tDZ-Ob-jif" secondAttribute="bottom" constant="45" id="T7h-o5-gFR"/>
+                            <constraint firstItem="bPA-ke-xQW" firstAttribute="top" secondItem="hVy-X1-ROq" secondAttribute="bottom" constant="7" id="W1G-7i-ikH"/>
                             <constraint firstAttribute="trailing" secondItem="tih-QN-q3I" secondAttribute="trailing" id="XhA-Fp-ZeX"/>
                             <constraint firstItem="hVy-X1-ROq" firstAttribute="top" secondItem="VGx-SM-JRR" secondAttribute="bottom" constant="12" id="Xjw-vV-7Q8"/>
                             <constraint firstAttribute="trailing" secondItem="J9n-tq-vVI" secondAttribute="trailing" id="YpB-GR-EO2"/>
