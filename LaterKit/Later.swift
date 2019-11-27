@@ -48,6 +48,9 @@ public class Later: NSObject, IKEngineDelegate {
         super.init()
         client.delegate = self
         IKEngine.setOAuthConsumerKey(Constants.Instapaper.apiKey, andConsumerSecret: Constants.Instapaper.apiSecret)
+        DispatchQueue.main.async {
+            PocketAPI.shared().consumerKey = Constants.Pocket.consumerKey
+        }
     }
 
     public func saveURL(_ url: URL, title: String?) {
@@ -98,7 +101,6 @@ public class Later: NSObject, IKEngineDelegate {
     }
 
     func addToPocket(_ url: URL) {
-        PocketAPI.shared().consumerKey = Constants.Pocket.consumerKey
         PocketAPI.shared().save(url, handler:{ (API: PocketAPI?, url: URL?, error: Error?) -> Void in
             self.saveGroup.leave()
         })
@@ -178,7 +180,6 @@ extension Later {
     }
     
     func pocketLogin(complete: @escaping (Bool) -> Void) {
-        PocketAPI.shared().consumerKey = Constants.Pocket.consumerKey
         PocketAPI.shared().login(handler: { (API: PocketAPI?, error: Error?) -> Void in
             if let error = error {
                 os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)

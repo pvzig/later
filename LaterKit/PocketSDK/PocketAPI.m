@@ -183,7 +183,7 @@ static PocketAPI *sSharedAPI = nil;
 	
 	// ensure the access token stored matches the consumer key that generated it
     NSString *existingHash = [User pocketTokenDigest];
-    NSString *currentHash = [[self class] pkt_hashForConsumerKey:self.consumerKey accessToken:[self pkt_getToken]];
+    NSString *currentHash = [PocketAPI pkt_hashForConsumerKey:self.consumerKey accessToken:[self pkt_getToken]];
 		
     if(![existingHash isEqualToString:currentHash]){
         NSLog(@"*** ERROR: The access token that exists does not match the consumer key. The user has been logged out.");
@@ -322,9 +322,8 @@ static PocketAPI *sSharedAPI = nil;
 }
 
 -(BOOL)isLoggedIn{
-	NSString *username = [self username];
 	NSString *token    = [self pkt_getToken];
-	return (username && token && username.length > 0 && token.length > 0);
+	return (token && token.length > 0);
 }
 
 -(void)loginWithDelegate:(id<PocketAPIDelegate>)delegate{
@@ -443,23 +442,17 @@ static PocketAPI *sSharedAPI = nil;
 
 #pragma mark Account Info
 
--(NSString *)username{
-    return User.pocketAccountName;
-}
-
 -(NSString *)pkt_getToken{
     return [User pocketToken];
 }
 
 -(void)pkt_loggedInWithUsername:(NSString *)username token:(NSString *)token{
-	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
     
     [User setPocketToken:token];
     [User setPocketTokenDigest:[PocketAPI pkt_hashForConsumerKey:self.consumerKey accessToken:token]];
 	
 	[self  didChangeValueForKey:@"isLoggedIn"];
-	[self  didChangeValueForKey:@"username"];
 }
 
 -(void)logout{
@@ -469,13 +462,11 @@ static PocketAPI *sSharedAPI = nil;
         return;
     }
     
-	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
 	
     [User pocketLogout];
     
 	[self didChangeValueForKey:@"isLoggedIn"];
-	[self didChangeValueForKey:@"username"];
 }
 
 -(PocketAPILogin *)pkt_loadCurrentLoginFromDefaults{

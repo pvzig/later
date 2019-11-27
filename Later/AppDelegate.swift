@@ -62,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showWindow() {
         let windowController = NSWindowController(window: window)
         windowController.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     @objc
