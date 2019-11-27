@@ -10,6 +10,11 @@ import LaterKit
 
 class OnboardingViewController: NSViewController {
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
         view.window?.close()

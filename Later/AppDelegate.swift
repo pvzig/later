@@ -25,6 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let windowController = NSWindowController(window: window)
             windowController.showWindow(self)
         }
+        
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     private func setupService() {
