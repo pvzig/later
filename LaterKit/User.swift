@@ -46,19 +46,6 @@ public class User: NSObject {
 
 // Interface with the Obj-C Pocket SDK
 extension User {
-    
-    private struct Constants {
-        static let key = "pocketAccountName"
-    }
-    
-    @objc static var pocketAccountName: String? {
-        return defaults.string(forKey: Constants.key)
-    }
-    
-    @objc static func setPocketAccountName(_ name: String) {
-        defaults.set(name, forKey: Constants.key)
-    }
-    
     @objc static var pocketToken: String? {
         return Later.shared.keychain[Later.Constants.Pocket.tokenKey]
     }
@@ -78,6 +65,5 @@ extension User {
     @objc static func pocketLogout() {
         try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenKey)
         try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenDigestKey)
-        defaults.removeObject(forKey: Constants.key)
     }
 }
