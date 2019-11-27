@@ -6,8 +6,6 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-import Cocoa
-import AppKit
 import LaterKit
 
 @NSApplicationMain
@@ -16,72 +14,103 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     let statusItem = NSStatusBar.system.statusItem(withLength: 19)
-    let popover = NSPopover()
-    var eventMonitor: EventMonitor?
-
-    static var sharedDelegate: AppDelegate {
-        return NSApplication.shared.delegate as! AppDelegate
-    }
-
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
-        window.hidesOnDeactivate = true
-        window.canHide = true
-
-        if let button = statusItem.button {
-            button.image = NSImage(named: "later-menu")
-            button.action = .togglePopover
+        setupService()
+        setupMenu()
+        // Migration for 1.2.0
+        Later.shared.migrate()
+        
+        if !User.isOnboardingComplete {
+            let windowController = NSWindowController(window: window)
+            windowController.showWindow(self)
         }
         
-        if !User.onboardingComplete {
-            popover.contentViewController = OnboardingViewController(nibName: "OnboardingView", bundle: nil)
-        } else {
-            popover.contentViewController = PopoverViewController(nibName: "PopoverView", bundle: nil)
-        }
-
-        // Service
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    private func setupService() {
         NSApplication.shared.servicesProvider = ReadLaterService()
         NSUpdateDynamicServices()
-
-        // Monitor events for dismissing the popover
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { event in
-            if self.popover.isShown {
-                self.closePopover(event)
-            }
-        }
-        eventMonitor?.start()
     }
-
-    func registerForNotifications() {
-        NSWorkspace.shared.notificationCenter.addObserver(self,
-                                                            selector: .closePopover,
-                                                            name: NSWorkspace.activeSpaceDidChangeNotification,
-                                                            object: nil)
-    }
-
-    func deregisterForNotifications() {
-        NSWorkspace.shared.notificationCenter.removeObserver(self)
-    }
-
-    private func showPopover(_ sender: AnyObject?) {
+    
+    private func setupMenu() {
         if let button = statusItem.button {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            button.image = NSImage(named: "later-menu")
+            let menu = NSMenu()
+            let setup = NSMenuItem(title: "Setup Accounts", action: .showWindow, keyEquivalent: "a")
+            let ext = NSMenuItem(title: "Add Extension", action: .openExtension, keyEquivalent: "e")
+            let support = NSMenuItem(title: "Email Support", action: .emailSupport, keyEquivalent: "s")
+            let reset = NSMenuItem(title: "Reset Accounts", action: .resetAccounts, keyEquivalent: "")
+            let about = NSMenuItem(title: "About", action: .showAbout, keyEquivalent: "")
+            let quit = NSMenuItem(title: "Quit", action: .quit, keyEquivalent: "q")
+            menu.addItem(setup)
+            menu.addItem(ext)
+            menu.addItem(support)
+            menu.addItem(about)
+            menu.addItem(.separator())
+            menu.addItem(reset)
+            menu.addItem(.separator())
+            menu.addItem(quit)
+            statusItem.menu = menu
         }
     }
-
-    @objc func closePopover(_ sender: AnyObject?) {
-        popover.performClose(sender)
+    
+    // MARK: - Menu actions
+    
+    @objc
+    func showWindow() {
+        let windowController = NSWindowController(window: window)
+        windowController.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
     }
-
-    @objc func togglePopover(_ sender: AnyObject?) {
-        if popover.isShown {
-            closePopover(sender)
-        } else {
-            showPopover(sender)
+    
+    @objc
+    func openExtension() {
+        NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
+    }
+    
+    @objc
+    func showAbout() {
+        let aboutWindow = NSWindowController(windowNibName: "About")
+        aboutWindow.showWindow(self)
+    }
+    
+    @objc
+    func emailSupport() {
+        let url = URL(string: "mailto:peter@launchsoft.co?subject=Later%20Support")!
+        NSWorkspace.shared.open(url)
+    }
+    
+    @objc
+    func resetAccounts() {
+        let alert = NSAlert()
+        alert.messageText = "Reset All Accounts?"
+        alert.informativeText = "Resetting your accounts will log out of all services and clear Later's application data."
+        alert.addButton(withTitle: "Reset All Accounts")
+        alert.addButton(withTitle: "Cancel")
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            Later.shared.reset()
+            NotificationCenter.default.post(name: .updateUI, object: nil)
         }
+    }
+    
+    @objc
+    func quit() {
+        NSApplication.shared.terminate(self)
     }
 }
 
-private extension Selector {
-    static let togglePopover = #selector(AppDelegate.togglePopover(_:))
-    static let closePopover = #selector(AppDelegate.closePopover(_:))
+extension Selector {
+    static let showWindow = #selector(AppDelegate.showWindow)
+    static let openExtension = #selector(AppDelegate.openExtension)
+    static let showAbout = #selector(AppDelegate.showAbout)
+    static let emailSupport = #selector(AppDelegate.emailSupport)
+    static let resetAccounts = #selector(AppDelegate.resetAccounts)
+    static let quit = #selector(AppDelegate.quit)
+}
+
+extension Notification.Name {
+    static let updateUI = Notification.Name("updateLaterUI")
 }

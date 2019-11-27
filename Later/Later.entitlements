@@ -8,6 +8,10 @@
 	<array>
 		<string>U63DWZL52M.com.launchsoft.later</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>U63DWZL52M.com.launchsoft.later</string>
+	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
 </dict>

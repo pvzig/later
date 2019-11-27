@@ -6,66 +6,64 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-import Foundation
+import KeychainAccess
 
 public class User: NSObject {
-    static let defaults = UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
+    private static let defaults = UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
+
+    private struct Keys {
+        static let onboarding = "onboardingComplete"
+    }
 
     // MARK: - Onboarding
-    static public func setOnboardingComplete() {
-        UserDefaults.standard.set(true, forKey: "onboardingComplete")
-    }
     
-    static public var onboardingComplete: Bool {
-        return UserDefaults.standard.bool(forKey: "onboardingComplete")
-    }
-    
-    // MARK: - Instapaper
-    static public var instapaperAccount: Bool {
+    public static var isOnboardingComplete: Bool {
         get {
-            return defaults.bool(forKey: "instapaper")
+            UserDefaults.standard.bool(forKey: Keys.onboarding)
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.onboarding)
         }
     }
     
-    static var instapaperAccountName: String? {
-        get {
-            return defaults.string(forKey: "instapaperAccountName")
-        }
-    }
-    
-    // MARK: - Pinboard
-    static public var pinboardAccount: Bool {
-        get {
-            return defaults.bool(forKey: "pinboard")
-        }
-    }
-    
-    static var pinboardAccountName: String? {
-        get {
-            return defaults.string(forKey: "pinboardAccountName")
-        }
-    }
-    
-    // MARK: - Pocket
-    static public var pocketAccount: Bool {
-        get {
-            return defaults.bool(forKey: "pocket")
-        }
-    }
-    
-    @objc static var pocketAccountName: String? {
-        get {
-            return defaults.string(forKey: "pocketAccountName")
-        }
+    public static var isAccountAdded: Bool {
+        return hasAccount(.instapaper) || hasAccount(.pinboard) || hasAccount(.pocket)
     }
 
-    // MARK: Utilities
-    static public func pocketLoginSuccess() {
-        defaults.set(true, forKey: "pocket")
-        save()
+    // MARK: - Services
+    
+    public static func hasAccount(_ type: AccountType) -> Bool {
+        switch type {
+        case .instapaper:
+            return Later.shared.keychain[Later.Constants.Instapaper.oauthToken] != nil
+        case .pocket:
+            return Later.shared.keychain[Later.Constants.Pocket.tokenKey] != nil
+        case .pinboard:
+            return Later.shared.keychain[Later.Constants.Pinboard.apiToken] != nil
+        }
     }
+}
 
-    static func save() {
-        defaults.synchronize()
+// Interface with the Obj-C Pocket SDK
+extension User {
+    @objc static var pocketToken: String? {
+        return Later.shared.keychain[Later.Constants.Pocket.tokenKey]
+    }
+    
+    @objc static func setPocketToken(_ value: String) {
+        Later.shared.keychain[Later.Constants.Pocket.tokenKey] = value
+    }
+    
+    @objc static var pocketTokenDigest: String? {
+        return Later.shared.keychain[Later.Constants.Pocket.tokenDigestKey]
+    }
+    
+    @objc static func setPocketTokenDigest(_ value: String) {
+        Later.shared.keychain[Later.Constants.Pocket.tokenDigestKey] = value
+    }
+    
+    @objc static func pocketLogout() {
+        try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenKey)
+        try? Later.shared.keychain.remove(Later.Constants.Pocket.tokenDigestKey)
     }
 }

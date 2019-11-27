@@ -6,71 +6,88 @@
 //  Copyright © 2017 Launch Software. All rights reserved.
 //
 
-import Foundation
+import KeychainAccess
+import OSLog
 
-public enum AccountType {
-    case instapaper
-    case pocket
-    case pinboard
-}
-
-// MARK: Save
 public class Later: NSObject, IKEngineDelegate {
 
+    struct Constants {
+        struct Instapaper {
+            static let apiKey = "3b21ad9ab01a4f85a557a36f59e70bf4"
+            static let apiSecret = "421d798d435c46b897f38c75cefce117"
+            static let oauthToken = "later-instapaper-oauth-token"
+            static let oauthSecret = "later-instapaper-secret-token"
+        }
+        
+        struct Pinboard {
+            static let apiToken = "later-pinboard-api-token"
+        }
+        
+        struct Pocket {
+            static let consumerKey = "47240-996424446c9727c03cfc1504"
+            static let tokenKey = "later-pocket-token"
+            static let tokenDigestKey = "later-pocket-token-digest"
+        }
+        
+        static let migrationKey = "version_1_2_0_migrated"
+    }
+
     public static let shared = Later()
+    public let saveGroup = DispatchGroup()
+
+    let keychain: Keychain = Keychain(service: "Later: Read Later Extensions", accessGroup: "U63DWZL52M.com.launchsoft.later")
+        .attributes([String(kSecUseDataProtectionKeychain): true])
+    
     private let client = IKEngine()
+    private let defaults = UserDefaults(suiteName: "U63DWZL52M.com.launchsoft.later")!
 
     private var instapaperLoginSuccess: (() -> Void)?
     private var instapaperLoginFailure: ((String) -> Void)?
 
-    public let saveGroup = DispatchGroup()
-
     override public init() {
         super.init()
         client.delegate = self
+        IKEngine.setOAuthConsumerKey(Constants.Instapaper.apiKey, andConsumerSecret: Constants.Instapaper.apiSecret)
+        DispatchQueue.main.async {
+            PocketAPI.shared().consumerKey = Constants.Pocket.consumerKey
+        }
     }
 
     public func saveURL(_ url: URL, title: String?) {
-        if User.instapaperAccount {
+        if User.hasAccount(.instapaper) {
             saveGroup.enter()
             addToInstapaper(url)
         }
 
-        if User.pinboardAccount {
+        if User.hasAccount(.pinboard) {
             saveGroup.enter()
             addToPinboard(url, title: title)
         }
 
-        if User.pocketAccount {
+        if User.hasAccount(.pocket) {
             saveGroup.enter()
             addToPocket(url)
         }
     }
 
     func addToInstapaper(_ url: URL) {
-        IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4", andConsumerSecret: "421d798d435c46b897f38c75cefce117")
-        if let account = User.instapaperAccountName {
-            client.oAuthToken = Keychain.fetchItem("later-instapaper-oauth-token", account: account)
-            client.oAuthTokenSecret = Keychain.fetchItem("later-instapaper-secret-token", account: account)
-            _ = client.addBookmark(with: url, userInfo: nil)
-        } else {
-            saveGroup.leave()
-        }
+        client.oAuthToken = keychain[Constants.Instapaper.oauthToken]
+        client.oAuthTokenSecret = keychain[Constants.Instapaper.oauthSecret]
+        client.addBookmark(with: url, userInfo: nil)
     }
 
     func addToPinboard(_ url: URL, title: String?) {
-        guard
-            let user = User.pinboardAccountName,
-            let token = Keychain.fetchItem("later-pinboard-api-token", account: user)
-        else {
+        guard let token = keychain[Constants.Pinboard.apiToken] else {
             saveGroup.leave()
             return
         }
+        // Construct Pinboard save url
         var components = URLComponents(string: "https://api.pinboard.in/v1/posts/add")
         components?.queryItems = [
             URLQueryItem(name: "url", value: url.absoluteString),
             URLQueryItem(name: "description", value: title ?? url.absoluteString),
-            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+            URLQueryItem(name: "auth_token", value: token),
+            URLQueryItem(name: "toread", value: "yes")
         ]
         guard let url = components?.url else {
             saveGroup.leave()
@@ -78,26 +95,26 @@ public class Later: NSObject, IKEngineDelegate {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             self.saveGroup.leave()
         }.resume()
     }
 
     func addToPocket(_ url: URL) {
-        PocketAPI.shared().consumerKey = "47240-996424446c9727c03cfc1504"
-        PocketAPI.shared().save(url, handler:{(API: PocketAPI?, url: URL?, error: Error?) -> Void in
+        PocketAPI.shared().save(url, handler:{ (API: PocketAPI?, url: URL?, error: Error?) -> Void in
             self.saveGroup.leave()
         })
     }
 
-    //MARK: IKEngineDelegate
+    // MARK: - IKEngineDelegate
+    
     public func engine(_ engine: IKEngine!, connection: IKURLConnection!, didAdd bookmark: IKBookmark!) {
         saveGroup.leave()
     }
 
     public func engine(_ engine: IKEngine!, didFail connection: IKURLConnection!, error: Error!) {
         // Save artcile failure
-        if User.instapaperAccount {
+        if User.hasAccount(.instapaper) {
             saveGroup.leave()
         // Login attempt
         } else {
@@ -106,10 +123,15 @@ public class Later: NSObject, IKEngineDelegate {
     }
 }
 
-//MARK: Login
+// MARK: - Login
+
 extension Later {
-    // MARK: - Login
-    public func login(type: AccountType, username: String, password: String, success: @escaping () -> Void, failure: @escaping (String) -> Void) {
+    public func login(type: AccountType, 
+                      username: String,
+                      password: String,
+                      success: @escaping () -> Void,
+                      failure: @escaping (String) -> Void) {
+
         switch type {
         case .instapaper:
             instapaperLogin(user: username, password: password)
@@ -120,82 +142,144 @@ extension Later {
                 failure(error)
             }
         case .pinboard:
-            pinboardLogin(user: username, token: password, success: success, failure: failure)
+            pinboardLogin(token: password, success: success, failure: failure)
         case .pocket:
-            break
+            pocketLogin { isLoggedIn in
+                if isLoggedIn {
+                    success()
+                } else {
+                    failure("Pocket login failed")
+                }
+            }
         }
     }
 
-    func pinboardLogin(user: String, token: String, success: @escaping () -> Void, failure: @escaping (String) -> Void) {
+    func pinboardLogin(token: String,
+                       success: @escaping () -> Void,
+                       failure: @escaping (String) -> Void) {
+
         var components = URLComponents(string: "https://api.pinboard.in/v1/user/api_token")
         components?.queryItems = [
-            URLQueryItem(name: "auth_token", value: "\(user):\(token)")
+            URLQueryItem(name: "auth_token", value: token)
         ]
         guard let url = components?.url else {
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 guard let r = response as? HTTPURLResponse, r.statusCode == 200 else {
                     failure("Pinboard API token validation failed.")
                     return
                 }
-                User.defaults.set(user, forKey: "pinboardAccountName")
-                User.defaults.set(true, forKey: "pinboard")
-                Keychain.saveItem(token, account: user, service: "later-pinboard-api-token")
-                User.save()
+                self.keychain[Constants.Pinboard.apiToken] = token
                 success()
             }
         }.resume()
     }
-
-    func instapaperLogin(user: String, password: String) {
-        IKEngine.setOAuthConsumerKey("3b21ad9ab01a4f85a557a36f59e70bf4",
-                                     andConsumerSecret: "421d798d435c46b897f38c75cefce117")
-        _ = client.authToken(forUsername: user, password: password, userInfo: nil)
-        User.defaults.set(user, forKey: "instapaperAccountName")
-        User.save()
+    
+    func pocketLogin(complete: @escaping (Bool) -> Void) {
+        PocketAPI.shared().login(handler: { (API: PocketAPI?, error: Error?) -> Void in
+            if let error = error {
+                os_log(.error, "ReadLaterService failed to save article with error: %@", error.localizedDescription)
+                complete(false)
+            } else {
+                complete(true)
+            }
+        })
     }
 
-    //MARK: IKEngineDelegate
+    func instapaperLogin(user: String, password: String) {
+        _ = client.authToken(forUsername: user, password: password, userInfo: nil)
+    }
+
+    //MARK: - IKEngineDelegate
+
     public func engine(_ engine: IKEngine!, connection: IKURLConnection!, didReceiveAuthToken token: String!, andTokenSecret secret: String!) {
-        engine.oAuthToken  = token
+        engine.oAuthToken = token
         engine.oAuthTokenSecret = secret
-        if let account = User.instapaperAccountName {
-            Keychain.saveItem(token, account: account, service: "later-instapaper-oauth-token")
-            Keychain.saveItem(secret, account: account, service: "later-instapaper-secret-token")
-            User.defaults.set(true, forKey: "instapaper")
-            User.save()
-        }
+        keychain[Constants.Instapaper.oauthToken] = token
+        keychain[Constants.Instapaper.oauthSecret] = secret
         instapaperLoginSuccess?()
     }
 }
 
-// Remove credentials
+// MARK: - Remove credentials
+
 extension Later {
 
+    public func reset() {
+        delete(type: .instapaper)
+        delete(type: .pinboard)
+        delete(type: .pocket)
+        if let bundle = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundle)
+        }
+    }
+    
     public func delete(type: AccountType) {
         switch type {
         case .instapaper:
-            if let account = User.instapaperAccountName {
-                Keychain.removeItem("later-instapaper-oauth-token", account: account)
-                Keychain.removeItem("later-instapaper-secret-token", account: account)
-            }
-            User.defaults.set(false, forKey: "instapaper")
-            User.defaults.set(nil, forKey: "instapaperAccountName")
-            User.save()
+            try? keychain.remove(Constants.Instapaper.oauthToken)
+            try? keychain.remove(Constants.Instapaper.oauthSecret)
         case .pocket:
-            User.defaults.set(false, forKey: "pocket")
-            User.save()
+            User.pocketLogout()
         case .pinboard:
-            if let account = User.pinboardAccountName {
-                Keychain.removeItem("later-pinboard-api-token", account: account)
-            }
-            User.defaults.set(false, forKey: "pinboard")
-            User.defaults.set(nil, forKey: "pinboardAccountName")
-            User.save()
+            try? keychain.remove(Constants.Pinboard.apiToken)
         }
+    }
+}
+
+// MARK: - Migration
+
+extension Later {
+    
+    public func migrate() {
+        guard !isMigrated else { return }
+        // Instapaper
+        if
+            let account = defaults.string(forKey: "instapaperAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Instapaper.oauthToken, account: account),
+            let secret = LegacyKeychain.fetchItem(Constants.Instapaper.oauthSecret, account: account) {
+            // Set
+            keychain[Constants.Instapaper.oauthToken] = token
+            keychain[Constants.Instapaper.oauthSecret] = secret
+            // Remove
+            LegacyKeychain.removeItem(Constants.Instapaper.oauthToken, account: account)
+            LegacyKeychain.removeItem(Constants.Instapaper.oauthSecret, account: account)
+            defaults.removeObject(forKey: "instapaperAccountName")
+        }
+        
+        // Pinboard
+        if
+            let account = defaults.string(forKey: "pinboardAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Pinboard.apiToken, account: account) {
+            // Set
+            keychain[Constants.Pinboard.apiToken] = "\(account):\(token)"
+            // Remove
+            LegacyKeychain.removeItem(Constants.Pinboard.apiToken, account: account)
+            defaults.removeObject(forKey: "pinboardAccountName")
+        }
+        
+        // Pocket
+        if
+            let account = defaults.string(forKey: "pocketAccountName"),
+            let token = LegacyKeychain.fetchItem(Constants.Pocket.tokenKey, account: account),
+            let digest = LegacyKeychain.fetchItem(Constants.Pocket.tokenDigestKey, account: account) {
+            // Set
+            keychain[Constants.Pocket.tokenKey] = token
+            keychain[Constants.Pocket.tokenDigestKey] = digest
+            // Remove
+            LegacyKeychain.removeItem(Constants.Pocket.tokenKey, account: account)
+            LegacyKeychain.removeItem(Constants.Pocket.tokenDigestKey, account: account)
+        }
+        
+        // Migration completed
+        defaults.set(true, forKey: Constants.migrationKey)
+    }
+    
+    private var isMigrated: Bool {
+        return defaults.bool(forKey: Constants.migrationKey)
     }
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="368" height="391"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-lU-x8h">
-                    <rect key="frame" x="99" y="357" width="171" height="24"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-lU-x8h">
+                    <rect key="frame" x="101" y="348" width="166" height="23"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Later!" id="bxR-Fj-5YL">
                         <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -27,7 +25,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TLF-6X-hq1">
-                    <rect key="frame" x="89" y="4" width="191" height="32"/>
+                    <rect key="frame" x="89" y="8" width="191" height="32"/>
                     <buttonCell key="cell" type="push" title="Launch Extensions Panel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DRx-Kq-D6w">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -36,45 +34,47 @@
                         <action selector="extensionPanelButton:" target="H9j-8E-E5l" id="38e-FW-Wnb"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="328" translatesAutoresizingMaskIntoConstraints="NO" id="JTR-15-z6k">
-                    <rect key="frame" x="18" y="293" width="332" height="36"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="First, enable the Later share extension in the system Extensions panel:" id="k2u-Kv-bD7">
-                        <font key="font" metaFont="system" size="14"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="328" translatesAutoresizingMaskIntoConstraints="NO" id="JTR-15-z6k">
+                    <rect key="frame" x="18" y="297" width="332" height="34"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable the Later share extension in the system Extensions panel:" id="k2u-Kv-bD7">
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-aq-x1f">
-                    <rect key="frame" x="20" y="42" width="328" height="241"/>
+                    <rect key="frame" x="20" y="46" width="328" height="241"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MEs-aq-x1f" secondAttribute="height" multiplier="328:241" id="I9H-AK-HNx"/>
                         <constraint firstAttribute="width" constant="328" id="VJt-Tt-8QM"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="onboarding" id="UuK-4s-d0d"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Pn-cj-mzE">
-                    <rect key="frame" x="90" y="334" width="188" height="18"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Just two steps to get set up:" id="Vfe-1j-dIt">
-                        <font key="font" metaFont="system" size="14"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OT4-cC-W0U">
+                    <rect key="frame" x="258" y="325" width="110" height="110"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="9Sz-v5-wrQ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="OWH-9N-Xs1"/>
+                        <constraint firstAttribute="height" constant="110" id="Srv-M1-rcd"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="o8z-CC-0gt"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="cB9-ew-0O6"/>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="8Pn-cj-mzE" firstAttribute="top" secondItem="tP1-lU-x8h" secondAttribute="bottom" constant="5" id="9Ss-A1-9vu"/>
                 <constraint firstItem="tP1-lU-x8h" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Fuo-aO-kuV"/>
                 <constraint firstItem="MEs-aq-x1f" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Gr1-rm-oK9"/>
                 <constraint firstItem="JTR-15-z6k" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="IYH-EJ-RUT"/>
-                <constraint firstItem="8Pn-cj-mzE" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Idg-SV-7ZK"/>
                 <constraint firstItem="MEs-aq-x1f" firstAttribute="top" secondItem="JTR-15-z6k" secondAttribute="bottom" constant="10" id="JHi-jh-Bpb"/>
+                <constraint firstItem="tP1-lU-x8h" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="LdQ-lH-SnG"/>
                 <constraint firstAttribute="trailing" secondItem="JTR-15-z6k" secondAttribute="trailing" constant="20" id="MTr-gr-euL"/>
                 <constraint firstItem="JTR-15-z6k" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="RlK-bq-0Mq"/>
                 <constraint firstItem="TLF-6X-hq1" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="VXR-ZC-pZn"/>
+                <constraint firstItem="OT4-cC-W0U" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="-44" id="WQn-TR-ias"/>
                 <constraint firstItem="TLF-6X-hq1" firstAttribute="top" secondItem="MEs-aq-x1f" secondAttribute="bottom" constant="10" id="Yq6-JQ-8MY"/>
-                <constraint firstItem="tP1-lU-x8h" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="ZRx-QQ-iM0"/>
+                <constraint firstAttribute="bottom" secondItem="TLF-6X-hq1" secondAttribute="bottom" constant="15" id="f3J-QN-W2Y"/>
                 <constraint firstAttribute="trailing" secondItem="MEs-aq-x1f" secondAttribute="trailing" constant="20" id="fZr-7m-Dld"/>
-                <constraint firstItem="JTR-15-z6k" firstAttribute="top" secondItem="8Pn-cj-mzE" secondAttribute="bottom" constant="5" id="jog-pV-lOV"/>
+                <constraint firstAttribute="trailing" secondItem="OT4-cC-W0U" secondAttribute="trailing" id="wGa-Jz-TEB"/>
             </constraints>
             <point key="canvasLocation" x="249" y="268.5"/>
         </customView>
@@ -85,6 +85,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="onboarding" width="667" height="502"/>
+        <image name="logo" width="512" height="512"/>
+        <image name="onboarding" width="1334" height="1004"/>
     </resources>
 </document>

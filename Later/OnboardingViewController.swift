@@ -6,15 +6,21 @@
 //  Copyright © 2016 Launch Software. All rights reserved.
 //
 
-import Cocoa
 import LaterKit
 
 class OnboardingViewController: NSViewController {
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
     @IBAction func extensionPanelButton(_ sender: NSButton) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/Extensions.prefPane")
-        User.setOnboardingComplete()
-        AppDelegate.sharedDelegate.popover.contentViewController = PopoverViewController(nibName: "PopoverView", bundle: nil)
-        AppDelegate.sharedDelegate.closePopover(self)
+        view.window?.close()
+    }
+    
+    deinit {
+        User.isOnboardingComplete = true
     }
 }

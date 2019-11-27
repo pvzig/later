@@ -182,8 +182,8 @@ static PocketAPI *sSharedAPI = nil;
 	}
 	
 	// ensure the access token stored matches the consumer key that generated it
-    NSString *existingHash = [Keychain fetchItem:@"later-pocket-token-digest" account:[User pocketAccountName]];
-    NSString *currentHash = [[self class] pkt_hashForConsumerKey:self.consumerKey accessToken:[self pkt_getToken]];
+    NSString *existingHash = [User pocketTokenDigest];
+    NSString *currentHash = [PocketAPI pkt_hashForConsumerKey:self.consumerKey accessToken:[self pkt_getToken]];
 		
     if(![existingHash isEqualToString:currentHash]){
         NSLog(@"*** ERROR: The access token that exists does not match the consumer key. The user has been logged out.");
@@ -322,9 +322,8 @@ static PocketAPI *sSharedAPI = nil;
 }
 
 -(BOOL)isLoggedIn{
-	NSString *username = [self username];
 	NSString *token    = [self pkt_getToken];
-	return (username && token && username.length > 0 && token.length > 0);
+	return (token && token.length > 0);
 }
 
 -(void)loginWithDelegate:(id<PocketAPIDelegate>)delegate{
@@ -443,32 +442,17 @@ static PocketAPI *sSharedAPI = nil;
 
 #pragma mark Account Info
 
--(NSString *)username{
-    return [User pocketAccountName];
-}
-
 -(NSString *)pkt_getToken{
-    return [Keychain fetchItem:@"later-pocket-token" account:[User pocketAccountName]];
+    return [User pocketToken];
 }
 
 -(void)pkt_loggedInWithUsername:(NSString *)username token:(NSString *)token{
-	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
     
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
-    [defaults setObject:username forKey:@"pocketAccountName"];
-    [defaults synchronize];
-    
-    [Keychain saveItem:token
-               account:[User pocketAccountName]
-               service:@"later-pocket-token"];
-    
-    [Keychain saveItem:[[self class] pkt_hashForConsumerKey:self.consumerKey accessToken:token]
-               account:[User pocketAccountName]
-               service:@"later-pocket-token-digest"];
+    [User setPocketToken:token];
+    [User setPocketTokenDigest:[PocketAPI pkt_hashForConsumerKey:self.consumerKey accessToken:token]];
 	
 	[self  didChangeValueForKey:@"isLoggedIn"];
-	[self  didChangeValueForKey:@"username"];
 }
 
 -(void)logout{
@@ -478,18 +462,11 @@ static PocketAPI *sSharedAPI = nil;
         return;
     }
     
-	[self willChangeValueForKey:@"username"];
 	[self willChangeValueForKey:@"isLoggedIn"];
 	
-    [Keychain removeItem:@"later-pocket-token" account:[User pocketAccountName]];
-    [Keychain removeItem:@"later-pocket-token-digest" account:[User pocketAccountName]];
-
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"U63DWZL52M.com.launchsoft.later"];
-    [defaults setObject:NULL forKey:@"pocketAccountName"];
-    [defaults synchronize];
+    [User pocketLogout];
     
 	[self didChangeValueForKey:@"isLoggedIn"];
-	[self didChangeValueForKey:@"username"];
 }
 
 -(PocketAPILogin *)pkt_loadCurrentLoginFromDefaults{
@@ -518,10 +495,13 @@ static PocketAPI *sSharedAPI = nil;
 
 -(void)pkt_saveCurrentLoginToDefaults{
 	if(currentLogin){
-		NSData *loginData = [NSKeyedArchiver archivedDataWithRootObject:currentLogin];
-		
-		NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
-		[defaults setObject:loginData forKey:kPocketAPICurrentLoginKey];
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+
+        if (@available(macOS 10.11, *)) {
+            NSData *loginData = [NSKeyedArchiver archivedDataWithRootObject:currentLogin];
+            [defaults setObject:loginData forKey:kPocketAPICurrentLoginKey];
+        }
+        
 		[defaults synchronize];
 		[defaults release];
 	}
