@@ -23,9 +23,9 @@ class ShareViewController: NSViewController {
             return
         }
         
-        if let provider = attachments.first(where: { $0.hasItemConformingToTypeIdentifier(kUTTypeURL as String) }) {
-            provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil, completionHandler: { (item, error) in
-                guard let url = item as? URL else {
+        if let provider = attachments.first(where: { $0.canLoadObject(ofClass: NSURL.self) }) {
+            provider.loadObject(ofClass: NSURL.self) { (item, error) in
+                guard let nsURL = item as? NSURL, let url = nsURL.absoluteURL else {
                     self.finish()
                     return
                 }
@@ -40,7 +40,7 @@ class ShareViewController: NSViewController {
                         }
                     }
                 }
-            })
+            }
         // Failed
         } else {
             self.finish()
