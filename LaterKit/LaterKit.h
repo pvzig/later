@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "LaterKit/InstapaperKit.h"
-#import "LaterKit/PocketAPI.h"
+#import <LaterKit/InstapaperKit.h>
+#import <LaterKit/PocketAPI.h>
 
 //! Project version number for LaterKit.
 FOUNDATION_EXPORT double LaterKitVersionNumber;
